@@ -13,8 +13,10 @@ public:
     GraphWidget(QSize size = QSize(640, 400), QWidget *parent = 0);
     ~GraphWidget();
 
+    void setTitle(const QString &title);
+
 signals:
-    void sendDetail(QStringList, QStringList);
+    void sendDetail(QStringList, QStringList, int);
 
 public slots:
     void onSearchResult(QList<ExchangeRateResult *>);
@@ -44,6 +46,7 @@ private:
     QStringList nameList;
     QStringList valueList;
     bool isValueHide;
+    QString m_title;
 };
 #endif // GRAPHWIDGET
 

@@ -80,7 +80,8 @@ void ResultWidget::setChildSize(QSize size){
 void ResultWidget::addGraphWidget(QString title, QList<ExchangeRateResult *> ea_results){
     GraphWidget *graphWidget = new GraphWidget(childSize);
     graphWidget->onSearchResult(ea_results);
-    connect(graphWidget, SIGNAL(sendDetail(QStringList,QStringList)), this, SIGNAL(sendDetail(QStringList,QStringList)));
+    graphWidget->setTitle(title);
+    connect(graphWidget, SIGNAL(sendDetail(QStringList,QStringList,int)), this, SIGNAL(sendDetail(QStringList,QStringList,int)));
     this->addTab(graphWidget, title);
     this->setCurrentWidget(graphWidget);
 }

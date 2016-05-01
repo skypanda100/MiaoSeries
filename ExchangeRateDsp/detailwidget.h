@@ -10,7 +10,7 @@ public:
     ~DetailWidget();
 
 public slots:
-    void setData(QStringList, QStringList);
+    void setData(QStringList, QStringList, int times = 10000);
 
 private:
     void initUI();

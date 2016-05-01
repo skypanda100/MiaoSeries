@@ -200,8 +200,19 @@ void GraphWidget::onChartClicked(QMouseEvent *event){
         isValueHide = !isValueHide;
         onMouseMovePlotArea(event);
     }else{
-        emit sendDetail(nameList, valueList);
+        if(m_title.startsWith("USDJPY")){
+            emit sendDetail(nameList, valueList, 100);
+        }else if(m_title.startsWith("CNHJPY")){
+            emit sendDetail(nameList, valueList, 100);
+        }else{
+            emit sendDetail(nameList, valueList, 10000);
+        }
     }
+}
+
+void GraphWidget::setTitle(const QString &title)
+{
+    m_title = title;
 }
 
 void GraphWidget::trackLineLegend(XYChart *c, int mouseX)
@@ -209,7 +220,7 @@ void GraphWidget::trackLineLegend(XYChart *c, int mouseX)
     //清空值
     nameList.clear();
     valueList.clear();
-
+    
     DrawArea *d = c->initDynamicLayer();
 
     // The plot area object

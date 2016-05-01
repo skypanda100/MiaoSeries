@@ -31,7 +31,7 @@ void DetailWidget::initUI(){
     verticalLayout->addWidget(m_ParamList);
 }
 
-void DetailWidget::setData(QStringList names, QStringList values){
+void DetailWidget::setData(QStringList names, QStringList values, int times){
     m_ParamList->setRowCount(0);
     m_ParamList->clearContents();
 
@@ -55,7 +55,7 @@ void DetailWidget::setData(QStringList names, QStringList values){
             diffValueItem->setBackgroundColor(bgcolor);
             m_ParamList->setItem(i, 1, diffValueItem);
         }else{
-            QTableWidgetItem *diffValueItem = new QTableWidgetItem(QString("%1").arg((values[i].toDouble() - standard_price) * 10000));
+            QTableWidgetItem *diffValueItem = new QTableWidgetItem(QString("%1").arg((values[i].toDouble() - standard_price) * times));
             diffValueItem->setBackgroundColor(bgcolor);
             m_ParamList->setItem(i, 1, diffValueItem);
         }
