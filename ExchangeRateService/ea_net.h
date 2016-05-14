@@ -59,7 +59,6 @@ private:
 
 private:
     QString url;
-    QNetworkAccessManager *mgr;
     QTimer *timer;
     QThread thread;
     ExchangeRateWorker *eaWorker;

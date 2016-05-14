@@ -102,15 +102,11 @@ ExchangeRateNet::ExchangeRateNet(){
 }
 
 ExchangeRateNet::~ExchangeRateNet(){
-    delete mgr;
     delete timer;
     delete eaWorker;
 }
 
 void ExchangeRateNet::init(){
-    mgr = new QNetworkAccessManager(this);
-    connect(mgr, SIGNAL(finished(QNetworkReply*)), this, SLOT(query(QNetworkReply*)));
-
 //    url = QString("http://quote.hexun.com/forex/forex.aspx?type=3");
     url = QString("http://exquote.yjfx.jp/quote.js");
 
@@ -126,7 +122,6 @@ void ExchangeRateNet::init(){
 void ExchangeRateNet::query(QNetworkReply *reply){
     QString html = reply->readAll();
     emit doWork(html);
-    mgr->clearAccessCache();
 }
 
 void ExchangeRateNet::crawler(){
@@ -143,7 +138,9 @@ void ExchangeRateNet::crawler(){
     || (weekday == 6 && hours < 6)){
         if(minutes % CRAWLER_INTERVAL == 0){
             ExchangeRateWorker::currentTimet = dateTime.toString("yyyy-MM-dd hh:mm:00");
+            QNetworkAccessManager *mgr = new QNetworkAccessManager(this);
             mgr->get(QNetworkRequest(QUrl(url)));
+            connect(mgr, SIGNAL(finished(QNetworkReply*)), this, SLOT(query(QNetworkReply*)));
         }
     }
 }
