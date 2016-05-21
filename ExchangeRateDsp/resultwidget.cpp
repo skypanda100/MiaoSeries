@@ -60,7 +60,6 @@ void ResultWidget::initUI(){
 //    //设置背景色
 //    this->setAutoFillBackground(true);
 //    this->setPalette(QPalette(QColor(224, 220, 216)));
-
     setElideMode(Qt::ElideRight);
 
     //标签栏
@@ -96,6 +95,14 @@ void ResultWidget::closeTab(int index){
     removeTab(index);
     delete graphWidget;
 
+}
+
+void ResultWidget::paintEvent(QPaintEvent *event){
+    QTabWidget::paintEvent(event);
+    QPainter painter(this);
+    painter.setPen(QColor(74, 73, 73));
+    painter.drawLine(QPointF(0, 0), QPointF(0, this->height()));
+    painter.drawLine(QPointF(this->width() - 1, 0), QPointF(this->width() - 1, this->height()));
 }
 
 ResultMainWidget::ResultMainWidget(QSize childSize, QWidget *parent)

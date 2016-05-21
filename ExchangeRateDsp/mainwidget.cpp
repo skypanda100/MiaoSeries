@@ -47,7 +47,7 @@ void MainWidget::initUI(){
     //布局
     QHBoxLayout *mainLayout = new QHBoxLayout;
     mainLayout->setContentsMargins(1, 1, 1, 1);
-    mainLayout->setSpacing(1);
+    mainLayout->setSpacing(3);
 
     mainLayout->addWidget(leftSplitter);
     mainLayout->addWidget(resultMainWidget, 1);
