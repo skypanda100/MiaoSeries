@@ -770,6 +770,7 @@ QTabWidget::pane {
 QTabBar
 {
     qproperty-drawBase: 0;
+    border-bottom: 1px solid #4A4949;
     left: 5px; /* move to the right by 5px */
 }
 
@@ -798,7 +799,7 @@ QTabBar::close-button:pressed {
 QTabBar::tab:top {
     color: #b1b1b1;
     border: 1px solid #4A4949;
-    border-bottom: 1px solid #4A4949;
+    border-bottom: 1px transparent #4A4949;
     background-color: #302F2F;
     padding: 5px;
     border-top-left-radius: 2px;
@@ -810,7 +811,7 @@ QTabBar::tab:top:!selected
     color: #b1b1b1;
     background-color: #201F1F;
     border: 1px transparent #4A4949;
-    border-bottom: 1px transparent #4A4949;
+    border-bottom: 1px solid #4A4949;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
 }
@@ -1198,7 +1199,6 @@ QStatusBar::item {
 QFrame[height="3"], QFrame[width="3"] {
     background-color: #444;
 }
-
 
 QSplitter::handle {
     border: 1px dashed #3A3939;

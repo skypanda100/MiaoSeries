@@ -75,7 +75,7 @@ void GraphWidget::initConnect(){
 
 void GraphWidget::drawChart()
 {
-    XYChart *c = new XYChart(size.width(), size.height() - 100, 0x1E1E1E);
+    XYChart *c = new XYChart(size.width(), size.height() - 100, Chart::Transparent);
 
     c->setPlotArea(10, 50, c->getWidth() - 65, c->getHeight() - 10, 0x000000, -1, 0xC8C8C8, Chart::Transparent, Chart::Transparent);
 
@@ -135,7 +135,7 @@ void GraphWidget::drawFullChart(){
 
     initChartViewer();
 
-    XYChart *c = new XYChart(size.width(), 100, 0x1E1E1E);
+    XYChart *c = new XYChart(size.width(), 100, Chart::Transparent);
 
     c->setPlotArea(10, 5, c->getWidth() - 65, c->getHeight() - 15, 0x000000, -1, 0xC8C8C8,
         Chart::Transparent, 0xffffff);
