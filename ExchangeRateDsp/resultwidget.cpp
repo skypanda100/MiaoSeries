@@ -91,9 +91,9 @@ void ResultWidget::closeTab(int index){
         index = currentIndex();
     if (index < 0 || index >= count())
         return;
-    //先释放
+    //从TabWidget删除，再释放内存
     GraphWidget *graphWidget = (GraphWidget *)(this->widget(index));
-    delete graphWidget;
-    //释放后，再从TabWidget删除，才能释放内存
     removeTab(index);
+    delete graphWidget;
+
 }
