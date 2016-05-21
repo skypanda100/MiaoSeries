@@ -24,7 +24,7 @@ private:
 private:
     SearchWidget *searchWidget;
     DetailWidget *detailWidget;
-    ResultWidget *resultWidget;
+    ResultMainWidget *resultMainWidget;
 };
 
 #endif // MAINWIDGET

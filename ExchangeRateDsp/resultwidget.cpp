@@ -97,3 +97,40 @@ void ResultWidget::closeTab(int index){
     delete graphWidget;
 
 }
+
+ResultMainWidget::ResultMainWidget(QSize childSize, QWidget *parent)
+    :QWidget(parent)
+{
+    this->initUI(childSize);
+}
+
+ResultMainWidget::~ResultMainWidget(){
+
+}
+
+void ResultMainWidget::initUI(QSize childSize){
+    ResultWidget *resultWidget = new ResultWidget;
+    resultWidget->setChildSize(childSize);
+
+    QWidget *coverWidget = new QWidget;
+    coverWidget->setAttribute(Qt::WA_TranslucentBackground, true);
+    coverWidget->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+
+    QWidget *coverWidget_1 = new QWidget;
+    coverWidget_1->setFixedHeight(13);
+    QVBoxLayout *coverLayout = new QVBoxLayout;
+    coverLayout->setContentsMargins(0, 0, 0, 0);
+    coverLayout->addStretch(1);
+    coverLayout->addWidget(coverWidget_1);
+    coverWidget->setLayout(coverLayout);
+
+    QStackedLayout *mainLayout = new QStackedLayout;
+    mainLayout->setStackingMode(QStackedLayout::StackAll);
+    mainLayout->addWidget(resultWidget);
+    mainLayout->addWidget(coverWidget);
+    this->setLayout(mainLayout);
+
+    connect(this, SIGNAL(searchResult(QString, QList<ExchangeRateResult *>)), resultWidget, SLOT(addGraphWidget(QString, QList<ExchangeRateResult*>)));
+    connect(resultWidget, SIGNAL(sendDetail(QStringList,QStringList,QList<int>,int)), this, SIGNAL(sendDetail(QStringList,QStringList,QList<int>,int)));
+
+}

@@ -15,7 +15,7 @@ MainWidget::MainWidget(QWidget *parent) :
 MainWidget::~MainWidget(){
     delete searchWidget;
     delete detailWidget;
-    delete resultWidget;
+    delete resultMainWidget;
 }
 
 void MainWidget::initData(){
@@ -29,9 +29,6 @@ void MainWidget::initUI(){
     int MAINHEIGHT = clientRect.height() - 35;
     //设置长宽
     this->setFixedSize(MAINWIDTH, MAINHEIGHT);
-    //设置背景色
-    this->setAutoFillBackground(true);
-    this->setPalette(QPalette(QColor(75, 75, 75)));
 
     //左侧查询条件控制区
     QSplitter *leftSplitter = new QSplitter(Qt::Vertical, 0);
@@ -44,8 +41,8 @@ void MainWidget::initUI(){
     leftSplitter->setStretchFactor(1, 1);
 
     //右侧查询结果
-    resultWidget = new ResultWidget;
-    resultWidget->setChildSize(QSize(MAINWIDTH - leftSplitter->width(), MAINHEIGHT));
+    resultMainWidget = new ResultMainWidget(QSize(MAINWIDTH - leftSplitter->width(), MAINHEIGHT));
+    resultMainWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     //布局
     QHBoxLayout *mainLayout = new QHBoxLayout;
@@ -53,7 +50,7 @@ void MainWidget::initUI(){
     mainLayout->setSpacing(1);
 
     mainLayout->addWidget(leftSplitter);
-    mainLayout->addWidget(resultWidget, 1);
+    mainLayout->addWidget(resultMainWidget, 1);
 
     //设置布局
     this->setLayout(mainLayout);
@@ -61,6 +58,6 @@ void MainWidget::initUI(){
 
 
 void MainWidget::initConnect(){
-    connect(searchWidget, SIGNAL(searchResult(QString, QList<ExchangeRateResult *>)), resultWidget, SLOT(addGraphWidget(QString, QList<ExchangeRateResult*>)));
-    connect(resultWidget, SIGNAL(sendDetail(QStringList,QStringList,QList<int>,int)), detailWidget, SLOT(setData(QStringList,QStringList,QList<int>,int)));
+    connect(searchWidget, SIGNAL(searchResult(QString, QList<ExchangeRateResult *>)), resultMainWidget, SIGNAL(searchResult(QString, QList<ExchangeRateResult *>)));
+    connect(resultMainWidget, SIGNAL(sendDetail(QStringList,QStringList,QList<int>,int)), detailWidget, SLOT(setData(QStringList,QStringList,QList<int>,int)));
 }

@@ -49,5 +49,20 @@ private:
     QSize childSize;
 };
 
+class ResultMainWidget : public QWidget{
+    Q_OBJECT
+
+public:
+    ResultMainWidget(QSize childSize, QWidget *parent = 0);
+    ~ResultMainWidget();
+
+signals:
+    void searchResult(QString, QList<ExchangeRateResult *>);
+    void sendDetail(QStringList,QStringList,QList<int>,int);
+
+private:
+    void initUI(QSize childSize);
+};
+
 #endif // RESULTWIDGET
 
