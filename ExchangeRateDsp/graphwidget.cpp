@@ -199,11 +199,11 @@ void GraphWidget::onChartClicked(QMouseEvent *event){
         onMouseMovePlotArea(event);
     }else{
         if(m_title.startsWith("USDJPY")){
-            emit sendDetail(nameList, valueList, 100);
+            emit sendDetail(nameList, valueList, colorList, 100);
         }else if(m_title.startsWith("CNHJPY")){
-            emit sendDetail(nameList, valueList, 100);
+            emit sendDetail(nameList, valueList, colorList, 100);
         }else{
-            emit sendDetail(nameList, valueList, 10000);
+            emit sendDetail(nameList, valueList, colorList, 10000);
         }
     }
 }
@@ -218,7 +218,8 @@ void GraphWidget::trackLineLegend(XYChart *c, int mouseX)
     //清空值
     nameList.clear();
     valueList.clear();
-    
+    colorList.clear();
+
     DrawArea *d = c->initDynamicLayer();
 
     // The plot area object
@@ -248,6 +249,8 @@ void GraphWidget::trackLineLegend(XYChart *c, int mouseX)
             const char *dataName = dataSet->getDataName();
             //添加类别信息
             nameList << QString::fromUtf8(dataName);
+            //添加颜色信息
+            colorList << dataSet->getDataColor();
 
             int color = dataSet->getDataColor();
             if (dataName && *dataName && (color != (int)Chart::Transparent)) {

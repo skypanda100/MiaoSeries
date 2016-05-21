@@ -62,5 +62,5 @@ void MainWidget::initUI(){
 
 void MainWidget::initConnect(){
     connect(searchWidget, SIGNAL(searchResult(QString, QList<ExchangeRateResult *>)), resultWidget, SLOT(addGraphWidget(QString, QList<ExchangeRateResult*>)));
-    connect(resultWidget, SIGNAL(sendDetail(QStringList,QStringList,int)), detailWidget, SLOT(setData(QStringList,QStringList,int)));
+    connect(resultWidget, SIGNAL(sendDetail(QStringList,QStringList,QList<int>,int)), detailWidget, SLOT(setData(QStringList,QStringList,QList<int>,int)));
 }

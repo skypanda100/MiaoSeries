@@ -34,7 +34,7 @@ public:
 
     void setChildSize(QSize);
 signals:
-    void sendDetail(QStringList,QStringList,int);
+    void sendDetail(QStringList,QStringList,QList<int>,int);
 
 public slots:
     void addGraphWidget(QString, QList<ExchangeRateResult*>);

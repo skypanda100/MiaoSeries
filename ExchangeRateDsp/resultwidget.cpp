@@ -81,7 +81,7 @@ void ResultWidget::addGraphWidget(QString title, QList<ExchangeRateResult *> ea_
     GraphWidget *graphWidget = new GraphWidget(childSize);
     graphWidget->onSearchResult(ea_results);
     graphWidget->setTitle(title);
-    connect(graphWidget, SIGNAL(sendDetail(QStringList,QStringList,int)), this, SIGNAL(sendDetail(QStringList,QStringList,int)));
+    connect(graphWidget, SIGNAL(sendDetail(QStringList,QStringList,QList<int>,int)), this, SIGNAL(sendDetail(QStringList,QStringList,QList<int>,int)));
     this->addTab(graphWidget, title);
     this->setCurrentWidget(graphWidget);
 }

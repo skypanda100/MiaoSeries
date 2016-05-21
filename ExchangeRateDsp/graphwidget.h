@@ -16,7 +16,7 @@ public:
     void setTitle(const QString &title);
 
 signals:
-    void sendDetail(QStringList, QStringList, int);
+    void sendDetail(QStringList, QStringList, QList<int>, int);
 
 public slots:
     void onSearchResult(QList<ExchangeRateResult *>);
@@ -45,6 +45,7 @@ private:
     QList<ExchangeRateResult *> ea_results;
     QStringList nameList;
     QStringList valueList;
+    QList<int> colorList;
     bool isValueHide;
     QString m_title;
 };
