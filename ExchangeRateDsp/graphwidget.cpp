@@ -84,11 +84,6 @@ void GraphWidget::drawChart()
     c->getLegend()->setLineStyleKey();
     c->getLegend()->setFontSize(10);
 
-    c->xAxis()->setColors(0xC8C8C8, 0xC8C8C8);
-    c->yAxis2()->setColors(0xC8C8C8, 0xC8C8C8);
-    c->xAxis()->setLabelStyle("arial.ttf", 10);
-    c->yAxis2()->setLabelStyle("arial.ttf", 10);
-
     //遍历查询结果并绘制结果
     int ea_result_count = ea_results.size();
     //设置X轴的label
@@ -115,6 +110,10 @@ void GraphWidget::drawChart()
         //设置Y轴
         layer->addDataSet(viewPortYData, ea_result->getColor(), ea_result->getName().toUtf8().data())->setUseYAxis2();
     }
+    c->xAxis()->setLabelStyle("arial.ttf", 10);
+    c->yAxis2()->setLabelStyle("arial.ttf", 10);
+    c->xAxis()->setColors(0xC8C8C8, 0xC8C8C8);
+    c->yAxis2()->setColors(0xC8C8C8, 0xC8C8C8);
 
     m_ChartViewer->syncDateAxisWithViewPort("x", c->xAxis());
 
