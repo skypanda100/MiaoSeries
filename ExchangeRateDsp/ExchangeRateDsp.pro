@@ -28,7 +28,9 @@ SOURCES += main.cpp\
     detailwidget.cpp \
     ratecolordialog.cpp \
     graphwidget.cpp \
-    resultwidget.cpp
+    resultwidget.cpp \
+    window.cpp \
+    iconbutton.cpp
 
 HEADERS  += \
     qchartviewer.h \
@@ -40,6 +42,8 @@ HEADERS  += \
     detailwidget.h \
     ratecolordialog.h \
     graphwidget.h \
-    resultwidget.h
+    resultwidget.h \
+    window.h \
+    iconbutton.h
 
 RESOURCES += data.qrc

@@ -42,5 +42,10 @@
         <file>qdarkstyle/rc/up_arrow_disabled.png</file>
         <file>qdarkstyle/rc/Vmovetoolbar.png</file>
         <file>qdarkstyle/rc/Vsepartoolbar.png</file>
+        <file>images/close.png</file>
+        <file>images/max_max.png</file>
+        <file>images/max_normal.png</file>
+        <file>images/min.png</file>
+        <file>images/review.png</file>
     </qresource>
 </RCC>

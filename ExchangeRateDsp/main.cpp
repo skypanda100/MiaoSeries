@@ -1,4 +1,5 @@
 #include "mainwidget.h"
+#include "window.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -11,8 +12,10 @@ int main(int argc, char *argv[])
     qApp->setStyleSheet(qss.readAll());
     qss.close();
 
+    Window window;
+    window.setTitle("涨停喵");
     MainWidget mainWidget;
-    mainWidget.setWindowTitle("涨停喵");
-    mainWidget.show();
+    window.setCentralWidget(&mainWidget);
+    window.show();
     return app.exec();
 }
