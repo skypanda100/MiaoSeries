@@ -40,6 +40,9 @@ public slots:
     void addGraphWidget(QString, QList<ExchangeRateResult*>);
     void closeTab(int index = -1);
 
+protected:
+    void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
+
 private:
     void initUI();
     void initConnect();
