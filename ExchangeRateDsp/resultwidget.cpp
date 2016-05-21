@@ -57,9 +57,9 @@ ResultWidget::~ResultWidget(){
 }
 
 void ResultWidget::initUI(){
-    //设置背景色
-    this->setAutoFillBackground(true);
-    this->setPalette(QPalette(QColor(224, 220, 216)));
+//    //设置背景色
+//    this->setAutoFillBackground(true);
+//    this->setPalette(QPalette(QColor(224, 220, 216)));
 
     setElideMode(Qt::ElideRight);
 

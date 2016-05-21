@@ -75,20 +75,18 @@ void GraphWidget::initConnect(){
 
 void GraphWidget::drawChart()
 {
-    XYChart *c = new XYChart(size.width(), size.height() - 100, 0xe0dcd8);
+    XYChart *c = new XYChart(size.width(), size.height() - 100, 0x1E1E1E);
 
-    c->setPlotArea(10, 50, c->getWidth() - 65, c->getHeight() - 10, 0x000000, -1, 0x000000, Chart::Transparent, Chart::Transparent);
+    c->setPlotArea(10, 50, c->getWidth() - 65, c->getHeight() - 10, 0x000000, -1, 0xC8C8C8, Chart::Transparent, Chart::Transparent);
 
     c->setClipping();
 
     c->getLegend()->setLineStyleKey();
     c->getLegend()->setFontSize(10);
 
-    c->xAxis()->setColors(Chart::Transparent);
-    c->yAxis()->setColors(Chart::Transparent);
-    c->yAxis2()->setColors(Chart::Transparent);
+    c->xAxis()->setColors(0xC8C8C8, 0xC8C8C8);
+    c->yAxis2()->setColors(0xC8C8C8, 0xC8C8C8);
     c->xAxis()->setLabelStyle("arial.ttf", 10);
-    c->yAxis()->setLabelStyle("arial.ttf", 10);
     c->yAxis2()->setLabelStyle("arial.ttf", 10);
 
     //遍历查询结果并绘制结果
@@ -137,9 +135,9 @@ void GraphWidget::drawFullChart(){
 
     initChartViewer();
 
-    XYChart *c = new XYChart(size.width(), 100, 0xe0dcd8);
+    XYChart *c = new XYChart(size.width(), 100, 0x1E1E1E);
 
-    c->setPlotArea(10, 5, c->getWidth() - 65, c->getHeight() - 15, 0x000000, -1, 0x000000,
+    c->setPlotArea(10, 5, c->getWidth() - 65, c->getHeight() - 15, 0x000000, -1, 0xC8C8C8,
         Chart::Transparent, 0xffffff);
 
     c->xAxis()->setColors(Chart::Transparent);
@@ -298,7 +296,7 @@ void GraphWidget::trackLineLegend(XYChart *c, int mouseX)
 
     // Display the legend on the top of the plot area
     TTFText *t = d->text(legendText.str().c_str(), "arial.ttf", 8);
-    t->draw(plotArea->getLeftX() + 5, plotArea->getTopY() - 3, 0x000000, Chart::BottomLeft);
+    t->draw(plotArea->getLeftX() + 5, plotArea->getTopY() - 3, 0xC8C8C8, Chart::BottomLeft);
     t->destroy();
 
     //y轴显示值
@@ -390,7 +388,7 @@ void GraphWidget::trackLineAxis(XYChart *c, DrawArea *d, int mouseX)
                 axisLabel << "<*font,bgColor=" << hex << color << "*> "
                     << c->formatValue(dataPoint, "{value|P4}")	<< " <*/font*>";
                 t = d->text(axisLabel.str().c_str(), "arialbd.ttf", 8);
-                t->draw(xPos, yCoor, 0x000000,
+                t->draw(xPos, yCoor, 0xC8C8C8,
                     ((yAxis->getAlignment() == Chart::Left) ? Chart::Right : Chart::Left));
                 t->destroy();
             }

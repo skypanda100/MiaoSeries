@@ -87,9 +87,9 @@ void SearchWidget::initUI(){
     QFont font;
     font.setFamily("微软雅黑");
 
-    //设置背景色
-    this->setAutoFillBackground(true);
-    this->setPalette(QPalette(QColor(224, 220, 216)));
+//    //设置背景色
+//    this->setAutoFillBackground(true);
+//    this->setPalette(QPalette(QColor(224, 220, 216)));
 
     //代码币种
     typeLabel = new QLabel("货币");
