@@ -17,5 +17,6 @@ int main(int argc, char *argv[])
     MainWidget mainWidget;
     window.setCentralWidget(&mainWidget);
     window.show();
+    window.move(10, 10);
     return app.exec();
 }
