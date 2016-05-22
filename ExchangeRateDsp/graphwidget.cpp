@@ -390,7 +390,7 @@ void GraphWidget::trackLineAxis(XYChart *c, DrawArea *d, int mouseX)
                 axisLabel << "<*font,bgColor=" << hex << color << "*> "
                     << c->formatValue(dataPoint, "{value|P4}")	<< " <*/font*>";
                 t = d->text(axisLabel.str().c_str(), "arialbd.ttf", 8);
-                t->draw(xPos, yCoor, 0xC8C8C8,
+                t->draw(xPos, yCoor, 0x000000,
                     ((yAxis->getAlignment() == Chart::Left) ? Chart::Right : Chart::Left));
                 t->destroy();
             }

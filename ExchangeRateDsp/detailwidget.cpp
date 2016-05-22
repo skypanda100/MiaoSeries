@@ -18,6 +18,8 @@ void DetailWidget::initUI(){
 //    this->setPalette(QPalette(QColor(255, 255, 255)));
 
     m_ParamList = new QTableWidget(this);
+    QHeaderView* headerView = m_ParamList->verticalHeader();
+    headerView->setHidden(true);
     m_ParamList->verticalHeader()->setDefaultSectionSize(24);
     m_ParamList->horizontalHeader()->setStretchLastSection(true);
     m_ParamList->setColumnCount(3);
