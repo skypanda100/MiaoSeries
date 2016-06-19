@@ -31,17 +31,27 @@ void ExchangeServiceDb::execute(QString tableStr, QString ymdStrFrom, QString ym
         QList<QString> validateTimeList;
         for(int i = 0;i < 60;i++){
             if(i % 5 == 0){
+                QString validateTimeStr;
                 if(i < 10){
-                    validateTimeList.append(
-                                QString("%1:0%2:00")
-                                .arg(dateTimeFrom.toString("yyyy-MM-ddThh"))
-                                .arg(i));
+                    validateTimeStr = QString("%1:0%2:00")
+                            .arg(dateTimeFrom.toString("yyyy-MM-ddThh"))
+                            .arg(i);
 
                 }else{
-                    validateTimeList.append(
-                                QString("%1:%2:00")
-                                .arg(dateTimeFrom.toString("yyyy-MM-ddThh"))
-                                .arg(i));
+                    validateTimeStr = QString("%1:%2:00")
+                            .arg(dateTimeFrom.toString("yyyy-MM-ddThh"))
+                            .arg(i);
+                }
+                QDateTime validateTime = QDateTime::fromString(validateTimeStr, "yyyy-MM-ddThh:mm:ss");
+                int weekday = validateTime.date().dayOfWeek();
+                int hours = validateTime.toString("hh").toInt();
+                /*
+                 * 从星期一早上六点到星期六早上六点执行抓取动作
+                 */
+                if((weekday >= 2 && weekday <= 5)
+                || (weekday == 1 && hours >= 6)
+                || (weekday == 6 && hours < 6)){
+                    validateTimeList.append(validateTimeStr);
                 }
             }
         }
