@@ -151,7 +151,7 @@ double ExchangeServiceDb::query(int tableType, QString table, QString timet, int
 }
 
 void ExchangeServiceDb::execute(QString table){
-    QString queryMstStr = QString("select tabletype from tablemst where tablename = '%1'").arg(table);
+    QString queryMstStr = QString("select tabletype from tablemst where tablename = '%1'").arg(table.toUpper());
     QSqlQuery queryMst(queryMstStr);
     queryMst.next();
     int tableType = queryMst.value(0).toInt();
