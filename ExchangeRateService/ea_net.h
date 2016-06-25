@@ -16,7 +16,6 @@ class ExchangeRateWorker : public QObject{
 public:
     ExchangeRateWorker();
     ~ExchangeRateWorker();
-    static QString currentTimet;
 
     enum RATE {
         GBPUSD, //英镑美元
@@ -24,11 +23,15 @@ public:
         CNHJPY  //人民币日元
     };
 
+signals:
+    void showMessage(QString);
+
 public slots:
     void work(QString);
 
 private:
-    void execute(QString, RATE, int, int, int);
+    void execute(QString, RATE, QDateTime);
+    void sendMessage();
 
 private:
     ExchangeServiceDb *eaDb;
@@ -47,6 +50,7 @@ public:
 
 signals:
     void doWork(QString);
+    void showMessage(QString);
 
 public slots:
     void query(QNetworkReply *);
@@ -60,9 +64,9 @@ private:
 private:
     QString url;
     QTimer *timer;
-    QThread thread;
+    QThread *thread;
     ExchangeRateWorker *eaWorker;
+    QNetworkAccessManager *mgr;
 };
 
 #endif // EA_NET
-
