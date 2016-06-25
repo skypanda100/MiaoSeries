@@ -22,6 +22,7 @@ public slots:
     void onStopClicked();
     void onSystemTrayIconClicked(QSystemTrayIcon::ActivationReason);
     void onQuitActionTriggered();
+    void showMessage(QString);
 
 protected:
     void closeEvent(QCloseEvent *) Q_DECL_OVERRIDE;

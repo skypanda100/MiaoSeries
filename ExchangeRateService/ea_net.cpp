@@ -20,28 +20,52 @@ ExchangeRateWorker::~ExchangeRateWorker(){
 }
 
 void ExchangeRateWorker::work(QString html){
-    //将当前时间转换为时间戳
-    QDateTime time = QDateTime::fromString(currentTimet, "yyyy-MM-dd hh:mm:ss");
+    QString rateHtml = html.trimmed();
+    if(rateHtml.isEmpty()){
+        sendMessage();
+    }else{
+        QRegExp timeExp(QString(".*"
+                          "\"updatedAt\": "
+                          "\"([0-9]{14})\","
+                          ".*"));
+        timeExp.setMinimal(true);
+        int pos = timeExp.indexIn(rateHtml, 0);
+        if(pos != -1){
+            QString timeStr = timeExp.cap(1);
+            //将日本时间转换为中国时间
+            QDateTime time = QDateTime::fromString(timeStr, "yyyyMMddhhmmss");
+            time = time.addSecs(-3600);
+            //操作英镑美元
+            execute(html, GBPUSD, time);
+            //操作美元日元
+            execute(html, USDJPY, time);
+            //操作人民币日元
+            execute(html, CNHJPY, time);
+        }else{
+            sendMessage();
+        }
+    }
+}
+
+void ExchangeRateWorker::execute(QString html, RATE rate, QDateTime time){
+    //求时间
+    QString currentTimet = time.toString("yyyy-MM-dd hh:mm:00");
     //求分钟数
     int minutes = time.toString("mm").toInt();
     //求小时数
     int hours = time.toString("hh").toInt();
     //求星期几
     int weekday = time.date().dayOfWeek();
-
-    //操作英镑美元
-    execute(html, GBPUSD, minutes, hours, weekday);
-    //操作美元日元
-    execute(html, USDJPY, minutes, hours, weekday);
-    //操作人民币日元
-    execute(html, CNHJPY, minutes, hours, weekday);
-}
-
-void ExchangeRateWorker::execute(QString html, RATE rate, int minutes, int hours, int weekday){
     //数据库表名
     QString table = tables[rate];
     //检索key
     QString key = keys[rate];
+
+    //check表中是否有重复数据
+    if(eaDb->query(table, currentTimet) > 0){
+        return;
+    }
+
     //正则查找汇率
     QRegExp rateExp(QString(".*"
                       "\"cd\": "
@@ -91,11 +115,15 @@ void ExchangeRateWorker::execute(QString html, RATE rate, int minutes, int hours
         if(weekday == 6 && hours == 5 && minutes == 55){
             eaDb->insert(table, currentTimet, 10080);
         }
+    }else{
+        sendMessage();
     }
 }
 
-//声明静态变量
-QString ExchangeRateWorker::currentTimet = QString("");
+void ExchangeRateWorker::sendMessage(){
+    QString message = QString("数据抓取失败!\n%1").arg(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+    emit showMessage(message);
+}
 
 ExchangeRateNet::ExchangeRateNet(){
     this->init();
@@ -104,6 +132,12 @@ ExchangeRateNet::ExchangeRateNet(){
 ExchangeRateNet::~ExchangeRateNet(){
     delete timer;
     delete eaWorker;
+    if(thread->isRunning()){
+        thread->quit();
+        thread->wait();
+        delete thread;
+    }
+    delete mgr;
 }
 
 void ExchangeRateNet::init(){
@@ -113,15 +147,30 @@ void ExchangeRateNet::init(){
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(crawler()));
 
+    mgr = new QNetworkAccessManager(this);
+    connect(mgr, SIGNAL(finished(QNetworkReply*)), this, SLOT(query(QNetworkReply*)));
+
+    thread = new QThread;
     eaWorker = new ExchangeRateWorker;
-    eaWorker->moveToThread(&thread);
+    eaWorker->moveToThread(thread);
     connect(this, SIGNAL(doWork(QString)), eaWorker, SLOT(work(QString)), Qt::QueuedConnection);
-    thread.start();
+    connect(eaWorker, SIGNAL(showMessage(QString)), this, SIGNAL(showMessage(QString)));
+    thread->start();
 }
 
 void ExchangeRateNet::query(QNetworkReply *reply){
-    QString html = reply->readAll();
-    emit doWork(html);
+    if(reply->error() == QNetworkReply::NoError){
+        QString html = reply->readAll();
+        emit doWork(html);
+    }else{
+        QString message = QString("数据抓取失败!\n%1\n%2")
+                .arg(reply->errorString())
+                .arg(QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+        qDebug() << reply->errorString();
+        emit showMessage(message);
+    }
+
+    reply->deleteLater();
 }
 
 void ExchangeRateNet::crawler(){
@@ -137,10 +186,7 @@ void ExchangeRateNet::crawler(){
     || (weekday == 1 && hours >= 6)
     || (weekday == 6 && hours < 6)){
         if(minutes % CRAWLER_INTERVAL == 0){
-            ExchangeRateWorker::currentTimet = dateTime.toString("yyyy-MM-dd hh:mm:00");
-            QNetworkAccessManager *mgr = new QNetworkAccessManager(this);
             mgr->get(QNetworkRequest(QUrl(url)));
-            connect(mgr, SIGNAL(finished(QNetworkReply*)), this, SLOT(query(QNetworkReply*)));
         }
     }
 }

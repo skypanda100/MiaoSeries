@@ -14,6 +14,8 @@ public:
     bool insert(QString, QString, QString);
     bool insert(QString, QString, int);
     double query(QString, QString, int, int);
+    int query(QString, QString);
+
 private:
     void openDb();
     void closeDb();

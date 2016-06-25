@@ -114,3 +114,16 @@ double ExchangeServiceDb::query(QString table, QString timet, int interval, int 
     }
     return money;
 }
+
+int ExchangeServiceDb::query(QString table, QString timet){
+    QString queryStr = QString("select count(1) from %1 where timet = '%2'")
+            .arg(table)
+            .arg(timet);
+
+    QSqlQuery query(queryStr);
+    int rsCount = 0;
+    while (query.next()){
+        rsCount = query.value(0).toInt();
+    }
+    return rsCount;
+}

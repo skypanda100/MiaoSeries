@@ -33,7 +33,6 @@ void MainWindow::initUI(){
     trayicon->show();
     trayicon->setToolTip("汇率抓取");
     trayicon->setContextMenu(trayiconMenu);
-    trayicon->showMessage("汇率抓取服务", "http://exquote.yjfx.jp/quote.js", QSystemTrayIcon::Information, 5000);
 
     startButton = new QPushButton;
     startButton->setFixedSize(100, 30);
@@ -65,6 +64,7 @@ void MainWindow::initConnect(){
     connect(this, SIGNAL(stopService()), eaNet, SLOT(stopService()));
     connect(trayicon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(onSystemTrayIconClicked(QSystemTrayIcon::ActivationReason)));
     connect(quitAction, SIGNAL(triggered(bool)), this, SLOT(onQuitActionTriggered()));
+    connect(eaNet, SIGNAL(showMessage(QString)), this, SLOT(showMessage(QString)));
 }
 
 void MainWindow::onStartClicked(){
@@ -107,4 +107,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::onQuitActionTriggered(){
     qApp->quit();
+}
+
+void MainWindow::showMessage(QString message){
+    trayicon->showMessage("汇率抓取服务", message, QSystemTrayIcon::Critical, 10000);
 }
