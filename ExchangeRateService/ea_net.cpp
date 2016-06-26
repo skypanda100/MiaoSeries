@@ -192,13 +192,13 @@ void ExchangeRateNet::crawler(){
     /*
      * 从星期一早上六点到星期六早上六点执行抓取动作
      */
-//    if((weekday >= 2 && weekday <= 5)
-//    || (weekday == 1 && hours >= 6)
-//    || (weekday == 6 && hours < 6)){
+    if((weekday >= 2 && weekday <= 5)
+    || (weekday == 1 && hours >= 6)
+    || (weekday == 6 && hours < 6)){
         if(minutes % CRAWLER_INTERVAL == 0){
             mgr->get(QNetworkRequest(QUrl(url)));
         }
-//    }
+    }
 }
 
 void ExchangeRateNet::startService(){
