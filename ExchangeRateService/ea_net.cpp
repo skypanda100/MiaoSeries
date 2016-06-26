@@ -35,6 +35,16 @@ void ExchangeRateWorker::work(QString html){
             //将日本时间转换为中国时间
             QDateTime time = QDateTime::fromString(timeStr, "yyyyMMddhhmmss");
             time = time.addSecs(-3600);
+            int min = time.toString("m").toInt();
+            int min1 = min / 5;
+            int min2 = min % 5;
+            if(min2 >= 0 && min2 < 3){
+                min2 = 0;
+            }else{
+                min2 = 5;
+            }
+            int deltaMin = min1 * 5 + min2 - min;
+            time = time.addSecs(deltaMin * 60);
             //操作英镑美元
             execute(html, GBPUSD, time);
             //操作美元日元
@@ -176,19 +186,19 @@ void ExchangeRateNet::query(QNetworkReply *reply){
 void ExchangeRateNet::crawler(){
     QDateTime dateTime = QDateTime::currentDateTime();
     int weekday = dateTime.date().dayOfWeek();
-    int hours = dateTime.toString("hh").toInt();
-    int minutes = dateTime.toString("mm").toInt();
+    int hours = dateTime.toString("h").toInt();
+    int minutes = dateTime.toString("m").toInt();
 
     /*
      * 从星期一早上六点到星期六早上六点执行抓取动作
      */
-    if((weekday >= 2 && weekday <= 5)
-    || (weekday == 1 && hours >= 6)
-    || (weekday == 6 && hours < 6)){
+//    if((weekday >= 2 && weekday <= 5)
+//    || (weekday == 1 && hours >= 6)
+//    || (weekday == 6 && hours < 6)){
         if(minutes % CRAWLER_INTERVAL == 0){
             mgr->get(QNetworkRequest(QUrl(url)));
         }
-    }
+//    }
 }
 
 void ExchangeRateNet::startService(){
