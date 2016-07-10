@@ -361,6 +361,17 @@ void SearchWidget::initUI(){
 
     //初始化颜色设置dialog
     rateColorDialog = new RateColorDialog;
+
+    //初始化输入项
+    rateComboBox->setCurrentIndex(1);
+    periodGroup4->setChecked(true);
+    checkGroup4(true);
+    periodGroup5->setChecked(true);
+    checkGroup5(true);
+    periodGroup6->setChecked(true);
+    checkGroup6(true);
+    periodGroup7->setChecked(true);
+    checkGroup7(true);
 }
 
 void SearchWidget::initConnect(){

@@ -5,6 +5,9 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    //添加字体
+    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() + "/fonts/msyh.ttf");
+    QFontDatabase::addApplicationFont(QApplication::applicationDirPath() + "/fonts/msyhbd.ttf");
 
     //加载QSS样式表
     QFile qss(":/qdarkstyle/style.qss");
