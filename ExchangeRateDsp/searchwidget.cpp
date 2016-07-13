@@ -133,7 +133,7 @@ void SearchWidget::initUI(){
     fdateEdit = new QLineEdit;
     fdateEdit->setFont(font);
     fdateEdit->setFixedHeight(25);
-    fdateEdit->setText(currentDateTime.addDays(-9).toString("yyyy-MM-dd"));
+    fdateEdit->setText(currentDateTime.addDays(-180).toString("yyyy-MM-dd"));
 
     tdateEdit = new QLineEdit;
     tdateEdit->setFont(font);
