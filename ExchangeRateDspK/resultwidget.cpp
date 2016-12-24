@@ -1,5 +1,7 @@
 #include "resultwidget.h"
 
+using namespace std;
+
 ResultWidget::ResultWidget(QWidget *parent)
     :QWidget(parent)
 {
@@ -31,7 +33,8 @@ void ResultWidget::initUI(){
 }
 
 void ResultWidget::initConnect(){
-
+    connect(m_ChartViewer, SIGNAL(mouseMovePlotArea(QMouseEvent*)),
+        SLOT(onMouseMovePlotArea(QMouseEvent*)));
 }
 
 void ResultWidget::makeChart(){
@@ -75,6 +78,9 @@ BaseChart *ResultWidget::finance(){
     // Add a title to the chart
     c->addTitle("Finance Chart Demonstration");
 
+    // Disable default legend box, as we are using dynamic legend
+    c->setLegendStyle("normal", 8, Chart::Transparent, Chart::Transparent);
+
     // Set the data into the finance chart object
     c->setData(timeStamps, highData, lowData, openData, closeData, volData, extraDays);
 
@@ -110,6 +116,9 @@ BaseChart *ResultWidget::finance(){
     // upper/lower threshold regions will be filled with red (ff0000)/blue (0000ff).
     c->addRSI(120, 6, 12, 24, 0x800080, 0x666600, 0x6600ff, 30, 0xff0000, 0x0000ff);
 
+    // Include track line with legend for the latest data values
+    trackFinance(c, ((XYChart *)c->getChart(0))->getPlotArea()->getRightX());
+
     // Output the chart
     c->makeChart();
 
@@ -117,4 +126,155 @@ BaseChart *ResultWidget::finance(){
     delete rantable;
 
     return c;
+}
+
+void ResultWidget::trackFinance(MultiChart *m, int mouseX){
+    // Clear the current dynamic layer and get the DrawArea object to draw on it.
+    DrawArea *d = m->initDynamicLayer();
+
+    // It is possible for a FinanceChart to be empty, so we need to check for it.
+    if (m->getChartCount() == 0)
+        return ;
+
+    // Get the data x-value that is nearest to the mouse
+    int xValue = (int)(((XYChart *)m->getChart(0))->getNearestXValue(mouseX));
+
+    // Iterate the XY charts (main price chart and indicator charts) in the FinanceChart
+    XYChart *c = 0;
+    for(int i = 0; i < m->getChartCount(); ++i) {
+        c = (XYChart *)m->getChart(i);
+
+        // Variables to hold the legend entries
+        ostringstream ohlcLegend;
+        vector<string> legendEntries;
+
+        // Iterate through all layers to find the highest data point
+        for(int j = 0; j < c->getLayerCount(); ++j) {
+            Layer *layer = c->getLayerByZ(j);
+            int xIndex = layer->getXIndexOf(xValue);
+            int dataSetCount = layer->getDataSetCount();
+
+            // In a FinanceChart, only layers showing OHLC data can have 4 data sets
+            if (dataSetCount == 4) {
+                double highValue = layer->getDataSet(0)->getValue(xIndex);
+                double lowValue = layer->getDataSet(1)->getValue(xIndex);
+                double openValue = layer->getDataSet(2)->getValue(xIndex);
+                double closeValue = layer->getDataSet(3)->getValue(xIndex);
+
+                if (closeValue != Chart::NoValue) {
+                    // Build the OHLC legend
+                    ohlcLegend << "      <*block*>";
+                    ohlcLegend << "Open: " << c->formatValue(openValue, "{value|P4}");
+                    ohlcLegend << ", High: " << c->formatValue(highValue, "{value|P4}");
+                    ohlcLegend << ", Low: " << c->formatValue(lowValue, "{value|P4}");
+                    ohlcLegend << ", Close: " << c->formatValue(closeValue, "{value|P4}");
+
+                    // We also draw an upward or downward triangle for up and down days and the %
+                    // change
+                    double lastCloseValue = layer->getDataSet(3)->getValue(xIndex - 1);
+                    if (lastCloseValue != Chart::NoValue) {
+                        double change = closeValue - lastCloseValue;
+                        double percent = change * 100 / closeValue;
+                        string symbol = (change >= 0) ?
+                            "<*font,color=008800*><*img=@triangle,width=8,color=008800*>" :
+                            "<*font,color=CC0000*><*img=@invertedtriangle,width=8,color=CC0000*>";
+
+                        ohlcLegend << "  " << symbol << " " << c->formatValue(change, "{value|P4}");
+                        ohlcLegend << " (" << c->formatValue(percent, "{value|2}") << "%)<*/font*>";
+                    }
+
+                    ohlcLegend << "<*/*>";
+                }
+            } else {
+                // Iterate through all the data sets in the layer
+                for(int k = 0; k < layer->getDataSetCount(); ++k) {
+                    DataSet *dataSet = layer->getDataSetByZ(k);
+
+                    string name = dataSet->getDataName();
+                    double value = dataSet->getValue(xIndex);
+                    if ((0 != name.size()) && (value != Chart::NoValue)) {
+
+                        // In a FinanceChart, the data set name consists of the indicator name and its
+                        // latest value. It is like "Vol: 123M" or "RSI (14): 55.34". As we are
+                        // generating the values dynamically, we need to extract the indictor name
+                        // out, and also the volume unit (if any).
+
+                        // The volume unit
+                        string unitChar;
+
+                        // The indicator name is the part of the name up to the colon character.
+                        int delimiterPosition = (int)name.find(':');
+                        if ((int)name.npos != delimiterPosition) {
+
+                            // The unit, if any, is the trailing non-digit character(s).
+                            int lastDigitPos = (int)name.find_last_of("0123456789");
+                            if (((int)name.npos != lastDigitPos) && (lastDigitPos + 1 < (int)name.size())
+                                && (lastDigitPos > delimiterPosition))
+                                unitChar = name.substr(lastDigitPos + 1);
+
+                            name.resize(delimiterPosition);
+                        }
+
+                        // In a FinanceChart, if there are two data sets, it must be representing a
+                        // range.
+                        if (dataSetCount == 2) {
+                            // We show both values in the range in a single legend entry
+                            value = layer->getDataSet(0)->getValue(xIndex);
+                            double value2 = layer->getDataSet(1)->getValue(xIndex);
+                            name = name + ": " + c->formatValue(min(value, value2), "{value|P3}");
+                            name = name + " - " + c->formatValue(max(value, value2), "{value|P3}");
+                        } else {
+                            // In a FinanceChart, only the layer for volume bars has 3 data sets for
+                            // up/down/flat days
+                            if (dataSetCount == 3) {
+                                // The actual volume is the sum of the 3 data sets.
+                                value = layer->getDataSet(0)->getValue(xIndex) + layer->getDataSet(1
+                                    )->getValue(xIndex) + layer->getDataSet(2)->getValue(xIndex);
+                            }
+
+                            // Create the legend entry
+                            name = name + ": " + c->formatValue(value, "{value|P3}") + unitChar;
+                        }
+
+                        // Build the legend entry, consist of a colored square box and the name (with
+                        // the data value in it).
+                        ostringstream legendEntry;
+                        legendEntry << "<*block*><*img=@square,width=8,edgeColor=000000,color="
+                            << hex << dataSet->getDataColor() << "*> " << name << "<*/*>";
+                        legendEntries.push_back(legendEntry.str());
+                    }
+                }
+            }
+        }
+
+        // Get the plot area position relative to the entire FinanceChart
+        PlotArea *plotArea = c->getPlotArea();
+        int plotAreaLeftX = plotArea->getLeftX() + c->getAbsOffsetX();
+        int plotAreaTopY = plotArea->getTopY() + c->getAbsOffsetY();
+
+        // The legend begins with the date label, then the ohlcLegend (if any), and then the
+        // entries for the indicators.
+        ostringstream legendText;
+        legendText << "<*block,valign=top,maxWidth=" << (plotArea->getWidth() - 5)
+            << "*><*font=arialbd.ttf*>[" << c->xAxis()->getFormattedLabel(xValue, "mmm dd, yyyy")
+            << "]<*/font*>" << ohlcLegend.str();
+        for (int i = ((int)legendEntries.size()) - 1; i >= 0; --i) {
+            legendText << "      " << legendEntries[i];
+        }
+        legendText << "<*/*>";
+
+        // Draw a vertical track line at the x-position
+        d->vline(plotAreaTopY, plotAreaTopY + plotArea->getHeight(), c->getXCoor(xValue) +
+            c->getAbsOffsetX(), d->dashLineColor(0x000000, 0x0101));
+
+        // Display the legend on the top of the plot area
+        TTFText *t = d->text(legendText.str().c_str(), "arial.ttf", 8);
+        t->draw(plotAreaLeftX + 5, plotAreaTopY + 3, 0x000000, Chart::TopLeft);
+        t->destroy();
+    }
+}
+
+void ResultWidget::onMouseMovePlotArea(QMouseEvent *){
+    trackFinance((MultiChart *)m_ChartViewer->getChart(), m_ChartViewer->getPlotAreaMouseX());
+    m_ChartViewer->updateDisplay();
 }

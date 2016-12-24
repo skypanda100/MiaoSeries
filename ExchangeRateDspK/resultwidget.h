@@ -2,6 +2,9 @@
 #define RESULTWIDGET
 
 #include <QtWidgets>
+#include <vector>
+#include <sstream>
+#include <algorithm>
 #include "qchartviewer.h"
 #include "FinanceChart.h"
 
@@ -17,6 +20,10 @@ private:
     void initConnect();
     void makeChart();
     BaseChart *finance();
+    void trackFinance(MultiChart *, int);
+
+private slots:
+    void onMouseMovePlotArea(QMouseEvent *);
 
 private:
     QChartViewer *m_ChartViewer;
