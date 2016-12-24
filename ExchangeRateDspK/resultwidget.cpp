@@ -16,14 +16,15 @@ ResultWidget::~ResultWidget(){
 void ResultWidget::initUI(){
     QDesktopWidget* desktopWidget = QApplication::desktop();
     QRect clientRect = desktopWidget->availableGeometry();
-    int MAINWIDTH = clientRect.width() - 15;
-    int MAINHEIGHT = clientRect.height() - 35;
+    int MAINWIDTH = clientRect.width();
+    int MAINHEIGHT = clientRect.height() - 60;
     //设置长宽
     this->setFixedSize(MAINWIDTH, MAINHEIGHT);
 
     m_ChartViewer = new QChartViewer(this);
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
+    mainLayout->setContentsMargins(2, 2, 2, 2);
     mainLayout->addWidget(m_ChartViewer);
 
     this->setLayout(mainLayout);
@@ -70,13 +71,13 @@ BaseChart *ResultWidget::finance(){
     DoubleArray lowData = rantable->getCol(2);
     DoubleArray openData = rantable->getCol(3);
     DoubleArray closeData = rantable->getCol(4);
-    DoubleArray volData = rantable->getCol(5);
+    DoubleArray volData;
 
     // Create a FinanceChart object of width 640 pixels
     FinanceChart *c = new FinanceChart(this->width());
 
     // Add a title to the chart
-    c->addTitle("Finance Chart Demonstration");
+//    c->addTitle("Finance Chart Demonstration");
 
     // Disable default legend box, as we are using dynamic legend
     c->setLegendStyle("normal", 8, Chart::Transparent, Chart::Transparent);
@@ -85,7 +86,7 @@ BaseChart *ResultWidget::finance(){
     c->setData(timeStamps, highData, lowData, openData, closeData, volData, extraDays);
 
     // Add the main chart with 240 pixels in height
-    c->addMainChart(this->height() - 400);
+    c->addMainChart(this->height() - 450);
 
     // Add a 10 period simple moving average to the main chart, using brown color
     c->addSimpleMovingAvg(10, 0x663300);
@@ -105,16 +106,16 @@ BaseChart *ResultWidget::finance(){
     c->addVolBars(150, 0x99ff99, 0xff9999, 0x808080);
 
     // Add a slow stochastic chart (75 pixels high) with %K = 14 and %D = 3
-    c->addKDJ(120, 9, 3, 3, 0x006060, 0x606000, 0xff6000);
+    c->addKDJ(130, 9, 3, 3, 0x006060, 0x606000, 0xff6000);
 
     // Append a MACD(26, 12) indicator chart (75 pixels high) after the main chart, using 9 days for
     // computing divergence.
-    c->addMACD(120, 26, 12, 9, 0x0000ff, 0xff00ff, 0xaa0000, 0x008000);
+    c->addMACD(130, 26, 12, 9, 0x0000ff, 0xff00ff, 0xaa0000, 0x008000);
 
     // Append a 14-days RSI indicator chart (75 pixels high) after the main chart. The main RSI line
     // is purple (800080). Set threshold region to +/- 20 (that is, RSI = 50 +/- 25). The
     // upper/lower threshold regions will be filled with red (ff0000)/blue (0000ff).
-    c->addRSI(120, 6, 12, 24, 0x800080, 0x666600, 0x6600ff, 30, 0xff0000, 0x0000ff);
+    c->addRSI(130, 6, 12, 24, 0x800080, 0x666600, 0x6600ff, 30, 0xff0000, 0x0000ff);
 
     // Include track line with legend for the latest data values
     trackFinance(c, ((XYChart *)c->getChart(0))->getPlotArea()->getRightX());

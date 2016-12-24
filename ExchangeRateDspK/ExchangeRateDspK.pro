@@ -16,11 +16,15 @@ DEFINES += CHARTDIR_HIDE_OBSOLETE _CRT_SECURE_NO_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     resultwidget.cpp \
-    qchartviewer.cpp
+    qchartviewer.cpp \
+    inputwidget.cpp \
+    ea_db.cpp
 
 HEADERS  += mainwindow.h \
     resultwidget.h \
-    qchartviewer.h
+    qchartviewer.h \
+    inputwidget.h \
+    ea_db.h
 
 INCLUDEPATH += $$PWD/include
 win32:LIBS += $$PWD/lib/chartdir60.lib

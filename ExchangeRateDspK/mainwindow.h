@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "inputwidget.h"
 #include "resultwidget.h"
 
 class MainWindow : public QMainWindow
@@ -13,7 +14,13 @@ public:
     ~MainWindow();
 
 private:
+    void initUI();
+    void initConnect();
+
+private:
+    InputWidget *inputWidget;
     ResultWidget *resultWidget;
+    QWidget *mainWidget;
 };
 
 #endif // MAINWINDOW_H

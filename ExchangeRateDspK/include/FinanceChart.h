@@ -2259,7 +2259,7 @@ class FinanceChart : public MultiChart
             ).mul(100).movAvg(3);
 
         char buffer[1024];
-        sprintf(buffer, "Slow Stochastic %%K (%d)", period1);
+        sprintf(buffer, "KDJ %%K (%d)", period1);
         XYChart *c = addLineIndicator(height, stochastic, color1, buffer);
         sprintf(buffer, "%%D (%d)", period2);
         addLineIndicator2(c, stochastic.movAvg(period2), color2, buffer);
