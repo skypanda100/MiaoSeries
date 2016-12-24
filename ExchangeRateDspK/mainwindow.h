@@ -18,9 +18,9 @@ private:
     void initConnect();
 
 private:
-    InputWidget *inputWidget;
-    ResultWidget *resultWidget;
-    QWidget *mainWidget;
+    InputWidget *m_inputWidget;
+    ResultWidget *m_resultWidget;
+    QWidget *m_mainWidget;
 };
 
 #endif // MAINWINDOW_H

@@ -13,18 +13,22 @@ TEMPLATE = app
 
 DEFINES += CHARTDIR_HIDE_OBSOLETE _CRT_SECURE_NO_WARNINGS
 
+CONFIG += c++11
+
 SOURCES += main.cpp\
         mainwindow.cpp \
     resultwidget.cpp \
     qchartviewer.cpp \
     inputwidget.cpp \
-    ea_db.cpp
+    ea_db.cpp \
+    ea_result.cpp
 
 HEADERS  += mainwindow.h \
     resultwidget.h \
     qchartviewer.h \
     inputwidget.h \
-    ea_db.h
+    ea_db.h \
+    ea_result.h
 
 INCLUDEPATH += $$PWD/include
 win32:LIBS += $$PWD/lib/chartdir60.lib

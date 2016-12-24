@@ -26,28 +26,18 @@ void ExchangeServiceDb::closeDb(){
     db.close();
 }
 
-QList<ExchangeRateResult *> ExchangeServiceDb::query(QString queryStr, QString name, int color){
+QList<ExchangeRateResult *> ExchangeServiceDb::query(QString queryStr){
     QList<ExchangeRateResult *> ea_results;
 
     QSqlQuery query(queryStr);
-    int resultCount = query.numRowsAffected();
-
-    int i = 0;
-    double *xVals = new double[resultCount];
-    double *yVals = new double[resultCount];
     while (query.next()){
-        xVals[i] = Chart::chartTime2(QDateTime::fromString(query.value(1).toString(), "yyyy-MM-ddThh:mm:ss").toTime_t());
-        yVals[i] = query.value(0).toDouble();
-        i++;
-    }
-
-    if(i > 0){
         ExchangeRateResult *ea_result = new ExchangeRateResult;
-        ea_result->setName(name);
-        ea_result->setColor(color);
-        ea_result->setXData(DoubleArray(xVals, resultCount));
-        ea_result->setYData(DoubleArray(yVals, resultCount));
-        ea_results << ea_result;
+        ea_result->setDate(query.value("date").toString());
+        ea_result->setOpen(query.value("open").toDouble());
+        ea_result->setClose(query.value("close").toDouble());
+        ea_result->setHigh(query.value("high").toDouble());
+        ea_result->setLow(query.value("low").toDouble());
+        ea_results.append(ea_result);
     }
 
     return ea_results;

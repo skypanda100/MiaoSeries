@@ -13,12 +13,20 @@ ResultWidget::~ResultWidget(){
     delete m_ChartViewer;
 }
 
+void ResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> maList, int extra){
+    makeChart(eaResults, maList, extra);
+
+    //clear
+    for(ExchangeRateResult *eaResult : eaResults){
+        delete eaResult;
+    }
+}
+
 void ResultWidget::initUI(){
     QDesktopWidget* desktopWidget = QApplication::desktop();
     QRect clientRect = desktopWidget->availableGeometry();
     int MAINWIDTH = clientRect.width();
     int MAINHEIGHT = clientRect.height() - 60;
-    //设置长宽
     this->setFixedSize(MAINWIDTH, MAINHEIGHT);
 
     m_ChartViewer = new QChartViewer(this);
@@ -28,9 +36,6 @@ void ResultWidget::initUI(){
     mainLayout->addWidget(m_ChartViewer);
 
     this->setLayout(mainLayout);
-
-    //test
-    this->makeChart();
 }
 
 void ResultWidget::initConnect(){
@@ -38,48 +43,48 @@ void ResultWidget::initConnect(){
         SLOT(onMouseMovePlotArea(QMouseEvent*)));
 }
 
-void ResultWidget::makeChart(){
-    m_ChartViewer->setChart(finance());
+void ResultWidget::makeChart(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra){
+    if(m_ChartViewer->getChart() != NULL){
+        delete m_ChartViewer->getChart();
+    }
+    m_ChartViewer->setChart(finance(eaResults, maList, extra));
 }
 
-BaseChart *ResultWidget::finance(){
-    // Create a finance chart demo containing 100 days of data
-    int noOfDays = 100;
-
+BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra){
     // To compute moving averages starting from the first day, we need to get extra data points
     // before the first day
-    int extraDays = 30;
-
-    // In this exammple, we use a random number generator utility to simulate the data. We set up
-    // the random table to create 6 cols x (noOfDays + extraDays) rows, using 9 as the seed.
-    RanTable *rantable = new RanTable(9, 6, noOfDays + extraDays);
-
-    // Set the 1st col to be the timeStamp, starting from Sep 4, 2002, with each row representing
-    // one day, and counting week days only (jump over Sat and Sun)
-    rantable->setDateCol(0, Chart::chartTime(2002, 9, 4), 86400, true);
-
-    // Set the 2nd, 3rd, 4th and 5th columns to be high, low, open and close data. The open value
-    // starts from 100, and the daily change is random from -5 to 5.
-    rantable->setHLOCCols(1, 100, -5, 5);
-
-    // Set the 6th column as the vol data from 5 to 25 million
-    rantable->setCol(5, 50000000, 250000000);
+    int extraDays = extra;
 
     // Now we read the data from the table into arrays
-    DoubleArray timeStamps = rantable->getCol(0);
-    DoubleArray highData = rantable->getCol(1);
-    DoubleArray lowData = rantable->getCol(2);
-    DoubleArray openData = rantable->getCol(3);
-    DoubleArray closeData = rantable->getCol(4);
+    int count = eaResults.count();
+    double *timeStamps_p = new double[count];
+    double *highData_p = new double[count];
+    double *lowData_p = new double[count];
+    double *openData_p = new double[count];
+    double *closeData_p = new double[count];
+
+    for(int i = 0;i < count;i++){
+        ExchangeRateResult *eaResult = eaResults[i];
+
+        timeStamps_p[i] = Chart::chartTime2(QDateTime::fromString(eaResult->date(), "yyyy-MM-ddThh:mm:ss").toTime_t());
+        highData_p[i] = eaResult->high();
+        lowData_p[i] = eaResult->low();
+        openData_p[i] = eaResult->open();
+        closeData_p[i] = eaResult->close();
+    }
+
+    DoubleArray timeStamps = DoubleArray(timeStamps_p, count);
+    DoubleArray highData = DoubleArray(highData_p, count);
+    DoubleArray lowData = DoubleArray(lowData_p, count);
+    DoubleArray openData = DoubleArray(openData_p, count);
+    DoubleArray closeData = DoubleArray(closeData_p, count);
     DoubleArray volData;
 
-    // Create a FinanceChart object of width 640 pixels
     FinanceChart *c = new FinanceChart(this->width());
 
     // Add a title to the chart
 //    c->addTitle("Finance Chart Demonstration");
 
-    // Disable default legend box, as we are using dynamic legend
     c->setLegendStyle("normal", 8, Chart::Transparent, Chart::Transparent);
 
     // Set the data into the finance chart object
@@ -88,14 +93,12 @@ BaseChart *ResultWidget::finance(){
     // Add the main chart with 240 pixels in height
     c->addMainChart(this->height() - 450);
 
-    // Add a 10 period simple moving average to the main chart, using brown color
-    c->addSimpleMovingAvg(10, 0x663300);
-
-    // Add a 20 period simple moving average to the main chart, using purple color
-    c->addSimpleMovingAvg(20, 0x9900ff);
+    for(int ma : maList){
+        c->addSimpleMovingAvg(ma, 0x663300);
+    }
 
     // Add candlestick symbols to the main chart, using green/red for up/down days
-    c->addCandleStick(0x00ff00, 0xff0000);
+    c->addCandleStick(0xff0000, 0x00ff00);
 
     // Add 20 days donchian channel to the main chart, using light blue (9999ff) as the border and
     // semi-transparent blue (c06666ff) as the fill color
@@ -124,7 +127,11 @@ BaseChart *ResultWidget::finance(){
     c->makeChart();
 
     //free up resources
-    delete rantable;
+    delete timeStamps_p;
+    delete highData_p;
+    delete lowData_p;
+    delete openData_p;
+    delete closeData_p;
 
     return c;
 }
@@ -177,8 +184,8 @@ void ResultWidget::trackFinance(MultiChart *m, int mouseX){
                         double change = closeValue - lastCloseValue;
                         double percent = change * 100 / closeValue;
                         string symbol = (change >= 0) ?
-                            "<*font,color=008800*><*img=@triangle,width=8,color=008800*>" :
-                            "<*font,color=CC0000*><*img=@invertedtriangle,width=8,color=CC0000*>";
+                            "<*font,color=CC0000*><*img=@triangle,width=8,color=CC0000*>" :
+                            "<*font,color=008800*><*img=@invertedtriangle,width=8,color=008800*>" ;
 
                         ohlcLegend << "  " << symbol << " " << c->formatValue(change, "{value|P4}");
                         ohlcLegend << " (" << c->formatValue(percent, "{value|2}") << "%)<*/font*>";

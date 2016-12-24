@@ -2,6 +2,7 @@
 #define INPUTWIDGET
 
 #include <QtWidgets>
+#include "ea_db.h"
 
 class InputWidget : public QWidget{
     Q_OBJECT
@@ -9,6 +10,9 @@ class InputWidget : public QWidget{
 public:
     InputWidget(QWidget *parent = NULL);
     ~InputWidget();
+
+signals:
+    void search(QList<ExchangeRateResult *>, QList<int>, int);
 
 private:
     void initUI();
@@ -29,6 +33,7 @@ private:
     QCheckBox *m_checkBox_06;
     QCheckBox *m_checkBox_07;
     QPushButton *m_goButton;
+    ExchangeServiceDb *m_db;
 };
 
 #endif // INPUTWIDGET

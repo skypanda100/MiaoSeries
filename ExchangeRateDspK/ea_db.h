@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QtSql>
 #include <QDateTime>
-#include "memblock.h"
 #include "ea_result.h"
 
 class ExchangeServiceDb : public QObject{
@@ -14,7 +13,7 @@ public:
     ExchangeServiceDb();
     ~ExchangeServiceDb();
 
-    QList<ExchangeRateResult *> query(QString, QString, int);
+    QList<ExchangeRateResult *> query(QString);
 
 private:
     void openDb();

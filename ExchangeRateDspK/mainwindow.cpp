@@ -9,27 +9,27 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    delete inputWidget;
-    delete resultWidget;
+    delete m_inputWidget;
+    delete m_resultWidget;
 }
 
 void MainWindow::initUI(){
-    inputWidget = new InputWidget;
+    m_inputWidget = new InputWidget;
 
-    resultWidget = new ResultWidget;
+    m_resultWidget = new ResultWidget;
 
-    mainWidget = new QWidget;
+    m_mainWidget = new QWidget;
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->setSpacing(0);
-    mainLayout->addWidget(inputWidget);
-    mainLayout->addWidget(resultWidget);
-    mainWidget->setLayout(mainLayout);
+    mainLayout->addWidget(m_inputWidget);
+    mainLayout->addWidget(m_resultWidget);
+    m_mainWidget->setLayout(mainLayout);
 
-    this->setCentralWidget(mainWidget);
+    this->setCentralWidget(m_mainWidget);
 }
 
 void MainWindow::initConnect(){
-
+    connect(m_inputWidget, SIGNAL(search(QList<ExchangeRateResult*>, QList<int>, int)), m_resultWidget, SLOT(onSearch(QList<ExchangeRateResult*>, QList<int>, int)));
 }
