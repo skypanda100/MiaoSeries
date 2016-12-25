@@ -4,6 +4,7 @@ using namespace std;
 
 ResultWidget::ResultWidget(QWidget *parent)
     :QWidget(parent)
+    ,m_tack(true)
 {
     this->initUI();
     this->initConnect();
@@ -39,8 +40,8 @@ void ResultWidget::initUI(){
 }
 
 void ResultWidget::initConnect(){
-    connect(m_ChartViewer, SIGNAL(mouseMovePlotArea(QMouseEvent*)),
-        SLOT(onMouseMovePlotArea(QMouseEvent*)));
+    connect(m_ChartViewer, SIGNAL(mouseMovePlotArea(QMouseEvent*)), SLOT(onMouseMovePlotArea(QMouseEvent*)));
+    connect(m_ChartViewer, SIGNAL(clicked(QMouseEvent*)), SLOT(onChartClicked(QMouseEvent*)));
 }
 
 void ResultWidget::makeChart(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra){
@@ -137,6 +138,9 @@ BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, c
 }
 
 void ResultWidget::trackFinance(MultiChart *m, int mouseX){
+    if(!m_tack){
+        return;
+    }
     // Clear the current dynamic layer and get the DrawArea object to draw on it.
     DrawArea *d = m->initDynamicLayer();
 
@@ -285,4 +289,10 @@ void ResultWidget::trackFinance(MultiChart *m, int mouseX){
 void ResultWidget::onMouseMovePlotArea(QMouseEvent *){
     trackFinance((MultiChart *)m_ChartViewer->getChart(), m_ChartViewer->getPlotAreaMouseX());
     m_ChartViewer->updateDisplay();
+}
+
+void ResultWidget::onChartClicked(QMouseEvent *event){
+    if(event->button() == Qt::LeftButton){
+        m_tack = !m_tack;
+    }
 }

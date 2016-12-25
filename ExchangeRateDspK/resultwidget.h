@@ -28,9 +28,11 @@ private:
 
 private slots:
     void onMouseMovePlotArea(QMouseEvent *);
+    void onChartClicked(QMouseEvent*);
 
 private:
     QChartViewer *m_ChartViewer;
+    bool m_tack;
 };
 
 #endif // RESULTWIDGET
