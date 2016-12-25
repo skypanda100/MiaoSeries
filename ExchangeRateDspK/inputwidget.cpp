@@ -19,6 +19,9 @@ InputWidget::~InputWidget(){
     delete m_checkBox_05;
     delete m_checkBox_06;
     delete m_checkBox_07;
+    delete m_checkBox_08;
+    delete m_checkBox_09;
+    delete m_checkBox_boll;
     delete m_goButton;
     delete m_db;
 }
@@ -60,13 +63,21 @@ void InputWidget::initUI(){
     maLabel->setFont(labelFont);
     maLabel->setText("MA");
 
+    m_checkBox_08 = new QCheckBox("5");
     m_checkBox_01 = new QCheckBox("14");
+    m_checkBox_09 = new QCheckBox("20");
     m_checkBox_02 = new QCheckBox("30");
     m_checkBox_03 = new QCheckBox("60");
     m_checkBox_04 = new QCheckBox("99");
     m_checkBox_05 = new QCheckBox("100");
     m_checkBox_06 = new QCheckBox("250");
     m_checkBox_07 = new QCheckBox("888");
+
+    QLabel *bollLabel = new QLabel;
+    bollLabel->setFont(labelFont);
+    bollLabel->setText("BOLL");
+
+    m_checkBox_boll = new QCheckBox;
 
     m_goButton = new QPushButton;
     m_goButton->setText("GO");
@@ -83,13 +94,19 @@ void InputWidget::initUI(){
     mainLayout->addWidget(m_tDateEdit);
     mainLayout->addSpacing(20);
     mainLayout->addWidget(maLabel);
+    mainLayout->addWidget(m_checkBox_08);
     mainLayout->addWidget(m_checkBox_01);
+    mainLayout->addWidget(m_checkBox_09);
     mainLayout->addWidget(m_checkBox_02);
     mainLayout->addWidget(m_checkBox_03);
     mainLayout->addWidget(m_checkBox_04);
     mainLayout->addWidget(m_checkBox_05);
     mainLayout->addWidget(m_checkBox_06);
     mainLayout->addWidget(m_checkBox_07);
+    mainLayout->addSpacing(20);
+    mainLayout->addWidget(bollLabel);
+    mainLayout->addWidget(m_checkBox_boll);
+
     mainLayout->addSpacing(20);
     mainLayout->addWidget(m_goButton);
     mainLayout->addStretch(1);
@@ -109,21 +126,20 @@ bool InputWidget::validate(){
         QMessageBox::critical(0, QObject::tr("错误提示"), "日期FROM大于日期TO!");
         return false;
     }
-    if(!m_checkBox_01->isChecked() && !m_checkBox_02->isChecked()
-            && !m_checkBox_03->isChecked() && !m_checkBox_04->isChecked()
-            && !m_checkBox_05->isChecked() && !m_checkBox_06->isChecked()
-            && !m_checkBox_07->isChecked()){
-        QMessageBox::critical(0, QObject::tr("错误提示"), "没有选择任何MA!");
-        return false;
-    }
     return true;
 }
 
 void InputWidget::onButtonClicked(){
     if(validate()){
         QList<int> maLst;
+        if(m_checkBox_08->isChecked()){
+            maLst.append(5);
+        }
         if(m_checkBox_01->isChecked()){
             maLst.append(14);
+        }
+        if(m_checkBox_09->isChecked()){
+            maLst.append(20);
         }
         if(m_checkBox_02->isChecked()){
             maLst.append(30);
@@ -144,7 +160,22 @@ void InputWidget::onButtonClicked(){
             maLst.append(888);
         }
 
-        int extra = maLst[maLst.count() - 1];
+        int extra = 0;
+        if(maLst.count() > 0){
+            extra = maLst[maLst.count() - 1];
+        }
+
+        bool isBoll = false;
+        if(isBoll = m_checkBox_boll->isChecked()){
+            if(extra < 20){
+                extra = 20;
+            }
+        }
+
+        if(extra == 0){
+            extra = 30;
+        }
+
         QDate fDate = m_fDateEdit->date().addDays(-1 * extra * 2);
         QDate tDate = m_tDateEdit->date();
         QString queryStr = QString("select * from gbpusd_k where date >= '%1' and date <= '%2' order by date asc")
@@ -162,7 +193,7 @@ void InputWidget::onButtonClicked(){
                 extra++;
             }
         }
-        emit search(eaResults, maLst, extra);
+        emit search(eaResults, maLst, extra, isBoll);
     }
 }
 

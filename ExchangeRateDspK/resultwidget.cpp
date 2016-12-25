@@ -17,15 +17,16 @@ ResultWidget::~ResultWidget(){
     }
 }
 
-void ResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> maList, int extra){
-    makeChart(eaResults, maList, extra);
+void ResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> maList, int extra, bool isBoll){
+    makeChart(eaResults, maList, extra, isBoll);
     m_lastResults = eaResults;
     m_lastMaList = maList;
     m_lastExtra = extra;
+    m_lastBoll = isBoll;
 }
 
 void ResultWidget::onStyleChanged(){
-    makeChart(m_lastResults, m_lastMaList, m_lastExtra);
+    makeChart(m_lastResults, m_lastMaList, m_lastExtra, m_lastBoll);
 }
 
 void ResultWidget::initUI(){
@@ -49,14 +50,14 @@ void ResultWidget::initConnect(){
     connect(m_ChartViewer, SIGNAL(clicked(QMouseEvent*)), SLOT(onChartClicked(QMouseEvent*)));
 }
 
-void ResultWidget::makeChart(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra){
+void ResultWidget::makeChart(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra, bool isBoll){
     if(m_ChartViewer->getChart() != NULL){
         delete m_ChartViewer->getChart();
     }
-    m_ChartViewer->setChart(finance(eaResults, maList, extra));
+    m_ChartViewer->setChart(finance(eaResults, maList, extra, isBoll));
 }
 
-BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra){
+BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra, bool isBoll){
     int extraDays = extra;
 
     int count = eaResults.count();
@@ -104,10 +105,16 @@ BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, c
     c->addMainChart(this->height() - 420);
 
     for(int ma : maList){
-        int color = MA14_COLOR;
+        int color = MA5_COLOR;
         switch(ma){
+        case 5:
+            color = MA5_COLOR;
+            break;
         case 14:
             color = MA14_COLOR;
+            break;
+        case 20:
+            color = MA20_COLOR;
             break;
         case 30:
             color = MA30_COLOR;
@@ -134,7 +141,10 @@ BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, c
 
     c->addCandleStick(UP_COLOR, DW_COLOR, GET_STYLE().edge_color);
 
-    c->addDonchianChannel(20, 0x9999ff, 0xc06666ff);
+    if(isBoll){
+        c->addBollingerBand(20, 2, BOLL_LINE_COLOR, BOLL_FILL_COLOR);
+        c->addSimpleMovingAvg(20, BOLL_MA_COLOR);
+    }
 
 //    c->addVolBars(150, 0x99ff99, 0xff9999, 0x808080);
 

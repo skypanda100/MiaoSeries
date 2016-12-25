@@ -14,21 +14,26 @@
 #define DW_COLOR        0x008000
 #define UP_COLOR_C      "aa0000"
 #define DW_COLOR_C      "008000"
-#define MA14_COLOR      0x663300
-#define MA30_COLOR      0x663300
-#define MA60_COLOR      0x663300
-#define MA99_COLOR      0x663300
-#define MA100_COLOR     0x663300
-#define MA250_COLOR     0x663300
-#define MA888_COLOR     0x663300
-#define KDJ_K_COLOR     0x006060
-#define KDJ_D_COLOR     0x606000
-#define KDJ_J_COLOR     0xff6000
-#define MACD_COLOR      0x0000ff
-#define EXP_COLOR       0xff00ff
-#define RSI_R_COLOR     0x800080
-#define RSI_S_COLOR     0x666600
-#define RSI_I_COlOR     0x6600ff
+#define BOLL_LINE_COLOR 0x9999ff
+#define BOLL_FILL_COLOR 0xc06666ff
+#define BOLL_MA_COLOR   0xff9900
+#define MA5_COLOR       0x666666
+#define MA14_COLOR      0xaaaaaa
+#define MA20_COLOR      0xffe599
+#define MA30_COLOR      0xff9900
+#define MA60_COLOR      0xffff00
+#define MA99_COLOR      0xff00ff
+#define MA100_COLOR     0xff00ff
+#define MA250_COLOR     0x00ffff
+#define MA888_COLOR     0x00ff00
+#define KDJ_K_COLOR     0xaa0000
+#define KDJ_D_COLOR     0x008000
+#define KDJ_J_COLOR     0x000000
+#define MACD_COLOR      0xff00ff
+#define EXP_COLOR       0xffff00
+#define RSI_R_COLOR     0x980000
+#define RSI_S_COLOR     0xff9900
+#define RSI_I_COlOR     0x4a86e8
 
 class ResultWidget : public QWidget{
     Q_OBJECT
@@ -38,14 +43,14 @@ public:
     ~ResultWidget();
 
 public slots:
-    void onSearch(QList<ExchangeRateResult *>, QList<int>, int);
+    void onSearch(QList<ExchangeRateResult *>, QList<int>, int, bool);
     void onStyleChanged();
 
 private:
     void initUI();
     void initConnect();
-    void makeChart(const QList<ExchangeRateResult *> &, const QList<int> &, int);
-    BaseChart *finance(const QList<ExchangeRateResult *> &, const QList<int> &, int);
+    void makeChart(const QList<ExchangeRateResult *> &, const QList<int> &, int, bool);
+    BaseChart *finance(const QList<ExchangeRateResult *> &, const QList<int> &, int, bool);
     void trackFinance(MultiChart *, int);
 
 private slots:
@@ -58,6 +63,7 @@ private:
     QList<ExchangeRateResult *> m_lastResults;
     QList<int > m_lastMaList;
     int m_lastExtra;
+    bool m_lastBoll;
 };
 
 #endif // RESULTWIDGET

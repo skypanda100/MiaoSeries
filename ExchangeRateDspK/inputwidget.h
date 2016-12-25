@@ -13,7 +13,7 @@ public:
     ~InputWidget();
 
 signals:
-    void search(QList<ExchangeRateResult *>, QList<int>, int);
+    void search(QList<ExchangeRateResult *>, QList<int>, int, bool);
     void styleChanged();
 
 private:
@@ -36,6 +36,9 @@ private:
     QCheckBox *m_checkBox_05;
     QCheckBox *m_checkBox_06;
     QCheckBox *m_checkBox_07;
+    QCheckBox *m_checkBox_08;
+    QCheckBox *m_checkBox_09;
+    QCheckBox *m_checkBox_boll;
     QPushButton *m_goButton;
     ExchangeServiceDb *m_db;
 };
