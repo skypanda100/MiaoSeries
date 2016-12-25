@@ -9,6 +9,7 @@ InputWidget::InputWidget(QWidget *parent)
 }
 
 InputWidget::~InputWidget(){
+    delete m_styleComboBox;
     delete m_fDateEdit;
     delete m_tDateEdit;
     delete m_checkBox_01;
@@ -27,6 +28,15 @@ void InputWidget::initUI(){
 
     QFont labelFont;
     labelFont.setBold(true);
+
+    QLabel *styleLabel = new QLabel;
+    styleLabel->setFont(labelFont);
+    styleLabel->setText("STYLE");
+
+    m_styleComboBox = new QComboBox;
+    m_styleComboBox->addItem("LIGHT");
+    m_styleComboBox->addItem("DARK");
+    m_styleComboBox->setCurrentIndex(1);
 
     QLabel *fromLabel = new QLabel;
     fromLabel->setFont(labelFont);
@@ -64,6 +74,9 @@ void InputWidget::initUI(){
     QHBoxLayout *mainLayout = new QHBoxLayout;
     mainLayout->setContentsMargins(2, 2, 2, 2);
     mainLayout->setSpacing(5);
+    mainLayout->addWidget(styleLabel);
+    mainLayout->addWidget(m_styleComboBox);
+    mainLayout->addSpacing(20);
     mainLayout->addWidget(fromLabel);
     mainLayout->addWidget(m_fDateEdit);
     mainLayout->addWidget(toLabel);
@@ -86,6 +99,7 @@ void InputWidget::initUI(){
 
 void InputWidget::initConnect(){
     connect(m_goButton, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
+    connect(m_styleComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(onComboBoxChanged(int)));
 }
 
 bool InputWidget::validate(){
@@ -150,4 +164,9 @@ void InputWidget::onButtonClicked(){
         }
         emit search(eaResults, maLst, extra);
     }
+}
+
+void InputWidget::onComboBoxChanged(int index){
+    SET_STYLE(index);
+    emit styleChanged();
 }

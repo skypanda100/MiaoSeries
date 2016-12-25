@@ -31,5 +31,13 @@ void MainWindow::initUI(){
 }
 
 void MainWindow::initConnect(){
-    connect(m_inputWidget, SIGNAL(search(QList<ExchangeRateResult*>, QList<int>, int)), m_resultWidget, SLOT(onSearch(QList<ExchangeRateResult*>, QList<int>, int)));
+    connect(m_inputWidget
+            , SIGNAL(search(QList<ExchangeRateResult*>, QList<int>, int))
+            , m_resultWidget
+            , SLOT(onSearch(QList<ExchangeRateResult*>, QList<int>, int)));
+
+    connect(m_inputWidget
+            , SIGNAL(styleChanged())
+            , m_resultWidget
+            , SLOT(onStyleChanged()));
 }

@@ -12,15 +12,20 @@ ResultWidget::ResultWidget(QWidget *parent)
 
 ResultWidget::~ResultWidget(){
     delete m_ChartViewer;
+    for(ExchangeRateResult *eaResult : m_lastResults){
+        delete eaResult;
+    }
 }
 
 void ResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> maList, int extra){
     makeChart(eaResults, maList, extra);
+    m_lastResults = eaResults;
+    m_lastMaList = maList;
+    m_lastExtra = extra;
+}
 
-    //clear
-    for(ExchangeRateResult *eaResult : eaResults){
-        delete eaResult;
-    }
+void ResultWidget::onStyleChanged(){
+    makeChart(m_lastResults, m_lastMaList, m_lastExtra);
 }
 
 void ResultWidget::initUI(){
@@ -52,11 +57,8 @@ void ResultWidget::makeChart(const QList<ExchangeRateResult *> &eaResults, const
 }
 
 BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra){
-    // To compute moving averages starting from the first day, we need to get extra data points
-    // before the first day
     int extraDays = extra;
 
-    // Now we read the data from the table into arrays
     int count = eaResults.count();
     double *timeStamps_p = new double[count];
     double *highData_p = new double[count];
@@ -83,51 +85,69 @@ BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, c
 
     FinanceChart *c = new FinanceChart(this->width());
 
-    // Add a title to the chart
+    // set style
+    c->setBackground(GET_STYLE().main_bg_color);
+    c->setPlotAreaStyle(GET_STYLE().plot_bg_color, GET_STYLE().grid_color, GET_STYLE().grid_color, GET_STYLE().grid_color, GET_STYLE().grid_color);
+    c->setPlotAreaBorder(Chart::Transparent, 2);
+    c->setXAxisStyle("normal", 8, GET_STYLE().font_color, 0);
+    c->setYAxisStyle("normal", 8, GET_STYLE().font_color, 14);
+
+    // set margins
+    c->setMargins(10, 0, 40, 35);
+
 //    c->addTitle("Finance Chart Demonstration");
 
     c->setLegendStyle("normal", 8, Chart::Transparent, Chart::Transparent);
 
-    // Set the data into the finance chart object
     c->setData(timeStamps, highData, lowData, openData, closeData, volData, extraDays);
 
-    // Add the main chart with 240 pixels in height
-    c->addMainChart(this->height() - 450);
+    c->addMainChart(this->height() - 420);
 
     for(int ma : maList){
-        c->addSimpleMovingAvg(ma, 0x663300);
+        int color = MA14_COLOR;
+        switch(ma){
+        case 14:
+            color = MA14_COLOR;
+            break;
+        case 30:
+            color = MA30_COLOR;
+            break;
+        case 60:
+            color = MA60_COLOR;
+            break;
+        case 99:
+            color = MA99_COLOR;
+            break;
+        case 100:
+            color = MA100_COLOR;
+            break;
+        case 250:
+            color = MA250_COLOR;
+            break;
+        case 888:
+            color = MA888_COLOR;
+            break;
+        }
+
+        c->addSimpleMovingAvg(ma, color);
     }
 
-    // Add candlestick symbols to the main chart, using green/red for up/down days
-    c->addCandleStick(0xff0000, 0x00ff00);
+    c->addCandleStick(UP_COLOR, DW_COLOR, GET_STYLE().edge_color);
 
-    // Add 20 days donchian channel to the main chart, using light blue (9999ff) as the border and
-    // semi-transparent blue (c06666ff) as the fill color
     c->addDonchianChannel(20, 0x9999ff, 0xc06666ff);
 
-    // Add a 75 pixels volume bars sub-chart to the bottom of the main chart, using green/red/grey
-    // for up/down/flat days
-    c->addVolBars(150, 0x99ff99, 0xff9999, 0x808080);
+//    c->addVolBars(150, 0x99ff99, 0xff9999, 0x808080);
 
-    // Add a slow stochastic chart (75 pixels high) with %K = 14 and %D = 3
-    c->addKDJ(130, 9, 3, 3, 0x006060, 0x606000, 0xff6000);
+    c->addKDJ(130, 9, 3, 3, KDJ_K_COLOR, KDJ_D_COLOR, KDJ_J_COLOR);
 
-    // Append a MACD(26, 12) indicator chart (75 pixels high) after the main chart, using 9 days for
-    // computing divergence.
-    c->addMACD(130, 26, 12, 9, 0x0000ff, 0xff00ff, 0xaa0000, 0x008000);
+    c->addMACD(130, 26, 12, 9, MACD_COLOR, EXP_COLOR, UP_COLOR, DW_COLOR);
 
-    // Append a 14-days RSI indicator chart (75 pixels high) after the main chart. The main RSI line
-    // is purple (800080). Set threshold region to +/- 20 (that is, RSI = 50 +/- 25). The
-    // upper/lower threshold regions will be filled with red (ff0000)/blue (0000ff).
-    c->addRSI(130, 6, 12, 24, 0x800080, 0x666600, 0x6600ff, 30, 0xff0000, 0x0000ff);
+    c->addRSI(130, 6, 12, 24, RSI_R_COLOR, RSI_S_COLOR, RSI_I_COlOR, 30, UP_COLOR, DW_COLOR);
 
-    // Include track line with legend for the latest data values
     trackFinance(c, ((XYChart *)c->getChart(0))->getPlotArea()->getRightX());
 
-    // Output the chart
     c->makeChart();
 
-    //free up resources
     delete timeStamps_p;
     delete highData_p;
     delete lowData_p;
@@ -188,8 +208,8 @@ void ResultWidget::trackFinance(MultiChart *m, int mouseX){
                         double change = closeValue - lastCloseValue;
                         double percent = change * 100 / closeValue;
                         string symbol = (change >= 0) ?
-                            "<*font,color=CC0000*><*img=@triangle,width=8,color=CC0000*>" :
-                            "<*font,color=008800*><*img=@invertedtriangle,width=8,color=008800*>" ;
+                            "<*font,color="+string(UP_COLOR_C)+"*><*img=@triangle,width=8,color="+string(UP_COLOR_C)+"*>" :
+                            "<*font,color="+string(DW_COLOR_C)+"*><*img=@invertedtriangle,width=8,color="+string(DW_COLOR_C)+"*>" ;
 
                         ohlcLegend << "  " << symbol << " " << c->formatValue(change, "{value|P4}");
                         ohlcLegend << " (" << c->formatValue(percent, "{value|2}") << "%)<*/font*>";
@@ -277,11 +297,11 @@ void ResultWidget::trackFinance(MultiChart *m, int mouseX){
 
         // Draw a vertical track line at the x-position
         d->vline(plotAreaTopY, plotAreaTopY + plotArea->getHeight(), c->getXCoor(xValue) +
-            c->getAbsOffsetX(), d->dashLineColor(0x000000, 0x0101));
+            c->getAbsOffsetX(), d->dashLineColor(GET_STYLE().edge_color, 0x0101));
 
         // Display the legend on the top of the plot area
         TTFText *t = d->text(legendText.str().c_str(), "arial.ttf", 8);
-        t->draw(plotAreaLeftX + 5, plotAreaTopY + 3, 0x000000, Chart::TopLeft);
+        t->draw(plotAreaLeftX + 5, plotAreaTopY + 3, GET_STYLE().font_color, Chart::TopLeft);
         t->destroy();
     }
 }

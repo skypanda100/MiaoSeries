@@ -3,6 +3,7 @@
 
 #include <QtWidgets>
 #include "ea_db.h"
+#include "style.h"
 
 class InputWidget : public QWidget{
     Q_OBJECT
@@ -13,6 +14,7 @@ public:
 
 signals:
     void search(QList<ExchangeRateResult *>, QList<int>, int);
+    void styleChanged();
 
 private:
     void initUI();
@@ -21,8 +23,10 @@ private:
 
 private slots:
     void onButtonClicked();
+    void onComboBoxChanged(int);
 
 private:
+    QComboBox *m_styleComboBox;
     QDateEdit *m_fDateEdit;
     QDateEdit *m_tDateEdit;
     QCheckBox *m_checkBox_01;

@@ -658,6 +658,25 @@ class FinanceChart : public MultiChart
         return ret;
     }
 
+    //zhengdongtian CandleStick
+    public: CandleStickLayer* addCandleStick(int upColor, int downColor, int edgeColor)
+    {
+        addOHLCLabel(upColor, downColor, true);
+        CandleStickLayer *ret = m_mainChart->addCandleStickLayer(m_highData, m_lowData, m_openData,
+            m_closeData, upColor, downColor, edgeColor);
+        ret->setHTMLImageMap("", "", getHLOCToolTipFormat().c_str());
+        if (m_highData.len - m_extraPoints > 60) {
+            ret->setDataGap(0);
+        }
+
+        if (m_highData.len > m_extraPoints) {
+            int expectedWidth = (m_totalWidth - m_leftMargin - m_rightMargin) / (m_highData.len - m_extraPoints);
+            if (expectedWidth <= 5)
+                ret->setDataWidth(expectedWidth + 1 - expectedWidth % 2);
+        }
+
+        return ret;
+    }
     /// <summary>
     /// Add a HLOC layer to the main chart.
     /// </summary>
