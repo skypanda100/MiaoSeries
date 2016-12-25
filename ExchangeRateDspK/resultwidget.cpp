@@ -102,7 +102,7 @@ BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, c
 
     c->setData(timeStamps, highData, lowData, openData, closeData, volData, extraDays);
 
-    c->addMainChart(this->height() - 420);
+    c->addMainChart(this->height() - 480);
 
     for(int ma : maList){
         int color = MA5_COLOR;
@@ -148,11 +148,11 @@ BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, c
 
 //    c->addVolBars(150, 0x99ff99, 0xff9999, 0x808080);
 
-    c->addKDJ(130, 9, 3, 3, KDJ_K_COLOR, KDJ_D_COLOR, KDJ_J_COLOR);
+    c->addKDJ(150, 9, 3, 3, KDJ_K_COLOR, KDJ_D_COLOR, KDJ_J_COLOR);
 
-    c->addMACD(130, 26, 12, 9, MACD_COLOR, EXP_COLOR, UP_COLOR, DW_COLOR);
+    c->addMACD(150, 26, 12, 9, MACD_COLOR, EXP_COLOR, UP_COLOR, DW_COLOR);
 
-    c->addRSI(130, 6, 12, 24, RSI_R_COLOR, RSI_S_COLOR, RSI_I_COlOR, 30, UP_COLOR, DW_COLOR);
+    c->addRSI(150, 6, 12, 24, RSI_R_COLOR, RSI_S_COLOR, RSI_I_COlOR, 30, UP_COLOR, DW_COLOR);
 
     trackFinance(c, ((XYChart *)c->getChart(0))->getPlotArea()->getRightX());
 

@@ -2,6 +2,8 @@
 #define INPUTWIDGET
 
 #include <QtWidgets>
+#include <QPrinter>
+#include <QPrintDialog>
 #include "ea_db.h"
 #include "style.h"
 
@@ -22,7 +24,8 @@ private:
     bool validate();
 
 private slots:
-    void onButtonClicked();
+    void onGoButtonClicked();
+    void onPrintButtonClicked();
     void onComboBoxChanged(int);
 
 private:
@@ -40,6 +43,7 @@ private:
     QCheckBox *m_checkBox_09;
     QCheckBox *m_checkBox_boll;
     QPushButton *m_goButton;
+    QPushButton *m_printButton;
     ExchangeServiceDb *m_db;
 };
 

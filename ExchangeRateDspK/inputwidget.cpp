@@ -23,6 +23,7 @@ InputWidget::~InputWidget(){
     delete m_checkBox_09;
     delete m_checkBox_boll;
     delete m_goButton;
+    delete m_printButton;
     delete m_db;
 }
 
@@ -82,6 +83,9 @@ void InputWidget::initUI(){
     m_goButton = new QPushButton;
     m_goButton->setText("GO");
 
+    m_printButton = new QPushButton;
+    m_printButton->setText("PRINT");
+
     QHBoxLayout *mainLayout = new QHBoxLayout;
     mainLayout->setContentsMargins(2, 2, 2, 2);
     mainLayout->setSpacing(5);
@@ -109,13 +113,15 @@ void InputWidget::initUI(){
 
     mainLayout->addSpacing(20);
     mainLayout->addWidget(m_goButton);
+    mainLayout->addWidget(m_printButton);
     mainLayout->addStretch(1);
 
     this->setLayout(mainLayout);
 }
 
 void InputWidget::initConnect(){
-    connect(m_goButton, SIGNAL(clicked()), this, SLOT(onButtonClicked()));
+    connect(m_goButton, SIGNAL(clicked()), this, SLOT(onGoButtonClicked()));
+    connect(m_printButton, SIGNAL(clicked()), this, SLOT(onPrintButtonClicked()));
     connect(m_styleComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(onComboBoxChanged(int)));
 }
 
@@ -129,7 +135,7 @@ bool InputWidget::validate(){
     return true;
 }
 
-void InputWidget::onButtonClicked(){
+void InputWidget::onGoButtonClicked(){
     if(validate()){
         QList<int> maLst;
         if(m_checkBox_08->isChecked()){
@@ -172,8 +178,8 @@ void InputWidget::onButtonClicked(){
             }
         }
 
-        if(extra == 0){
-            extra = 30;
+        if(extra < 20){
+            extra = 20;
         }
 
         QDate fDate = m_fDateEdit->date().addDays(-1 * extra * 2);
@@ -194,6 +200,29 @@ void InputWidget::onButtonClicked(){
             }
         }
         emit search(eaResults, maLst, extra, isBoll);
+    }
+}
+
+void InputWidget::onPrintButtonClicked(){
+    QPixmap currentScreenPixmap;
+    if(QApplication::activeWindow()){
+        currentScreenPixmap = QPixmap::grabWindow(QApplication::activeWindow()->winId()
+                                                  , -2
+                                                  , -26
+                                                  , QApplication::activeWindow()->width()
+                                                  , QApplication::activeWindow()->height() + 25);
+    }
+    QPrinter printer(QPrinter::HighResolution);
+    QPrintDialog printDialog(&printer, this);
+    if (printDialog.exec()) {
+        QPainter painter(&printer);
+        QRect rect = painter.viewport();
+        QSize size = currentScreenPixmap.size();
+        size.scale(rect.size(), Qt::KeepAspectRatio);
+        painter.setViewport(rect.x(), rect.y(),
+                            size.width(), size.height());
+        painter.setWindow(currentScreenPixmap.rect());
+        painter.drawPixmap(0, 0, currentScreenPixmap);
     }
 }
 
