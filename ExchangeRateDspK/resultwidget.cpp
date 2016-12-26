@@ -43,6 +43,9 @@ void ResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> ma
 
 void ResultWidget::onStyleChanged(){
     makeChart(m_lastResults, m_lastMaList, m_lastExtra, m_lastBoll);
+    FinanceChart *c = (FinanceChart *)(m_ChartViewer->getChart());
+    trackFinance(c, m_zoomXValue, false);
+    m_ChartViewer->updateDisplay();
 }
 
 void ResultWidget::wheelEvent(QWheelEvent *wheelEvent){
@@ -353,18 +356,44 @@ void ResultWidget::zoomIn(){
     int zoomCount = m_lastResults.count();
     int zoomLeftCount = m_zoomXValue * m_zoomFactor;
     int zoomRightCount = (zoomCount - m_lastExtra - m_zoomXValue - 1) * m_zoomFactor;
+
+    if(zoomLeftCount == 0 && zoomRightCount == 0){
+        return;
+    }
+
     m_zoomXValue -= zoomLeftCount;
     for(int i = 0;i < zoomLeftCount;i++){
-        m_lastResults.takeAt(i + m_lastExtra);
+        m_zoomLeftVec.push_back(m_lastResults.takeAt(i + m_lastExtra));
     }
+    m_zoomLeftCountVec.push_back(zoomLeftCount);
+
     for(int i = 0;i < zoomRightCount;i++){
-        m_lastResults.takeLast();
+        m_zoomRightVec.push_back(m_lastResults.takeLast());
     }
+    m_zoomRightCountVec.push_back(zoomRightCount);
+
     onSearch(m_lastResults, m_lastMaList, m_lastExtra, m_lastBoll);
 }
 
 void ResultWidget::zoomOut(){
+    int zoomLeftCount = m_zoomLeftCountVec.count() == 0 ? 0 : m_zoomLeftCountVec.takeLast();
+    int zoomRightCount = m_zoomRightCountVec.count() == 0 ? 0 : m_zoomRightCountVec.takeLast();
 
+    if(zoomLeftCount == 0 && zoomRightCount == 0){
+        return;
+    }
+
+    m_zoomXValue += zoomLeftCount;
+
+    for(int i = 0;i < zoomLeftCount;i++){
+        m_lastResults.insert(m_lastExtra, m_zoomLeftVec.takeLast());
+    }
+
+    for(int i = 0;i < zoomRightCount;i++){
+        m_lastResults.push_back(m_zoomRightVec.takeLast());
+    }
+
+    onSearch(m_lastResults, m_lastMaList, m_lastExtra, m_lastBoll);
 }
 
 void ResultWidget::onMouseMovePlotArea(QMouseEvent *){

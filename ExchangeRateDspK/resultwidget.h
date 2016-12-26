@@ -70,8 +70,13 @@ private:
     QList<int > m_lastMaList;
     int m_lastExtra;
     bool m_lastBoll;
+
     float m_zoomFactor;
     int m_zoomXValue;
+    QVector<int> m_zoomLeftCountVec;
+    QVector<int> m_zoomRightCountVec;
+    QVector<ExchangeRateResult *> m_zoomLeftVec;
+    QVector<ExchangeRateResult *> m_zoomRightVec;
 };
 
 #endif // RESULTWIDGET
