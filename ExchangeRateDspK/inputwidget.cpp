@@ -1,7 +1,7 @@
 #include "inputwidget.h"
 #include <QDebug>
 
-#define ZDT_TEST
+//#define ZDT_TEST
 
 #ifdef ZDT_TEST
 #include "FinanceChart.h"

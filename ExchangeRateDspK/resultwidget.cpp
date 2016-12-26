@@ -14,19 +14,31 @@ ResultWidget::ResultWidget(QWidget *parent)
 
 ResultWidget::~ResultWidget(){
     delete m_ChartViewer;
-    for(ExchangeRateResult *eaResult : m_allResults){
+    clearData();
+}
+
+void ResultWidget::clearData(){
+    m_lastMaList.clear();
+    m_zoomLeftCountVec.clear();
+    m_zoomRightCountVec.clear();
+    for(ExchangeRateResult *eaResult : m_zoomLeftVec){
         delete eaResult;
     }
+    m_zoomLeftVec.clear();
+    for(ExchangeRateResult *eaResult : m_zoomRightVec){
+        delete eaResult;
+    }
+    m_zoomRightVec.clear();
+    for(ExchangeRateResult *eaResult : m_lastResults){
+        delete eaResult;
+    }
+    m_lastResults.clear();
 }
 
 void ResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> maList, int extra, bool isBoll){
     makeChart(eaResults, maList, extra, isBoll);
     if(this->sender() != NULL){
-        for(ExchangeRateResult *eaResult : m_allResults){
-            delete eaResult;
-        }
-        m_allResults = eaResults;
-
+        clearData();
         FinanceChart *c = (FinanceChart *)(m_ChartViewer->getChart());
         trackFinance(c, ((XYChart *)c->getChart(0))->getPlotArea()->getRightX());
         m_ChartViewer->updateDisplay();

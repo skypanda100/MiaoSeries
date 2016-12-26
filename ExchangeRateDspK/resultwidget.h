@@ -50,6 +50,7 @@ protected:
     void wheelEvent(QWheelEvent *) Q_DECL_OVERRIDE;
 
 private:
+    void clearData();
     void initUI();
     void initConnect();
     void makeChart(const QList<ExchangeRateResult *> &, const QList<int> &, int, bool);
