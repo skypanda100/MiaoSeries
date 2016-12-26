@@ -5,6 +5,8 @@ using namespace std;
 ResultWidget::ResultWidget(QWidget *parent)
     :QWidget(parent)
     ,m_tack(true)
+    ,m_zoomFactor(0.1)
+    ,m_zoomXValue(0)
 {
     this->initUI();
     this->initConnect();
@@ -12,15 +14,26 @@ ResultWidget::ResultWidget(QWidget *parent)
 
 ResultWidget::~ResultWidget(){
     delete m_ChartViewer;
-    for(ExchangeRateResult *eaResult : m_lastResults){
+    for(ExchangeRateResult *eaResult : m_allResults){
         delete eaResult;
     }
 }
 
 void ResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> maList, int extra, bool isBoll){
     makeChart(eaResults, maList, extra, isBoll);
-    if(this->sender() != this){
+    if(this->sender() != NULL){
+        for(ExchangeRateResult *eaResult : m_allResults){
+            delete eaResult;
+        }
         m_allResults = eaResults;
+
+        FinanceChart *c = (FinanceChart *)(m_ChartViewer->getChart());
+        trackFinance(c, ((XYChart *)c->getChart(0))->getPlotArea()->getRightX());
+        m_ChartViewer->updateDisplay();
+    }else{
+        FinanceChart *c = (FinanceChart *)(m_ChartViewer->getChart());
+        trackFinance(c, m_zoomXValue, false);
+        m_ChartViewer->updateDisplay();
     }
     m_lastResults = eaResults;
     m_lastMaList = maList;
@@ -35,9 +48,11 @@ void ResultWidget::onStyleChanged(){
 void ResultWidget::wheelEvent(QWheelEvent *wheelEvent){
     if(wheelEvent->orientation() == Qt::Vertical){
         wheelEvent->accept();
-        int delta = wheelEvent->delta();
-        if(delta < 0){
-        }else if(delta > 0){
+        QPoint numDegrees = wheelEvent->angleDelta() / 8;
+        if(numDegrees.y() > 0){
+            zoomIn();
+        }else if(numDegrees.y() < 0){
+            zoomOut();
         }
     }else{
         wheelEvent->ignore();
@@ -169,8 +184,6 @@ BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, c
 
     c->addRSI(150, 6, 12, 24, RSI_R_COLOR, RSI_S_COLOR, RSI_I_COlOR, 30, UP_COLOR, DW_COLOR);
 
-    trackFinance(c, ((XYChart *)c->getChart(0))->getPlotArea()->getRightX());
-
     c->makeChart();
 
     delete timeStamps_p;
@@ -182,9 +195,11 @@ BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, c
     return c;
 }
 
-void ResultWidget::trackFinance(MultiChart *m, int mouseX){
-    if(!m_tack){
-        return;
+void ResultWidget::trackFinance(MultiChart *m, int mouseX, bool isRelateToTrackVar){
+    if(isRelateToTrackVar){
+        if(!m_tack){
+            return;
+        }
     }
     // Clear the current dynamic layer and get the DrawArea object to draw on it.
     DrawArea *d = m->initDynamicLayer();
@@ -194,7 +209,10 @@ void ResultWidget::trackFinance(MultiChart *m, int mouseX){
         return ;
 
     // Get the data x-value that is nearest to the mouse
-    int xValue = (int)(((XYChart *)m->getChart(0))->getNearestXValue(mouseX));
+    int xValue = isRelateToTrackVar ? (int)(((XYChart *)m->getChart(0))->getNearestXValue(mouseX)) : mouseX;
+
+    // set zoom factor
+    m_zoomXValue = xValue;
 
     // Iterate the XY charts (main price chart and indicator charts) in the FinanceChart
     XYChart *c = 0;
@@ -329,6 +347,24 @@ void ResultWidget::trackFinance(MultiChart *m, int mouseX){
         t->draw(plotAreaLeftX + 5, plotAreaTopY + 3, GET_STYLE().font_color, Chart::TopLeft);
         t->destroy();
     }
+}
+
+void ResultWidget::zoomIn(){
+    int zoomCount = m_lastResults.count();
+    int zoomLeftCount = m_zoomXValue * m_zoomFactor;
+    int zoomRightCount = (zoomCount - m_lastExtra - m_zoomXValue - 1) * m_zoomFactor;
+    m_zoomXValue -= zoomLeftCount;
+    for(int i = 0;i < zoomLeftCount;i++){
+        m_lastResults.takeAt(i + m_lastExtra);
+    }
+    for(int i = 0;i < zoomRightCount;i++){
+        m_lastResults.takeLast();
+    }
+    onSearch(m_lastResults, m_lastMaList, m_lastExtra, m_lastBoll);
+}
+
+void ResultWidget::zoomOut(){
+
 }
 
 void ResultWidget::onMouseMovePlotArea(QMouseEvent *){

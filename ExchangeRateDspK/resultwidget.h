@@ -54,7 +54,9 @@ private:
     void initConnect();
     void makeChart(const QList<ExchangeRateResult *> &, const QList<int> &, int, bool);
     BaseChart *finance(const QList<ExchangeRateResult *> &, const QList<int> &, int, bool);
-    void trackFinance(MultiChart *, int);
+    void trackFinance(MultiChart *, int, bool isRelateToTrackVar = true);
+    void zoomIn();
+    void zoomOut();
 
 private slots:
     void onMouseMovePlotArea(QMouseEvent *);
@@ -68,6 +70,8 @@ private:
     QList<int > m_lastMaList;
     int m_lastExtra;
     bool m_lastBoll;
+    float m_zoomFactor;
+    int m_zoomXValue;
 };
 
 #endif // RESULTWIDGET
