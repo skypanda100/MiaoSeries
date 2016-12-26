@@ -19,6 +19,9 @@ ResultWidget::~ResultWidget(){
 
 void ResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> maList, int extra, bool isBoll){
     makeChart(eaResults, maList, extra, isBoll);
+    if(this->sender() != this){
+        m_allResults = eaResults;
+    }
     m_lastResults = eaResults;
     m_lastMaList = maList;
     m_lastExtra = extra;
@@ -27,6 +30,18 @@ void ResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> ma
 
 void ResultWidget::onStyleChanged(){
     makeChart(m_lastResults, m_lastMaList, m_lastExtra, m_lastBoll);
+}
+
+void ResultWidget::wheelEvent(QWheelEvent *wheelEvent){
+    if(wheelEvent->orientation() == Qt::Vertical){
+        wheelEvent->accept();
+        int delta = wheelEvent->delta();
+        if(delta < 0){
+        }else if(delta > 0){
+        }
+    }else{
+        wheelEvent->ignore();
+    }
 }
 
 void ResultWidget::initUI(){

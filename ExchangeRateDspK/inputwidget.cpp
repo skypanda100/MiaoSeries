@@ -1,6 +1,13 @@
 #include "inputwidget.h"
 #include <QDebug>
 
+#define ZDT_TEST
+
+#ifdef ZDT_TEST
+#include "FinanceChart.h"
+#endif
+
+
 InputWidget::InputWidget(QWidget *parent)
     :QWidget(parent)
 {
@@ -136,6 +143,49 @@ bool InputWidget::validate(){
 }
 
 void InputWidget::onGoButtonClicked(){
+#ifdef ZDT_TEST
+
+    /*****************************************************/
+    int noOfDays = 100;
+    int extraDays = 20;
+    RanTable rantable(9, 6, noOfDays + extraDays);
+
+    // Set the 1st col to be the timeStamp, starting from Sep 4, 2011, with each row representing one
+    // day, and counting week days only (jump over Sat and Sun)
+    rantable.setDateCol(0, Chart::chartTime(2016, 3, 1), 86400, false);
+
+    // Set the 2nd, 3rd, 4th and 5th columns to be high, low, open and close data. The open value
+    // starts from 100, and the daily change is random from -5 to 5.
+    rantable.setHLOCCols(1, 100, -5, 5);
+
+    // Set the 6th column as the vol data from 5 to 25 million
+    rantable.setCol(5, 50000000, 250000000);
+
+    // Now we read the data from the table into arrays
+    DoubleArray timeStamps = rantable.getCol(0);
+    DoubleArray highData = rantable.getCol(1);
+    DoubleArray lowData = rantable.getCol(2);
+    DoubleArray openData = rantable.getCol(3);
+    DoubleArray closeData = rantable.getCol(4);
+    DoubleArray volData = rantable.getCol(5);
+    QDateTime baseDateTime = QDateTime::fromString("20160301", "yyyyMMdd");
+    QList<ExchangeRateResult *> eaResults;
+    for(int i = 0;i < (noOfDays + extraDays);i++){
+        ExchangeRateResult *eaResult = new ExchangeRateResult;
+        eaResult->setDate(baseDateTime.addDays(i).toString("yyyy-MM-ddT00:00:00"));
+        eaResult->setHigh(highData[i]);
+        eaResult->setLow(lowData[i]);
+        eaResult->setOpen(openData[i]);
+        eaResult->setClose(closeData[i]);
+        eaResults.append(eaResult);
+    }
+    QList<int> maList;
+    maList.append(20);
+    emit search(eaResults, maList, extraDays, true);
+
+    return;
+    /*****************************************************/
+#endif
     if(validate()){
         QList<int> maLst;
         if(m_checkBox_08->isChecked()){

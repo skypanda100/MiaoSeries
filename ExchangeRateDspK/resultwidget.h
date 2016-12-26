@@ -46,6 +46,9 @@ public slots:
     void onSearch(QList<ExchangeRateResult *>, QList<int>, int, bool);
     void onStyleChanged();
 
+protected:
+    void wheelEvent(QWheelEvent *) Q_DECL_OVERRIDE;
+
 private:
     void initUI();
     void initConnect();
@@ -60,6 +63,7 @@ private slots:
 private:
     QChartViewer *m_ChartViewer;
     bool m_tack;
+    QList<ExchangeRateResult *> m_allResults;
     QList<ExchangeRateResult *> m_lastResults;
     QList<int > m_lastMaList;
     int m_lastExtra;
