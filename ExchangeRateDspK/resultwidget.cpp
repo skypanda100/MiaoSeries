@@ -375,7 +375,7 @@ void ResultWidget::zoomIn(){
 
     m_zoomXValue -= zoomLeftCount;
     for(int i = 0;i < zoomLeftCount;i++){
-        m_zoomLeftVec.push_back(m_lastResults.takeAt(i + m_lastExtra));
+        m_zoomLeftVec.push_back(m_lastResults.takeFirst());
     }
     m_zoomLeftCountVec.push_back(zoomLeftCount);
 
@@ -398,7 +398,7 @@ void ResultWidget::zoomOut(){
     m_zoomXValue += zoomLeftCount;
 
     for(int i = 0;i < zoomLeftCount;i++){
-        m_lastResults.insert(m_lastExtra, m_zoomLeftVec.takeLast());
+        m_lastResults.push_front(m_zoomLeftVec.takeLast());
     }
 
     for(int i = 0;i < zoomRightCount;i++){
