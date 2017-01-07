@@ -19,20 +19,22 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     qchartviewer.cpp \
     inputwidget.cpp \
-    ea_db.cpp \
-    ea_result.cpp \
     style.cpp \
     dataresultwidget.cpp \
-    graphresultwidget.cpp
+    graphresultwidget.cpp \
+    result.cpp \
+    db.cpp \
+    simulate.cpp
 
 HEADERS  += mainwindow.h \
     qchartviewer.h \
     inputwidget.h \
-    ea_db.h \
-    ea_result.h \
     style.h \
     dataresultwidget.h \
-    graphresultwidget.h
+    graphresultwidget.h \
+    result.h \
+    db.h \
+    simulate.h
 
 INCLUDEPATH += $$PWD/include
 win32:LIBS += $$PWD/lib/chartdir60.lib

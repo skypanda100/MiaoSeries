@@ -4,7 +4,7 @@
 #include <QtWidgets>
 #include <QPrinter>
 #include <QPrintDialog>
-#include "ea_db.h"
+#include "db.h"
 #include "style.h"
 
 class InputWidget : public QWidget{
@@ -15,8 +15,10 @@ public:
     ~InputWidget();
 
 signals:
-    void search(QList<ExchangeRateResult *>, QList<int>, int, bool);
+    void search(QList<Result *>, QList<int>, int, bool);
     void styleChanged();
+    void buy();
+    void sell();
 
 private:
     void initUI();
@@ -53,7 +55,7 @@ private:
     bool m_simulateStart;
     bool m_operateBuy;
 
-    ExchangeServiceDb *m_db;
+    Db *m_db;
 };
 
 #endif // INPUTWIDGET

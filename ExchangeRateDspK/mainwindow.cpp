@@ -21,7 +21,7 @@ void MainWindow::initUI(){
     QDesktopWidget* desktopWidget = QApplication::desktop();
     QRect clientRect = desktopWidget->availableGeometry();
     int MAINWIDTH = clientRect.width();
-    int MAINHEIGHT = clientRect.height() - 60;
+    int MAINHEIGHT = clientRect.height();
     this->setMinimumSize(MAINWIDTH, MAINHEIGHT);
 
     m_inputWidget = new InputWidget;
@@ -48,12 +48,24 @@ void MainWindow::initUI(){
 
 void MainWindow::initConnect(){
     connect(m_inputWidget
-            , SIGNAL(search(QList<ExchangeRateResult*>, QList<int>, int, bool))
+            , SIGNAL(search(QList<Result*>, QList<int>, int, bool))
             , m_graphResultWidget
-            , SLOT(onSearch(QList<ExchangeRateResult*>, QList<int>, int, bool)));
+            , SLOT(onSearch(QList<Result*>, QList<int>, int, bool)));
 
     connect(m_inputWidget
             , SIGNAL(styleChanged())
             , m_graphResultWidget
             , SLOT(onStyleChanged()));
+
+    connect(m_inputWidget
+            , SIGNAL(buy())
+            , m_graphResultWidget
+            , SLOT(onBuy()));
+
+    connect(m_inputWidget
+            , SIGNAL(sell())
+            , m_graphResultWidget
+            , SLOT(onSell()));
+
+
 }

@@ -7,7 +7,7 @@
 #include <algorithm>
 #include "qchartviewer.h"
 #include "FinanceChart.h"
-#include "ea_result.h"
+#include "result.h"
 #include "style.h"
 
 #define UP_COLOR        0xaa0000
@@ -43,8 +43,10 @@ public:
     ~GraphResultWidget();
 
 public slots:
-    void onSearch(QList<ExchangeRateResult *>, QList<int>, int, bool);
+    void onSearch(QList<Result *>, QList<int>, int, bool);
     void onStyleChanged();
+    void onBuy();
+    void onSell();
 
 protected:
     void wheelEvent(QWheelEvent *) Q_DECL_OVERRIDE;
@@ -53,8 +55,8 @@ private:
     void clearData();
     void initUI();
     void initConnect();
-    void makeChart(const QList<ExchangeRateResult *> &, const QList<int> &, int, bool);
-    BaseChart *finance(const QList<ExchangeRateResult *> &, const QList<int> &, int, bool);
+    void makeChart(const QList<Result *> &, const QList<int> &, int, bool);
+    BaseChart *finance(const QList<Result *> &, const QList<int> &, int, bool);
     void trackFinance(MultiChart *, int, bool isRelateToTrackVar = true);
     void zoomIn();
     void zoomOut();
@@ -66,8 +68,7 @@ private slots:
 private:
     QChartViewer *m_ChartViewer;
     bool m_tack;
-    QList<ExchangeRateResult *> m_allResults;
-    QList<ExchangeRateResult *> m_lastResults;
+    QList<Result *> m_lastResults;
     QList<int > m_lastMaList;
     int m_lastExtra;
     bool m_lastBoll;
@@ -76,8 +77,8 @@ private:
     int m_zoomXValue;
     QVector<int> m_zoomLeftCountVec;
     QVector<int> m_zoomRightCountVec;
-    QVector<ExchangeRateResult *> m_zoomLeftVec;
-    QVector<ExchangeRateResult *> m_zoomRightVec;
+    QVector<Result *> m_zoomLeftVec;
+    QVector<Result *> m_zoomRightVec;
 };
 
 #endif // GRAPHRESULTWIDGET

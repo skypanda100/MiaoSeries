@@ -1,16 +1,16 @@
-#include "ea_db.h"
+#include "db.h"
 #include <QMessageBox>
 #include "chartdir.h"
 
-ExchangeServiceDb::ExchangeServiceDb(){
+Db::Db(){
     this->openDb();
 }
 
-ExchangeServiceDb::~ExchangeServiceDb(){
+Db::~Db(){
     this->closeDb();
 }
 
-void ExchangeServiceDb::openDb(){
+void Db::openDb(){
     db = QSqlDatabase::addDatabase("QODBC");
     QString dsn = QString::fromLocal8Bit("Driver={PostgreSQL ODBC Driver(ANSI)};server=127.0.0.1;port=5432;uid=posgres;pwd=123456;database=postgres");
     db.setDatabaseName(dsn);
@@ -22,16 +22,16 @@ void ExchangeServiceDb::openDb(){
     }
 }
 
-void ExchangeServiceDb::closeDb(){
+void Db::closeDb(){
     db.close();
 }
 
-QList<ExchangeRateResult *> ExchangeServiceDb::query(QString queryStr){
-    QList<ExchangeRateResult *> ea_results;
+QList<Result *> Db::query(QString queryStr){
+    QList<Result *> ea_results;
 
     QSqlQuery query(queryStr);
     while (query.next()){
-        ExchangeRateResult *ea_result = new ExchangeRateResult;
+        Result *ea_result = new Result;
         ea_result->setDate(query.value("date").toString());
         ea_result->setOpen(query.value("open").toDouble());
         ea_result->setClose(query.value("close").toDouble());

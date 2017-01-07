@@ -1,12 +1,12 @@
-#ifndef EA_RESULT
-#define EA_RESULT
+#ifndef RESULT
+#define RESULT
 
 #include <QString>
 
-class ExchangeRateResult{
+class Result{
 public:
-    ExchangeRateResult();
-    ~ExchangeRateResult();
+    Result();
+    ~Result();
 
     QString date() const;
     void setDate(const QString &date);
@@ -31,5 +31,5 @@ private:
     double m_low;
 };
 
-#endif // EA_RESULT
+#endif // RESULT
 

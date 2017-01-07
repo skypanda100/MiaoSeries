@@ -21,21 +21,21 @@ void GraphResultWidget::clearData(){
     m_lastMaList.clear();
     m_zoomLeftCountVec.clear();
     m_zoomRightCountVec.clear();
-    for(ExchangeRateResult *eaResult : m_zoomLeftVec){
+    for(Result *eaResult : m_zoomLeftVec){
         delete eaResult;
     }
     m_zoomLeftVec.clear();
-    for(ExchangeRateResult *eaResult : m_zoomRightVec){
+    for(Result *eaResult : m_zoomRightVec){
         delete eaResult;
     }
     m_zoomRightVec.clear();
-    for(ExchangeRateResult *eaResult : m_lastResults){
+    for(Result *eaResult : m_lastResults){
         delete eaResult;
     }
     m_lastResults.clear();
 }
 
-void GraphResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> maList, int extra, bool isBoll){
+void GraphResultWidget::onSearch(QList<Result *> eaResults, QList<int> maList, int extra, bool isBoll){
     makeChart(eaResults, maList, extra, isBoll);
     if(this->sender() != NULL){
         clearData();
@@ -60,7 +60,19 @@ void GraphResultWidget::onStyleChanged(){
     m_ChartViewer->updateDisplay();
 }
 
+void GraphResultWidget::onBuy(){
+
+}
+
+void GraphResultWidget::onSell(){
+
+}
+
 void GraphResultWidget::wheelEvent(QWheelEvent *wheelEvent){
+    if(m_lastResults.count() == 0){
+        wheelEvent->ignore();
+        return;
+    }
     if(wheelEvent->orientation() == Qt::Vertical){
         wheelEvent->accept();
         QPoint numDegrees = wheelEvent->angleDelta() / 8;
@@ -89,14 +101,14 @@ void GraphResultWidget::initConnect(){
     connect(m_ChartViewer, SIGNAL(clicked(QMouseEvent*)), SLOT(onChartClicked(QMouseEvent*)));
 }
 
-void GraphResultWidget::makeChart(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra, bool isBoll){
+void GraphResultWidget::makeChart(const QList<Result *> &eaResults, const QList<int> &maList, int extra, bool isBoll){
     if(m_ChartViewer->getChart() != NULL){
         delete m_ChartViewer->getChart();
     }
     m_ChartViewer->setChart(finance(eaResults, maList, extra, isBoll));
 }
 
-BaseChart *GraphResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra, bool isBoll){
+BaseChart *GraphResultWidget::finance(const QList<Result *> &eaResults, const QList<int> &maList, int extra, bool isBoll){
     int extraDays = extra;
 
     int count = eaResults.count();
@@ -107,7 +119,7 @@ BaseChart *GraphResultWidget::finance(const QList<ExchangeRateResult *> &eaResul
     double *closeData_p = new double[count];
 
     for(int i = 0;i < count;i++){
-        ExchangeRateResult *eaResult = eaResults[i];
+        Result *eaResult = eaResults[i];
 
         timeStamps_p[i] = Chart::chartTime2(QDateTime::fromString(eaResult->date(), "yyyy-MM-ddThh:mm:ss").toTime_t());
         highData_p[i] = eaResult->high();

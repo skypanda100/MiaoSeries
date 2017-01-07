@@ -41,7 +41,7 @@ InputWidget::~InputWidget(){
 
 void InputWidget::initUI(){
     this->setFixedHeight(430);
-    m_db = new ExchangeServiceDb;
+    m_db = new Db;
 
     QFont labelFont;
     labelFont.setBold(false);
@@ -197,9 +197,9 @@ void InputWidget::onGoButtonClicked(){
     DoubleArray closeData = rantable.getCol(4);
     DoubleArray volData = rantable.getCol(5);
     QDateTime baseDateTime = QDateTime::fromString("20160301", "yyyyMMdd");
-    QList<ExchangeRateResult *> eaResults;
+    QList<Result *> eaResults;
     for(int i = 0;i < (noOfDays + extraDays);i++){
-        ExchangeRateResult *eaResult = new ExchangeRateResult;
+        Result *eaResult = new Result;
         eaResult->setDate(baseDateTime.addDays(i).toString("yyyy-MM-ddT00:00:00"));
         eaResult->setHigh(highData[i]);
         eaResult->setLow(lowData[i]);
@@ -250,7 +250,7 @@ void InputWidget::onGoButtonClicked(){
         }
 
         bool isBoll = false;
-        if(isBoll = m_checkBox_boll->isChecked()){
+        if((isBoll = m_checkBox_boll->isChecked())){
             if(extra < 20){
                 extra = 20;
             }
@@ -266,10 +266,10 @@ void InputWidget::onGoButtonClicked(){
                 .arg(fDate.toString("yyyy-MM-dd 00:00:00"))
                 .arg(tDate.toString("yyyy-MM-dd 00:00:00"));
 
-        QList<ExchangeRateResult *> eaResults = m_db->query(queryStr);
+        QList<Result *> eaResults = m_db->query(queryStr);
 
         extra = 0;
-        for(ExchangeRateResult *eaResult : eaResults){
+        for(Result *eaResult : eaResults){
             QDate date = QDateTime::fromString(eaResult->date(), "yyyy-MM-ddThh:mm:ss").date();
             if(m_fDateEdit->date().daysTo(date) >= 0){
                 break;
@@ -328,6 +328,9 @@ void InputWidget::onOperateButtonClicked(){
     QIcon operateIcon(":/image/buy.png");
     if(m_operateBuy){
         operateIcon = QIcon(":/image/sell.png");
+        emit buy();
+    }else{
+        emit sell();
     }
     m_operateButton->setIcon(operateIcon);
     m_operateButton->setIconSize(iconSize);
