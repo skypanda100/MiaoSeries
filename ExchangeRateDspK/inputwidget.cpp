@@ -326,7 +326,6 @@ void InputWidget::onSimulateButtonClicked(){
     if(m_simulateStart){
         m_money = m_moneyEdit->text().toDouble(0);
         m_volume = 0;
-        m_restMoney = 0;
         m_operateDate = QString("");
         simulateIcon = QIcon(":/image/simulate_stop.png");
     }else{
@@ -396,11 +395,22 @@ void InputWidget::onOperateButtonClicked(){
         if(extra < 20){
             extra = 20;
         }
-        m_fDateEdit->setDate(m_fDateEdit->date().addDays(1));
-        m_tDateEdit->setDate(m_tDateEdit->date().addDays(1));
+
+        QString queryDateStr = QString("select * from gbpusd_k where date > '%1' order by date asc limit 1")
+                .arg(m_tDateEdit->date().toString("yyyy-MM-dd 00:00:00"));
+
+        QList<Result *> eaDateResults = m_db->query(queryDateStr);
+        if(eaDateResults.count() == 0){
+            QMessageBox::critical(0, QObject::tr("错误提示"), "没有下一条数据了!");
+            return;
+        }else{
+            m_fDateEdit->setDate(m_fDateEdit->date().addDays(1));
+            m_tDateEdit->setDate(QDateTime::fromString(eaDateResults[0]->date(), "yyyy-MM-ddThh:mm:ss").date());
+        }
 
         QDate fDate = m_fDateEdit->date().addDays(-1 * extra * 2);
         QDate tDate = m_tDateEdit->date();
+
         QString queryStr = QString("select * from gbpusd_k where date >= '%1' and date <= '%2' order by date asc")
                 .arg(fDate.toString("yyyy-MM-dd 00:00:00"))
                 .arg(tDate.toString("yyyy-MM-dd 00:00:00"));
@@ -435,13 +445,10 @@ void InputWidget::onOperateButtonClicked(){
                 m_operateDate = result->date();
             }
             if(m_operateBuy){
-                m_volume = (int)(m_money / result->open());
-                m_restMoney = m_money - m_volume * result->open();
+                m_volume = (float)m_money / (float)result->open();
+                qDebug() << m_volume;
             }
             m_money = m_volume * result->open();
-            if(!m_operateBuy){
-                m_money += m_restMoney;
-            }
             Simulate simulate;
             simulate.setOperation(m_operateBuy ? "B" : "S");
             simulate.setDate(m_operateDate.split("T")[0]);
@@ -499,8 +506,18 @@ void InputWidget::onSkipButtonClicked(){
         if(extra < 20){
             extra = 20;
         }
-        m_fDateEdit->setDate(m_fDateEdit->date().addDays(1));
-        m_tDateEdit->setDate(m_tDateEdit->date().addDays(1));
+
+        QString queryDateStr = QString("select * from gbpusd_k where date > '%1' order by date asc limit 1")
+                .arg(m_tDateEdit->date().toString("yyyy-MM-dd 00:00:00"));
+
+        QList<Result *> eaDateResults = m_db->query(queryDateStr);
+        if(eaDateResults.count() == 0){
+            QMessageBox::critical(0, QObject::tr("错误提示"), "没有下一条数据了!");
+            return;
+        }else{
+            m_fDateEdit->setDate(m_fDateEdit->date().addDays(1));
+            m_tDateEdit->setDate(QDateTime::fromString(eaDateResults[0]->date(), "yyyy-MM-ddThh:mm:ss").date());
+        }
 
         QDate fDate = m_fDateEdit->date().addDays(-1 * extra * 2);
         QDate tDate = m_tDateEdit->date();

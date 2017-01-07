@@ -21,13 +21,14 @@ void DataResultWidget::onOperate(Simulate simulate){
     QTableWidgetItem *dateItem = new QTableWidgetItem(simulate.date());
     m_dataWidget->setItem(lastRowCount, 1, dateItem);
 
-    QTableWidgetItem *openItem = new QTableWidgetItem(QString("").setNum(simulate.open()));
+    QTableWidgetItem *openItem = new QTableWidgetItem(QString::number(simulate.open()));
     m_dataWidget->setItem(lastRowCount, 2, openItem);
 
-    QTableWidgetItem *volumeItem = new QTableWidgetItem(QString("").setNum(simulate.volume()));
+    qDebug() << "table" << simulate.volume();
+    QTableWidgetItem *volumeItem = new QTableWidgetItem(QString::number(simulate.volume()));
     m_dataWidget->setItem(lastRowCount, 3, volumeItem);
 
-    QTableWidgetItem *moneyItem = new QTableWidgetItem(QString("").setNum(simulate.money()));
+    QTableWidgetItem *moneyItem = new QTableWidgetItem(QString::number(simulate.money()));
     m_dataWidget->setItem(lastRowCount, 4, moneyItem);
 }
 

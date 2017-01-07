@@ -38,12 +38,12 @@ void Simulate::setOpen(double open)
     m_open = open;
 }
 
-int Simulate::volume() const
+double Simulate::volume() const
 {
     return m_volume;
 }
 
-void Simulate::setVolume(int volume)
+void Simulate::setVolume(double volume)
 {
     m_volume = volume;
 }

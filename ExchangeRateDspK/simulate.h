@@ -18,8 +18,8 @@ public:
     double open() const;
     void setOpen(double open);
 
-    int volume() const;
-    void setVolume(int volume);
+    double volume() const;
+    void setVolume(double volume);
 
     double money() const;
     void setMoney(double money);
@@ -28,7 +28,7 @@ private:
     QString m_operation;
     QString m_date;
     double m_open;
-    int m_volume;
+    double m_volume; // "double" is a bug here
     double m_money;
 };
 

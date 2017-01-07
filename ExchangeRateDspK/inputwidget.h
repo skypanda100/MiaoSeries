@@ -56,7 +56,6 @@ private:
     QToolButton *m_skipButton;
 
     double m_money;
-    double m_restMoney;
     double m_volume;
     QString m_operateDate;
 
