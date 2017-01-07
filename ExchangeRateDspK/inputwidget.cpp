@@ -38,38 +38,37 @@ void InputWidget::initUI(){
     m_db = new ExchangeServiceDb;
 
     QFont labelFont;
-    labelFont.setBold(true);
-
-    QLabel *styleLabel = new QLabel;
-    styleLabel->setFont(labelFont);
-    styleLabel->setText("STYLE");
+    labelFont.setBold(false);
 
     m_styleComboBox = new QComboBox;
     m_styleComboBox->addItem("LIGHT");
     m_styleComboBox->addItem("DARK");
     m_styleComboBox->setCurrentIndex(1);
 
-    QLabel *fromLabel = new QLabel;
-    fromLabel->setFont(labelFont);
-    fromLabel->setText("FROM");
+    QVBoxLayout *styleLayout = new QVBoxLayout;
+    styleLayout->addWidget(m_styleComboBox);
+    QGroupBox *styleGroupBox = new QGroupBox;
+    styleGroupBox->setFont(labelFont);
+    styleGroupBox->setTitle("STYLE");
+    styleGroupBox->setLayout(styleLayout);
 
     m_fDateEdit = new QDateEdit;
     m_fDateEdit->setFixedWidth(100);
     m_fDateEdit->setDate(QDateTime::currentDateTime().addDays(-90).date());
     m_fDateEdit->setCalendarPopup(true);
 
-    QLabel *toLabel = new QLabel;
-    toLabel->setFont(labelFont);
-    toLabel->setText("TO");
-
     m_tDateEdit = new QDateEdit;
     m_tDateEdit->setFixedWidth(100);
     m_tDateEdit->setDate(QDateTime::currentDateTime().date());
     m_tDateEdit->setCalendarPopup(true);
 
-    QLabel *maLabel = new QLabel;
-    maLabel->setFont(labelFont);
-    maLabel->setText("MA");
+    QVBoxLayout *dateLayout = new QVBoxLayout;
+    dateLayout->addWidget(m_fDateEdit);
+    dateLayout->addWidget(m_tDateEdit);
+    QGroupBox *dateGroupBox = new QGroupBox;
+    dateGroupBox->setFont(labelFont);
+    dateGroupBox->setTitle("DATE");
+    dateGroupBox->setLayout(dateLayout);
 
     m_checkBox_08 = new QCheckBox("5");
     m_checkBox_01 = new QCheckBox("14");
@@ -80,12 +79,23 @@ void InputWidget::initUI(){
     m_checkBox_05 = new QCheckBox("100");
     m_checkBox_06 = new QCheckBox("250");
     m_checkBox_07 = new QCheckBox("888");
+    m_checkBox_boll = new QCheckBox("BOLL");
 
-    QLabel *bollLabel = new QLabel;
-    bollLabel->setFont(labelFont);
-    bollLabel->setText("BOLL");
-
-    m_checkBox_boll = new QCheckBox;
+    QGridLayout *maLayout = new QGridLayout;
+    maLayout->addWidget(m_checkBox_08, 0, 0);
+    maLayout->addWidget(m_checkBox_01, 0, 1);
+    maLayout->addWidget(m_checkBox_09, 0, 2);
+    maLayout->addWidget(m_checkBox_02, 1, 0);
+    maLayout->addWidget(m_checkBox_03, 1, 1);
+    maLayout->addWidget(m_checkBox_04, 1, 2);
+    maLayout->addWidget(m_checkBox_05, 2, 0);
+    maLayout->addWidget(m_checkBox_06, 2, 1);
+    maLayout->addWidget(m_checkBox_07, 2, 2);
+    maLayout->addWidget(m_checkBox_boll, 3, 0);
+    QGroupBox *maGroupBox = new QGroupBox;
+    maGroupBox->setFont(labelFont);
+    maGroupBox->setTitle("MA&BOLL");
+    maGroupBox->setLayout(maLayout);
 
     m_goButton = new QPushButton;
     m_goButton->setText("GO");
@@ -93,35 +103,22 @@ void InputWidget::initUI(){
     m_printButton = new QPushButton;
     m_printButton->setText("PRINT");
 
-    QHBoxLayout *mainLayout = new QHBoxLayout;
-    mainLayout->setContentsMargins(2, 2, 2, 2);
-    mainLayout->setSpacing(5);
-    mainLayout->addWidget(styleLabel);
-    mainLayout->addWidget(m_styleComboBox);
-    mainLayout->addSpacing(20);
-    mainLayout->addWidget(fromLabel);
-    mainLayout->addWidget(m_fDateEdit);
-    mainLayout->addWidget(toLabel);
-    mainLayout->addWidget(m_tDateEdit);
-    mainLayout->addSpacing(20);
-    mainLayout->addWidget(maLabel);
-    mainLayout->addWidget(m_checkBox_08);
-    mainLayout->addWidget(m_checkBox_01);
-    mainLayout->addWidget(m_checkBox_09);
-    mainLayout->addWidget(m_checkBox_02);
-    mainLayout->addWidget(m_checkBox_03);
-    mainLayout->addWidget(m_checkBox_04);
-    mainLayout->addWidget(m_checkBox_05);
-    mainLayout->addWidget(m_checkBox_06);
-    mainLayout->addWidget(m_checkBox_07);
-    mainLayout->addSpacing(20);
-    mainLayout->addWidget(bollLabel);
-    mainLayout->addWidget(m_checkBox_boll);
+    QWidget *emptyWidget = new QWidget;
 
-    mainLayout->addSpacing(20);
-    mainLayout->addWidget(m_goButton);
-    mainLayout->addWidget(m_printButton);
-    mainLayout->addStretch(1);
+    QGridLayout *mainLayout = new QGridLayout;
+    mainLayout->setContentsMargins(2, 2, 2, 2);
+    mainLayout->setSpacing(15);
+    mainLayout->addWidget(styleGroupBox, 0, 0, 1, 2);
+    mainLayout->addWidget(dateGroupBox, 1, 0, 1, 2);
+    mainLayout->addWidget(maGroupBox, 2, 0, 1, 2);
+    mainLayout->addWidget(m_goButton, 3, 0);
+    mainLayout->addWidget(m_printButton, 3, 1);
+    mainLayout->addWidget(emptyWidget, 4, 0, 1, 2);
+    mainLayout->setRowStretch(0, 1);
+    mainLayout->setRowStretch(1, 2);
+    mainLayout->setRowStretch(2, 4);
+    mainLayout->setRowStretch(3, 1);
+    mainLayout->setRowStretch(4, 8);
 
     this->setLayout(mainLayout);
 }

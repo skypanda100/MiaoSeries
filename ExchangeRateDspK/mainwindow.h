@@ -19,8 +19,9 @@ private:
 
 private:
     InputWidget *m_inputWidget;
+    QDockWidget *m_historyInputDockWidget;
+
     ResultWidget *m_resultWidget;
-    QWidget *m_mainWidget;
 };
 
 #endif // MAINWINDOW_H

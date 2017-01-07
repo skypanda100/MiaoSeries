@@ -75,12 +75,6 @@ void ResultWidget::wheelEvent(QWheelEvent *wheelEvent){
 }
 
 void ResultWidget::initUI(){
-    QDesktopWidget* desktopWidget = QApplication::desktop();
-    QRect clientRect = desktopWidget->availableGeometry();
-    int MAINWIDTH = clientRect.width();
-    int MAINHEIGHT = clientRect.height() - 60;
-    this->setFixedSize(MAINWIDTH, MAINHEIGHT);
-
     m_ChartViewer = new QChartViewer(this);
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
