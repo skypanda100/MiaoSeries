@@ -17,20 +17,25 @@ CONFIG += c++11
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    resultwidget.cpp \
     qchartviewer.cpp \
     inputwidget.cpp \
     ea_db.cpp \
     ea_result.cpp \
-    style.cpp
+    style.cpp \
+    dataresultwidget.cpp \
+    graphresultwidget.cpp
 
 HEADERS  += mainwindow.h \
-    resultwidget.h \
     qchartviewer.h \
     inputwidget.h \
     ea_db.h \
     ea_result.h \
-    style.h
+    style.h \
+    dataresultwidget.h \
+    graphresultwidget.h
 
 INCLUDEPATH += $$PWD/include
 win32:LIBS += $$PWD/lib/chartdir60.lib
+
+RESOURCES += \
+    res.qrc

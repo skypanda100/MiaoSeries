@@ -10,8 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete m_inputWidget;
-    delete m_historyInputDockWidget;
-    delete m_resultWidget;
+    delete m_inputDockWidget;
+    delete m_dataResultWidget;
+    delete m_dataResultDockWidget;
+
+    delete m_graphResultWidget;
 }
 
 void MainWindow::initUI(){
@@ -22,13 +25,23 @@ void MainWindow::initUI(){
     this->setMinimumSize(MAINWIDTH, MAINHEIGHT);
 
     m_inputWidget = new InputWidget;
-    m_historyInputDockWidget = new QDockWidget("History", this);
-    m_historyInputDockWidget->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-    m_historyInputDockWidget->setWidget(m_inputWidget);
-    this->addDockWidget(Qt::LeftDockWidgetArea, m_historyInputDockWidget);
+    m_inputDockWidget = new QDockWidget("Input", this);
+    m_inputDockWidget->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    m_inputDockWidget->setWidget(m_inputWidget);
+    m_inputDockWidget->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    this->addDockWidget(Qt::LeftDockWidgetArea, m_inputDockWidget);
 
-    m_resultWidget = new ResultWidget;
-    this->setCentralWidget(m_resultWidget);
+    m_dataResultWidget = new DataResultWidget;
+    m_dataResultDockWidget = new QDockWidget("Data", this);
+    m_dataResultDockWidget->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    m_dataResultDockWidget->setWidget(m_dataResultWidget);
+    m_dataResultDockWidget->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    this->addDockWidget(Qt::LeftDockWidgetArea, m_dataResultDockWidget);
+
+    m_graphResultWidget = new GraphResultWidget;
+    this->setCentralWidget(m_graphResultWidget);
+
+    this->setDockOptions(QMainWindow::AnimatedDocks);
 
     this->move(0, 0);
 }
@@ -36,11 +49,11 @@ void MainWindow::initUI(){
 void MainWindow::initConnect(){
     connect(m_inputWidget
             , SIGNAL(search(QList<ExchangeRateResult*>, QList<int>, int, bool))
-            , m_resultWidget
+            , m_graphResultWidget
             , SLOT(onSearch(QList<ExchangeRateResult*>, QList<int>, int, bool)));
 
     connect(m_inputWidget
             , SIGNAL(styleChanged())
-            , m_resultWidget
+            , m_graphResultWidget
             , SLOT(onStyleChanged()));
 }

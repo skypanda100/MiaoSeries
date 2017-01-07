@@ -10,6 +10,8 @@
 
 InputWidget::InputWidget(QWidget *parent)
     :QWidget(parent)
+    ,m_simulateStart(false)
+    ,m_operateBuy(false)
 {
     this->initUI();
     this->initConnect();
@@ -29,8 +31,11 @@ InputWidget::~InputWidget(){
     delete m_checkBox_08;
     delete m_checkBox_09;
     delete m_checkBox_boll;
+    delete m_moneyEdit;
     delete m_goButton;
     delete m_printButton;
+    delete m_simulateButton;
+    delete m_operateButton;
     delete m_db;
 }
 
@@ -53,12 +58,10 @@ void InputWidget::initUI(){
     styleGroupBox->setLayout(styleLayout);
 
     m_fDateEdit = new QDateEdit;
-    m_fDateEdit->setFixedWidth(100);
     m_fDateEdit->setDate(QDateTime::currentDateTime().addDays(-90).date());
     m_fDateEdit->setCalendarPopup(true);
 
     m_tDateEdit = new QDateEdit;
-    m_tDateEdit->setFixedWidth(100);
     m_tDateEdit->setDate(QDateTime::currentDateTime().date());
     m_tDateEdit->setCalendarPopup(true);
 
@@ -81,6 +84,18 @@ void InputWidget::initUI(){
     m_checkBox_07 = new QCheckBox("888");
     m_checkBox_boll = new QCheckBox("BOLL");
 
+    QRegExp regExp("^(\\d+(\\.\\d{1,2})?)$");
+    QRegExpValidator *validator = new QRegExpValidator(regExp, this);
+    m_moneyEdit = new QLineEdit;
+    m_moneyEdit->setValidator(validator);
+
+    QVBoxLayout *moneyLayout = new QVBoxLayout;
+    moneyLayout->addWidget(m_moneyEdit);
+    QGroupBox *moneyGroupBox = new QGroupBox;
+    moneyGroupBox->setFont(labelFont);
+    moneyGroupBox->setTitle("MONEY");
+    moneyGroupBox->setLayout(moneyLayout);
+
     QGridLayout *maLayout = new QGridLayout;
     maLayout->addWidget(m_checkBox_08, 0, 0);
     maLayout->addWidget(m_checkBox_01, 0, 1);
@@ -94,16 +109,31 @@ void InputWidget::initUI(){
     maLayout->addWidget(m_checkBox_boll, 3, 0);
     QGroupBox *maGroupBox = new QGroupBox;
     maGroupBox->setFont(labelFont);
-    maGroupBox->setTitle("MA&BOLL");
+    maGroupBox->setTitle("MA && BOLL");
     maGroupBox->setLayout(maLayout);
 
-    m_goButton = new QPushButton;
-    m_goButton->setText("GO");
+    QSize iconSize(40, 40);
 
-    m_printButton = new QPushButton;
-    m_printButton->setText("PRINT");
+    QIcon goIcon(":/image/go.png");
+    m_goButton = new QToolButton;
+    m_goButton->setIcon(goIcon);
+    m_goButton->setIconSize(iconSize);
 
-    QWidget *emptyWidget = new QWidget;
+    QIcon printIcon(":/image/print.png");
+    m_printButton = new QToolButton;
+    m_printButton->setIcon(printIcon);
+    m_printButton->setIconSize(iconSize);
+
+    QIcon simulateIcon(":/image/simulate_start.png");
+    m_simulateButton = new QToolButton;
+    m_simulateButton->setIcon(simulateIcon);
+    m_simulateButton->setIconSize(iconSize);
+
+    QIcon operateIcon(":/image/buy.png");
+    m_operateButton = new QToolButton;
+    m_operateButton->setIcon(operateIcon);
+    m_operateButton->setIconSize(iconSize);
+    m_operateButton->setDisabled(true);
 
     QGridLayout *mainLayout = new QGridLayout;
     mainLayout->setContentsMargins(2, 2, 2, 2);
@@ -111,14 +141,11 @@ void InputWidget::initUI(){
     mainLayout->addWidget(styleGroupBox, 0, 0, 1, 2);
     mainLayout->addWidget(dateGroupBox, 1, 0, 1, 2);
     mainLayout->addWidget(maGroupBox, 2, 0, 1, 2);
-    mainLayout->addWidget(m_goButton, 3, 0);
-    mainLayout->addWidget(m_printButton, 3, 1);
-    mainLayout->addWidget(emptyWidget, 4, 0, 1, 2);
-    mainLayout->setRowStretch(0, 1);
-    mainLayout->setRowStretch(1, 2);
-    mainLayout->setRowStretch(2, 4);
-    mainLayout->setRowStretch(3, 1);
-    mainLayout->setRowStretch(4, 8);
+    mainLayout->addWidget(moneyGroupBox, 3, 0, 1, 2);
+    mainLayout->addWidget(m_goButton, 4, 0, 1, 1, Qt::AlignCenter);
+    mainLayout->addWidget(m_printButton, 4, 1, 1, 1, Qt::AlignCenter);
+    mainLayout->addWidget(m_simulateButton, 5, 0, 1, 1, Qt::AlignCenter);
+    mainLayout->addWidget(m_operateButton, 5, 1, 1, 1, Qt::AlignCenter);
 
     this->setLayout(mainLayout);
 }
@@ -126,6 +153,9 @@ void InputWidget::initUI(){
 void InputWidget::initConnect(){
     connect(m_goButton, SIGNAL(clicked()), this, SLOT(onGoButtonClicked()));
     connect(m_printButton, SIGNAL(clicked()), this, SLOT(onPrintButtonClicked()));
+    connect(m_simulateButton, SIGNAL(clicked()), this, SLOT(onSimulateButtonClicked()));
+    connect(m_operateButton, SIGNAL(clicked()), this, SLOT(onOperateButtonClicked()));
+
     connect(m_styleComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(onComboBoxChanged(int)));
 }
 
@@ -271,6 +301,35 @@ void InputWidget::onPrintButtonClicked(){
         painter.setWindow(currentScreenPixmap.rect());
         painter.drawPixmap(0, 0, currentScreenPixmap);
     }
+}
+
+void InputWidget::onSimulateButtonClicked(){
+    m_simulateStart = !m_simulateStart;
+    m_operateButton->setDisabled(!m_simulateStart);
+
+    QSize iconSize(40, 40);
+    QIcon simulateIcon(":/image/simulate_start.png");
+    if(m_simulateStart){
+        simulateIcon = QIcon(":/image/simulate_stop.png");
+    }else{
+        QSize iconSize(40, 40);
+        QIcon operateIcon(":/image/buy.png");
+        m_operateButton->setIcon(operateIcon);
+        m_operateButton->setIconSize(iconSize);
+    }
+    m_simulateButton->setIcon(simulateIcon);
+    m_simulateButton->setIconSize(iconSize);
+}
+
+void InputWidget::onOperateButtonClicked(){
+    m_operateBuy = !m_operateBuy;
+    QSize iconSize(40, 40);
+    QIcon operateIcon(":/image/buy.png");
+    if(m_operateBuy){
+        operateIcon = QIcon(":/image/sell.png");
+    }
+    m_operateButton->setIcon(operateIcon);
+    m_operateButton->setIconSize(iconSize);
 }
 
 void InputWidget::onComboBoxChanged(int index){

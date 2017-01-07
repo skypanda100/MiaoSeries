@@ -1,8 +1,8 @@
-#include "resultwidget.h"
+#include "graphresultwidget.h"
 
 using namespace std;
 
-ResultWidget::ResultWidget(QWidget *parent)
+GraphResultWidget::GraphResultWidget(QWidget *parent)
     :QWidget(parent)
     ,m_tack(true)
     ,m_zoomFactor(0.1)
@@ -12,12 +12,12 @@ ResultWidget::ResultWidget(QWidget *parent)
     this->initConnect();
 }
 
-ResultWidget::~ResultWidget(){
+GraphResultWidget::~GraphResultWidget(){
     delete m_ChartViewer;
     clearData();
 }
 
-void ResultWidget::clearData(){
+void GraphResultWidget::clearData(){
     m_lastMaList.clear();
     m_zoomLeftCountVec.clear();
     m_zoomRightCountVec.clear();
@@ -35,7 +35,7 @@ void ResultWidget::clearData(){
     m_lastResults.clear();
 }
 
-void ResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> maList, int extra, bool isBoll){
+void GraphResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> maList, int extra, bool isBoll){
     makeChart(eaResults, maList, extra, isBoll);
     if(this->sender() != NULL){
         clearData();
@@ -53,14 +53,14 @@ void ResultWidget::onSearch(QList<ExchangeRateResult *> eaResults, QList<int> ma
     m_lastBoll = isBoll;
 }
 
-void ResultWidget::onStyleChanged(){
+void GraphResultWidget::onStyleChanged(){
     makeChart(m_lastResults, m_lastMaList, m_lastExtra, m_lastBoll);
     FinanceChart *c = (FinanceChart *)(m_ChartViewer->getChart());
     trackFinance(c, m_zoomXValue, false);
     m_ChartViewer->updateDisplay();
 }
 
-void ResultWidget::wheelEvent(QWheelEvent *wheelEvent){
+void GraphResultWidget::wheelEvent(QWheelEvent *wheelEvent){
     if(wheelEvent->orientation() == Qt::Vertical){
         wheelEvent->accept();
         QPoint numDegrees = wheelEvent->angleDelta() / 8;
@@ -74,7 +74,7 @@ void ResultWidget::wheelEvent(QWheelEvent *wheelEvent){
     }
 }
 
-void ResultWidget::initUI(){
+void GraphResultWidget::initUI(){
     m_ChartViewer = new QChartViewer(this);
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
@@ -84,19 +84,19 @@ void ResultWidget::initUI(){
     this->setLayout(mainLayout);
 }
 
-void ResultWidget::initConnect(){
+void GraphResultWidget::initConnect(){
     connect(m_ChartViewer, SIGNAL(mouseMovePlotArea(QMouseEvent*)), SLOT(onMouseMovePlotArea(QMouseEvent*)));
     connect(m_ChartViewer, SIGNAL(clicked(QMouseEvent*)), SLOT(onChartClicked(QMouseEvent*)));
 }
 
-void ResultWidget::makeChart(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra, bool isBoll){
+void GraphResultWidget::makeChart(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra, bool isBoll){
     if(m_ChartViewer->getChart() != NULL){
         delete m_ChartViewer->getChart();
     }
     m_ChartViewer->setChart(finance(eaResults, maList, extra, isBoll));
 }
 
-BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra, bool isBoll){
+BaseChart *GraphResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, const QList<int> &maList, int extra, bool isBoll){
     int extraDays = extra;
 
     int count = eaResults.count();
@@ -204,7 +204,7 @@ BaseChart *ResultWidget::finance(const QList<ExchangeRateResult *> &eaResults, c
     return c;
 }
 
-void ResultWidget::trackFinance(MultiChart *m, int mouseX, bool isRelateToTrackVar){
+void GraphResultWidget::trackFinance(MultiChart *m, int mouseX, bool isRelateToTrackVar){
     if(isRelateToTrackVar){
         if(!m_tack){
             return;
@@ -358,7 +358,7 @@ void ResultWidget::trackFinance(MultiChart *m, int mouseX, bool isRelateToTrackV
     }
 }
 
-void ResultWidget::zoomIn(){
+void GraphResultWidget::zoomIn(){
     int zoomCount = m_lastResults.count();
     int zoomLeftCount = m_zoomXValue * m_zoomFactor;
     int zoomRightCount = (zoomCount - m_lastExtra - m_zoomXValue - 1) * m_zoomFactor;
@@ -381,7 +381,7 @@ void ResultWidget::zoomIn(){
     onSearch(m_lastResults, m_lastMaList, m_lastExtra, m_lastBoll);
 }
 
-void ResultWidget::zoomOut(){
+void GraphResultWidget::zoomOut(){
     int zoomLeftCount = m_zoomLeftCountVec.count() == 0 ? 0 : m_zoomLeftCountVec.takeLast();
     int zoomRightCount = m_zoomRightCountVec.count() == 0 ? 0 : m_zoomRightCountVec.takeLast();
 
@@ -402,12 +402,12 @@ void ResultWidget::zoomOut(){
     onSearch(m_lastResults, m_lastMaList, m_lastExtra, m_lastBoll);
 }
 
-void ResultWidget::onMouseMovePlotArea(QMouseEvent *){
+void GraphResultWidget::onMouseMovePlotArea(QMouseEvent *){
     trackFinance((MultiChart *)m_ChartViewer->getChart(), m_ChartViewer->getPlotAreaMouseX());
     m_ChartViewer->updateDisplay();
 }
 
-void ResultWidget::onChartClicked(QMouseEvent *event){
+void GraphResultWidget::onChartClicked(QMouseEvent *event){
     if(event->button() == Qt::LeftButton){
         m_tack = !m_tack;
     }

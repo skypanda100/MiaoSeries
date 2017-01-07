@@ -1,5 +1,5 @@
-#ifndef RESULTWIDGET
-#define RESULTWIDGET
+#ifndef GRAPHRESULTWIDGET
+#define GRAPHRESULTWIDGET
 
 #include <QtWidgets>
 #include <vector>
@@ -35,12 +35,12 @@
 #define RSI_S_COLOR     0xff9900
 #define RSI_I_COlOR     0x4a86e8
 
-class ResultWidget : public QWidget{
+class GraphResultWidget : public QWidget{
     Q_OBJECT
 
 public:
-    ResultWidget(QWidget *parent = NULL);
-    ~ResultWidget();
+    GraphResultWidget(QWidget *parent = NULL);
+    ~GraphResultWidget();
 
 public slots:
     void onSearch(QList<ExchangeRateResult *>, QList<int>, int, bool);
@@ -80,5 +80,5 @@ private:
     QVector<ExchangeRateResult *> m_zoomRightVec;
 };
 
-#endif // RESULTWIDGET
+#endif // GRAPHRESULTWIDGET
 

@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include "inputwidget.h"
-#include "resultwidget.h"
+#include "graphresultwidget.h"
+#include "dataresultwidget.h"
 
 class MainWindow : public QMainWindow
 {
@@ -19,9 +20,12 @@ private:
 
 private:
     InputWidget *m_inputWidget;
-    QDockWidget *m_historyInputDockWidget;
+    QDockWidget *m_inputDockWidget;
 
-    ResultWidget *m_resultWidget;
+    DataResultWidget *m_dataResultWidget;
+    QDockWidget *m_dataResultDockWidget;
+
+    GraphResultWidget *m_graphResultWidget;
 };
 
 #endif // MAINWINDOW_H

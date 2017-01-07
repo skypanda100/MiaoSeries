@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/go.png</file>
+        <file>image/print.png</file>
+        <file>image/simulate_start.png</file>
+        <file>image/simulate_stop.png</file>
+        <file>image/buy.png</file>
+        <file>image/sell.png</file>
+    </qresource>
+</RCC>

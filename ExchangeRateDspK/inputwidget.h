@@ -26,6 +26,8 @@ private:
 private slots:
     void onGoButtonClicked();
     void onPrintButtonClicked();
+    void onSimulateButtonClicked();
+    void onOperateButtonClicked();
     void onComboBoxChanged(int);
 
 private:
@@ -42,8 +44,15 @@ private:
     QCheckBox *m_checkBox_08;
     QCheckBox *m_checkBox_09;
     QCheckBox *m_checkBox_boll;
-    QPushButton *m_goButton;
-    QPushButton *m_printButton;
+    QLineEdit *m_moneyEdit;
+    QToolButton *m_goButton;
+    QToolButton *m_printButton;
+    QToolButton *m_simulateButton;
+    QToolButton *m_operateButton;
+
+    bool m_simulateStart;
+    bool m_operateBuy;
+
     ExchangeServiceDb *m_db;
 };
 
