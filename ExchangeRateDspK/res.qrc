@@ -6,5 +6,6 @@
         <file>image/simulate_stop.png</file>
         <file>image/buy.png</file>
         <file>image/sell.png</file>
+        <file>image/skip.png</file>
     </qresource>
 </RCC>

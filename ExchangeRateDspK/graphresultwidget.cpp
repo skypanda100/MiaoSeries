@@ -60,14 +60,6 @@ void GraphResultWidget::onStyleChanged(){
     m_ChartViewer->updateDisplay();
 }
 
-void GraphResultWidget::onBuy(){
-
-}
-
-void GraphResultWidget::onSell(){
-
-}
-
 void GraphResultWidget::wheelEvent(QWheelEvent *wheelEvent){
     if(m_lastResults.count() == 0){
         wheelEvent->ignore();

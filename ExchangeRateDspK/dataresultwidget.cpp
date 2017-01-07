@@ -11,8 +11,33 @@ DataResultWidget::~DataResultWidget(){
     delete m_dataWidget;
 }
 
+void DataResultWidget::onOperate(Simulate simulate){
+    int lastRowCount = m_dataWidget->rowCount();
+    m_dataWidget->insertRow(lastRowCount);
+
+    QTableWidgetItem *operateItem = new QTableWidgetItem(simulate.operation());
+    m_dataWidget->setItem(lastRowCount, 0, operateItem);
+
+    QTableWidgetItem *dateItem = new QTableWidgetItem(simulate.date());
+    m_dataWidget->setItem(lastRowCount, 1, dateItem);
+
+    QTableWidgetItem *openItem = new QTableWidgetItem(QString("").setNum(simulate.open()));
+    m_dataWidget->setItem(lastRowCount, 2, openItem);
+
+    QTableWidgetItem *volumeItem = new QTableWidgetItem(QString("").setNum(simulate.volume()));
+    m_dataWidget->setItem(lastRowCount, 3, volumeItem);
+
+    QTableWidgetItem *moneyItem = new QTableWidgetItem(QString("").setNum(simulate.money()));
+    m_dataWidget->setItem(lastRowCount, 4, moneyItem);
+}
+
+void DataResultWidget::onOperateEnd(){
+    m_dataWidget->setRowCount(0);
+    m_dataWidget->clearContents();
+}
+
 void DataResultWidget::initUI(){
-    this->setFixedWidth(300);
+    this->setFixedWidth(320);
     m_dataWidget = new QTableWidget(this);
     QStringList titleList;
     titleList << "B/S" << "Date" << "Open" << "Volume" << "￥";
@@ -23,7 +48,7 @@ void DataResultWidget::initUI(){
     m_dataWidget->horizontalHeader()->setStretchLastSection(true);
     m_dataWidget->setColumnCount(titleList.count());
     m_dataWidget->setColumnWidth(0, 35);
-    m_dataWidget->setColumnWidth(1, 60);
+    m_dataWidget->setColumnWidth(1, 75);
     m_dataWidget->setColumnWidth(2, 60);
     m_dataWidget->setColumnWidth(3, 60);
     m_dataWidget->setColumnWidth(4, 60);

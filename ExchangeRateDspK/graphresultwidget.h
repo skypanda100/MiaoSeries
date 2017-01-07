@@ -45,8 +45,6 @@ public:
 public slots:
     void onSearch(QList<Result *>, QList<int>, int, bool);
     void onStyleChanged();
-    void onBuy();
-    void onSell();
 
 protected:
     void wheelEvent(QWheelEvent *) Q_DECL_OVERRIDE;

@@ -58,14 +58,14 @@ void MainWindow::initConnect(){
             , SLOT(onStyleChanged()));
 
     connect(m_inputWidget
-            , SIGNAL(buy())
-            , m_graphResultWidget
-            , SLOT(onBuy()));
+            , SIGNAL(operate(Simulate))
+            , m_dataResultWidget
+            , SLOT(onOperate(Simulate)));
 
     connect(m_inputWidget
-            , SIGNAL(sell())
-            , m_graphResultWidget
-            , SLOT(onSell()));
+            , SIGNAL(operateEnd())
+            , m_dataResultWidget
+            , SLOT(onOperateEnd()));
 
 
 }
