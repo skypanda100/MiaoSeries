@@ -40,6 +40,7 @@ InputWidget::~InputWidget(){
 }
 
 void InputWidget::initUI(){
+    this->setFixedHeight(430);
     m_db = new ExchangeServiceDb;
 
     QFont labelFont;
@@ -138,14 +139,14 @@ void InputWidget::initUI(){
     QGridLayout *mainLayout = new QGridLayout;
     mainLayout->setContentsMargins(2, 2, 2, 2);
     mainLayout->setSpacing(15);
-    mainLayout->addWidget(styleGroupBox, 0, 0, 1, 2);
-    mainLayout->addWidget(dateGroupBox, 1, 0, 1, 2);
-    mainLayout->addWidget(maGroupBox, 2, 0, 1, 2);
-    mainLayout->addWidget(moneyGroupBox, 3, 0, 1, 2);
+    mainLayout->addWidget(styleGroupBox, 0, 0, 1, 4);
+    mainLayout->addWidget(dateGroupBox, 1, 0, 1, 4);
+    mainLayout->addWidget(maGroupBox, 2, 0, 1, 4);
+    mainLayout->addWidget(moneyGroupBox, 3, 0, 1, 4);
     mainLayout->addWidget(m_goButton, 4, 0, 1, 1, Qt::AlignCenter);
     mainLayout->addWidget(m_printButton, 4, 1, 1, 1, Qt::AlignCenter);
-    mainLayout->addWidget(m_simulateButton, 5, 0, 1, 1, Qt::AlignCenter);
-    mainLayout->addWidget(m_operateButton, 5, 1, 1, 1, Qt::AlignCenter);
+    mainLayout->addWidget(m_simulateButton, 4, 2, 1, 1, Qt::AlignCenter);
+    mainLayout->addWidget(m_operateButton, 4, 3, 1, 1, Qt::AlignCenter);
 
     this->setLayout(mainLayout);
 }

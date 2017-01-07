@@ -14,6 +14,7 @@ private:
     void initConnect();
 
 private:
+    QTableWidget *m_dataWidget;
 };
 
 #endif // DATARESULTWIDGET
