@@ -39,6 +39,9 @@ void DataResultWidget::onOperateEnd(){
 
     QString filePath = QFileDialog::getSaveFileName(this, tr("数据导出"), qApp->applicationDirPath(),
                                                         tr("Excel Files (*.csv)"));
+    if(filePath.isEmpty()){
+        return;
+    }
     QFile file(filePath);
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text)){
         QMessageBox::critical(0, QObject::tr("错误提示"), "无法创建csv文件!");

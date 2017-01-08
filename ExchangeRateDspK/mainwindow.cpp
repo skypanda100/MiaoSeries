@@ -18,6 +18,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::initUI(){
+    this->setWindowTitle("K喵");
     QDesktopWidget* desktopWidget = QApplication::desktop();
     QRect clientRect = desktopWidget->availableGeometry();
     int MAINWIDTH = clientRect.width();

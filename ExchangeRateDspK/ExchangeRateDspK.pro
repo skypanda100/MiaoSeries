@@ -41,3 +41,6 @@ win32:LIBS += $$PWD/lib/chartdir60.lib
 
 RESOURCES += \
     res.qrc
+
+RC_FILE += \
+    res.rc
