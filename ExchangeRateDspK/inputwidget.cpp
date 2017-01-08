@@ -446,7 +446,6 @@ void InputWidget::onOperateButtonClicked(){
             }
             if(m_operateBuy){
                 m_volume = (float)m_money / (float)result->open();
-                qDebug() << m_volume;
             }
             m_money = m_volume * result->open();
             Simulate simulate;

@@ -19,6 +19,7 @@ private:
     void initConnect();
 
 private:
+    QStringList m_titleList;
     QTableWidget *m_dataWidget;
 };
 
