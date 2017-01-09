@@ -228,6 +228,44 @@ QComboBox QAbstractItemView {
     show-decoration-selected: 1; /* make the selection span the entire width of the view */
 }
 
+/*
+ * DateEdit
+ */
+QDateEdit {
+    border-radius: 2px;
+    min-width: 3em;
+    padding: 0px 1px 2px 3px;
+}
+QDateEdit:!editable {
+    /*background-color: rgba(63, 113, 73, 0.2);*/
+    /*background-color: #45494a;*/
+    background-color: rgba(255, 255, 255, 0.05);
+}
+/*
+QDateEdit:!editable:on
+QDateEdit::drop-down:editable:on
+QDateEdit::drop-down:editable
+*/
+QDateEdit:on {
+    padding-top: 3px;
+    padding-left: 4px;
+}
+QDateEdit::down-arrow {
+    image: url(:/icon/triangle_vert.png);
+}
+QDateEdit::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}
+QDateEdit::drop-down {
+    border-left: 1px solid #646464;
+}
+QDateEdit QAbstractItemView {
+    border: 1px solid red;/*black;*/
+    /*selection-background-color: #d2d2d2;
+    selection-color: #404040;
+    show-decoration-selected: 1; /* make the selection span the entire width of the view */
+}
 
 /*
  * RadioButton
