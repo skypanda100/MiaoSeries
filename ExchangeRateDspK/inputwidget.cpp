@@ -1,7 +1,7 @@
 #include "inputwidget.h"
 #include <QDebug>
 
-//#define ZDT_TEST
+#define ZDT_TEST
 
 #ifdef ZDT_TEST
 #include "FinanceChart.h"
@@ -401,6 +401,16 @@ void InputWidget::onOperateButtonClicked(){
 
         QList<Result *> eaDateResults = m_db->query(queryDateStr);
         if(eaDateResults.count() == 0){
+#ifdef ZDT_TEST
+            Simulate simulate;
+            simulate.setOperation("B");
+            simulate.setDate("2016-10-12");
+            simulate.setOpen(1.415);
+            simulate.setVolume(300.1);
+            simulate.setMoney(10000);
+            emit operate(simulate);
+            return;
+#endif
             QMessageBox::critical(0, QObject::tr("错误提示"), "没有下一条数据了!");
             return;
         }else{

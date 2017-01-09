@@ -7,5 +7,31 @@
         <file>image/buy.png</file>
         <file>image/sell.png</file>
         <file>image/skip.png</file>
+        <file>style/dracula.css</file>
+        <file>icon/checkbox_checked.png</file>
+        <file>icon/checkbox_checked_hover.png</file>
+        <file>icon/checkbox_checked_pressed.png</file>
+        <file>icon/checkbox_unchecked.png</file>
+        <file>icon/checkbox_unchecked_hover.png</file>
+        <file>icon/checkbox_unchecked_pressed.png</file>
+        <file>icon/down_arrow.png</file>
+        <file>icon/radiobutton_checked.png</file>
+        <file>icon/radiobutton_checked_hover.png</file>
+        <file>icon/radiobutton_checked_pressed.png</file>
+        <file>icon/radiobutton_unchecked.png</file>
+        <file>icon/radiobutton_unchecked_hover.png</file>
+        <file>icon/radiobutton_unchecked_pressed.png</file>
+        <file>icon/sizegrip.png</file>
+        <file>icon/spindown.png</file>
+        <file>icon/spindown_hover.png</file>
+        <file>icon/spindown_off.png</file>
+        <file>icon/spindown_pressed.png</file>
+        <file>icon/spinup.png</file>
+        <file>icon/spinup_hover.png</file>
+        <file>icon/spinup_off.png</file>
+        <file>icon/spinup_pressed.png</file>
+        <file>icon/up_arrow.png</file>
+        <file>icon/triangle_horz.png</file>
+        <file>icon/triangle_vert.png</file>
     </qresource>
 </RCC>
