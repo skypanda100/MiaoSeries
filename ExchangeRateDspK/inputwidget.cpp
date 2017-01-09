@@ -1,5 +1,5 @@
 #include "inputwidget.h"
-#include <QDebug>
+//#include <QDebug>
 
 #define ZDT_TEST
 

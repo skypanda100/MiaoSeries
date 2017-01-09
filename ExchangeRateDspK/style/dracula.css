@@ -381,7 +381,8 @@ QHeaderView::section:last {
     border-right-width: 0;
 }
 QHeaderView::section:checked {
-    background-color: red; /*FIXME*/
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop:0 #64686b, stop:1 #494c4e);
+    border-bottom-color: #424242;
 }
 QHeaderView::down-arrow {
     image: url(:/icon/down_arrow.png);
