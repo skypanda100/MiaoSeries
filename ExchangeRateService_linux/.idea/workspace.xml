@@ -215,7 +215,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/cmake-build-debug/ExchangeRateService" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../StockAccount_linux" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -443,12 +443,12 @@
       <workItem from="1495206092818" duration="297000" />
       <workItem from="1495207392351" duration="691000" />
       <workItem from="1495208681855" duration="633000" />
-      <workItem from="1495263805741" duration="8018000" />
+      <workItem from="1495263805741" duration="8333000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57566000" />
+    <option name="totallyTimeSpent" value="57881000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
