@@ -4,23 +4,30 @@
 #include "spider.h"
 #include "analyst.h"
 
-int main() {
+int main()
+{
+    daemon(0, 0);
+
     int ret = 0;
     struct Chunk chunk;
 
-    chunk.memory = malloc(1);
-    chunk.size = 0;
+    for(;;) {
+        chunk.memory = malloc(1);
+        chunk.size = 0;
 
-    ret = spider_execute(&chunk);
+        ret = spider_execute(&chunk);
 
-    if(ret == 0)
-    {
-        ret = analyst_execute(&chunk);
-        if(ret != 0)
+        if(ret == 0)
         {
-            printf("analyst_execute error\n");
+            ret = analyst_execute(&chunk);
+            if(ret != 0)
+            {
+                printf("analyst_execute error\n");
+            }
         }
-    }
 
-    return 0;
+        free(chunk.memory);
+
+        sleep(3600);
+    }
 }

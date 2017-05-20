@@ -39,8 +39,8 @@
       <file leaf-file-name="main.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="55" column="16" lean-forward="true" selection-start-line="55" selection-start-column="16" selection-end-line="59" selection-end-column="17" />
+            <state relative-caret-position="-100">
+              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -73,8 +73,8 @@
       <file leaf-file-name="analyst.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyst.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1633">
-              <caret line="84" column="17" lean-forward="false" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="17" />
+            <state relative-caret-position="227">
+              <caret line="174" column="29" lean-forward="true" selection-start-line="173" selection-start-column="8" selection-end-line="174" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -139,12 +139,12 @@
       <find>const</find>
       <find>src_timet</find>
       <find>make_offset_time</find>
-      <find>find_time</find>
       <find>analyst_execute</find>
       <find>save_to_db_by_no_interval</find>
       <find>format_offset_time</find>
       <find>calculate_from_db</find>
       <find>save_to_db_by_interval</find>
+      <find>find_time</find>
       <find>rs_count</find>
     </findStrings>
     <replaceStrings>
@@ -443,12 +443,12 @@
       <workItem from="1495206092818" duration="297000" />
       <workItem from="1495207392351" duration="691000" />
       <workItem from="1495208681855" duration="633000" />
-      <workItem from="1495263805741" duration="5850000" />
+      <workItem from="1495263805741" duration="8018000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55398000" />
+    <option name="totallyTimeSpent" value="57566000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -840,6 +840,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spider.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/analyst.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -850,26 +858,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/analyst.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1633">
-          <caret line="84" column="17" lean-forward="false" selection-start-line="84" selection-start-column="14" selection-end-line="84" selection-end-column="17" />
+        <state relative-caret-position="227">
+          <caret line="174" column="29" lean-forward="true" selection-start-line="173" selection-start-column="8" selection-end-line="174" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="55" column="16" lean-forward="true" selection-start-line="55" selection-start-column="16" selection-end-line="59" selection-end-column="17" />
+        <state relative-caret-position="-100">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

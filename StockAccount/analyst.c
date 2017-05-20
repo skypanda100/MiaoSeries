@@ -52,25 +52,46 @@ static int is_data_exist(PGconn *conn, char *f_time, char *t_time)
     char db_query[512] = {0};
     PGresult *res = NULL;
     const char *db_query_params[2] = {NULL};
-    int db_query_params_count = 0;
     int rs_count = 0;
 
-    strcpy(db_query, "select count(*) from stockaccount "
-            "where f_time = $1::timestamp and t_time = $2::timestamp"
-            "order by timet desc "
-            "limit $3::int4");
+    strcpy(db_query, "select count(*) from stock_account "
+            "where f_time = $1::timestamp and t_time = $2::timestamp");
     db_query_params[0] = f_time;
     db_query_params[1] = t_time;
 
-    rs_count = util_db_query(conn
+    if (util_db_query(conn
             , &res
             , db_query
             , db_query_params
-            , db_query_params_count);
+            , sizeof(db_query_params) / sizeof(char *)) > 0)
+    {
+        char *count = PQgetvalue(res, 0, 0);
+        rs_count = atoi(count);
+    }
 
     util_db_free(res);
 
     return rs_count;
+}
+
+static void save_data(PGconn *conn
+        , const char *f_time, const char *t_time
+        , const char *new_account, const char *natural_account
+        , const char *none_natural_account, const char *final_account)
+{
+    char db_insert[128] = {0};
+    const char *db_insert_params[6] = {NULL};
+
+    strcpy(db_insert, "insert into stock_account values ($1, $2, $3, $4, $5, $6)");
+    db_insert_params[0] = f_time;
+    db_insert_params[1] = t_time;
+    db_insert_params[2] = new_account;
+    db_insert_params[3] = natural_account;
+    db_insert_params[4] = none_natural_account;
+    db_insert_params[5] = final_account;
+printf("%s\n", db_insert);
+
+    util_db_insert(conn, db_insert, db_insert_params, sizeof(db_insert_params) / sizeof(char *));
 }
 
 int analyst_execute(const struct Chunk *pchunk)
@@ -82,13 +103,9 @@ int analyst_execute(const struct Chunk *pchunk)
     char t_time[10 + 1] = {0};
     char t_time_fmt[19 + 1] = {0};
     char new_account[12] = {0};
-    float new_account_fmt = 0;
     char natural_account[12] = {0};
-    float natural_account_fmt = 0;
     char none_natural_account[12] = {0};
-    float none_natural_account_fmt = 0;
     char final_account[12] = {0};
-    float final_account_fmt = 0;
 
     if(util_db_connect(&conn) != 0)
     {
@@ -107,7 +124,6 @@ int analyst_execute(const struct Chunk *pchunk)
             util_db_disconnect(conn);
             return 1;
         }
-        printf("%s - %s\n", f_time_fmt, t_time_fmt);
 
         ret = find_account(pchunk->memory, new_account, natural_account, none_natural_account, final_account);
         if(ret == 0)
@@ -123,7 +139,6 @@ int analyst_execute(const struct Chunk *pchunk)
             }
             memcpy(new_account, temp, 12);
             memset(temp, 0, 12);
-            new_account_fmt = atof(new_account);
 
             for(int i = 0;i < sizeof(natural_account) / sizeof(char);i++)
             {
@@ -135,7 +150,6 @@ int analyst_execute(const struct Chunk *pchunk)
             }
             memcpy(natural_account, temp, 12);
             memset(temp, 0, 12);
-            natural_account_fmt = atof(natural_account);
 
             for(int i = 0;i < sizeof(none_natural_account) / sizeof(char);i++)
             {
@@ -147,7 +161,6 @@ int analyst_execute(const struct Chunk *pchunk)
             }
             memcpy(none_natural_account, temp, 12);
             memset(temp, 0, 12);
-            none_natural_account_fmt = atof(none_natural_account);
 
             for(int i = 0;i < sizeof(final_account) / sizeof(char);i++)
             {
@@ -159,14 +172,9 @@ int analyst_execute(const struct Chunk *pchunk)
             }
             memcpy(final_account, temp, 12);
             memset(temp, 0, 12);
-            final_account_fmt = atof(final_account);
 
-            printf("%f, %f, %f, %f\n"
-                    , new_account_fmt
-                    , natural_account_fmt
-                    , none_natural_account_fmt
-                    , final_account_fmt);
-
+            save_data(conn, f_time_fmt, t_time_fmt, new_account, natural_account, none_natural_account, final_account);
+            ret = 0;
         }
     }
     util_db_disconnect(conn);
