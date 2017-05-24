@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 project(ExchangeRateServiceK)
 
-#set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Release)
 
 set(CMAKE_C_STANDARD 99)
 

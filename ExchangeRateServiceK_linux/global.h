@@ -30,4 +30,9 @@ static const char *DB_NAME = "postgres";
 static const char *DB_UID = "postgres";
 static const char *DB_PWD = "123456";
 
+/**
+ * capture days
+ */
+static const int CAPTURE_DAYS = 20;
+
 #endif //EXCHANGERATESERVICEK_LINUX_GLOBAL_H

@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/analyst.c
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/analyst.c
 analyst.h
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/analyst.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/analyst.h
 
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/analyst.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/analyst.h
 stdio.h
 -
 string.h
@@ -18,31 +18,31 @@ string.h
 regex.h
 -
 global.h
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/global.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/global.h
 util.h
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/util.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/util.h
 
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/global.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/global.h
 stdlib.h
 -
 
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/main.c
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/main.c
 unistd.h
 -
 stdlib.h
 -
 global.h
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/global.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/global.h
 spider.h
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/spider.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/spider.h
 analyst.h
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/analyst.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/analyst.h
 
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/spider.c
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/spider.c
 spider.h
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/spider.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/spider.h
 
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/spider.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/spider.h
 stdio.h
 -
 stdlib.h
@@ -52,13 +52,13 @@ string.h
 curl/curl.h
 -
 global.h
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/global.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/global.h
 
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/util.c
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/util.c
 util.h
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/util.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/util.h
 
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/util.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/util.h
 stdio.h
 -
 string.h
@@ -70,5 +70,5 @@ regex.h
 libpq-fe.h
 -
 global.h
-/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/global.h
+/home/program/MiaoSeries/ExchangeRateServiceK_linux/global.h
 

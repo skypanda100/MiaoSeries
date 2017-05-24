@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/software/clion-2017.1/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E remove -f
+RM = /home/software/clion-2017.1/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux
+CMAKE_SOURCE_DIR = /home/program/MiaoSeries/ExchangeRateServiceK_linux
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug
+CMAKE_BINARY_DIR = /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ExchangeRateServiceK.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/ExchangeRateServiceK.dir/flags.make
 
 CMakeFiles/ExchangeRateServiceK.dir/main.c.o: CMakeFiles/ExchangeRateServiceK.dir/flags.make
 CMakeFiles/ExchangeRateServiceK.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ExchangeRateServiceK.dir/main.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ExchangeRateServiceK.dir/main.c.o   -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ExchangeRateServiceK.dir/main.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ExchangeRateServiceK.dir/main.c.o   -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/main.c
 
 CMakeFiles/ExchangeRateServiceK.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ExchangeRateServiceK.dir/main.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/main.c > CMakeFiles/ExchangeRateServiceK.dir/main.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/program/MiaoSeries/ExchangeRateServiceK_linux/main.c > CMakeFiles/ExchangeRateServiceK.dir/main.c.i
 
 CMakeFiles/ExchangeRateServiceK.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ExchangeRateServiceK.dir/main.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/main.c -o CMakeFiles/ExchangeRateServiceK.dir/main.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/program/MiaoSeries/ExchangeRateServiceK_linux/main.c -o CMakeFiles/ExchangeRateServiceK.dir/main.c.s
 
 CMakeFiles/ExchangeRateServiceK.dir/main.c.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/ExchangeRateServiceK.dir/main.c.o.provides.build: CMakeFiles/Exchange
 
 CMakeFiles/ExchangeRateServiceK.dir/spider.c.o: CMakeFiles/ExchangeRateServiceK.dir/flags.make
 CMakeFiles/ExchangeRateServiceK.dir/spider.c.o: ../spider.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ExchangeRateServiceK.dir/spider.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ExchangeRateServiceK.dir/spider.c.o   -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/spider.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ExchangeRateServiceK.dir/spider.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ExchangeRateServiceK.dir/spider.c.o   -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/spider.c
 
 CMakeFiles/ExchangeRateServiceK.dir/spider.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ExchangeRateServiceK.dir/spider.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/spider.c > CMakeFiles/ExchangeRateServiceK.dir/spider.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/program/MiaoSeries/ExchangeRateServiceK_linux/spider.c > CMakeFiles/ExchangeRateServiceK.dir/spider.c.i
 
 CMakeFiles/ExchangeRateServiceK.dir/spider.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ExchangeRateServiceK.dir/spider.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/spider.c -o CMakeFiles/ExchangeRateServiceK.dir/spider.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/program/MiaoSeries/ExchangeRateServiceK_linux/spider.c -o CMakeFiles/ExchangeRateServiceK.dir/spider.c.s
 
 CMakeFiles/ExchangeRateServiceK.dir/spider.c.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/ExchangeRateServiceK.dir/spider.c.o.provides.build: CMakeFiles/Exchan
 
 CMakeFiles/ExchangeRateServiceK.dir/analyst.c.o: CMakeFiles/ExchangeRateServiceK.dir/flags.make
 CMakeFiles/ExchangeRateServiceK.dir/analyst.c.o: ../analyst.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ExchangeRateServiceK.dir/analyst.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ExchangeRateServiceK.dir/analyst.c.o   -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/analyst.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ExchangeRateServiceK.dir/analyst.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ExchangeRateServiceK.dir/analyst.c.o   -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/analyst.c
 
 CMakeFiles/ExchangeRateServiceK.dir/analyst.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ExchangeRateServiceK.dir/analyst.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/analyst.c > CMakeFiles/ExchangeRateServiceK.dir/analyst.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/program/MiaoSeries/ExchangeRateServiceK_linux/analyst.c > CMakeFiles/ExchangeRateServiceK.dir/analyst.c.i
 
 CMakeFiles/ExchangeRateServiceK.dir/analyst.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ExchangeRateServiceK.dir/analyst.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/analyst.c -o CMakeFiles/ExchangeRateServiceK.dir/analyst.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/program/MiaoSeries/ExchangeRateServiceK_linux/analyst.c -o CMakeFiles/ExchangeRateServiceK.dir/analyst.c.s
 
 CMakeFiles/ExchangeRateServiceK.dir/analyst.c.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/ExchangeRateServiceK.dir/analyst.c.o.provides.build: CMakeFiles/Excha
 
 CMakeFiles/ExchangeRateServiceK.dir/util.c.o: CMakeFiles/ExchangeRateServiceK.dir/flags.make
 CMakeFiles/ExchangeRateServiceK.dir/util.c.o: ../util.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ExchangeRateServiceK.dir/util.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ExchangeRateServiceK.dir/util.c.o   -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/util.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ExchangeRateServiceK.dir/util.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ExchangeRateServiceK.dir/util.c.o   -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/util.c
 
 CMakeFiles/ExchangeRateServiceK.dir/util.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ExchangeRateServiceK.dir/util.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/util.c > CMakeFiles/ExchangeRateServiceK.dir/util.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/program/MiaoSeries/ExchangeRateServiceK_linux/util.c > CMakeFiles/ExchangeRateServiceK.dir/util.c.i
 
 CMakeFiles/ExchangeRateServiceK.dir/util.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ExchangeRateServiceK.dir/util.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/util.c -o CMakeFiles/ExchangeRateServiceK.dir/util.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/program/MiaoSeries/ExchangeRateServiceK_linux/util.c -o CMakeFiles/ExchangeRateServiceK.dir/util.c.s
 
 CMakeFiles/ExchangeRateServiceK.dir/util.c.o.requires:
 
@@ -169,7 +169,7 @@ ExchangeRateServiceK: CMakeFiles/ExchangeRateServiceK.dir/analyst.c.o
 ExchangeRateServiceK: CMakeFiles/ExchangeRateServiceK.dir/util.c.o
 ExchangeRateServiceK: CMakeFiles/ExchangeRateServiceK.dir/build.make
 ExchangeRateServiceK: CMakeFiles/ExchangeRateServiceK.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable ExchangeRateServiceK"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable ExchangeRateServiceK"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ExchangeRateServiceK.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -189,6 +189,6 @@ CMakeFiles/ExchangeRateServiceK.dir/clean:
 .PHONY : CMakeFiles/ExchangeRateServiceK.dir/clean
 
 CMakeFiles/ExchangeRateServiceK.dir/depend:
-	cd /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/ExchangeRateServiceK.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/program/MiaoSeries/ExchangeRateServiceK_linux /home/program/MiaoSeries/ExchangeRateServiceK_linux /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/ExchangeRateServiceK.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ExchangeRateServiceK.dir/depend
 

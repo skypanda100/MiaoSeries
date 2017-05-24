@@ -109,7 +109,7 @@ void analyst_execute(const struct Chunk *pchunk)
     char now_date[14 + 1] = {0};
     sprintf(now_date, "%d%02d%02d000000", now_year, now_month, now_day);
 
-    for(int i = 0;i < 10;i++)
+    for(int i = 0;i < CAPTURE_DAYS;i++)
     {
         int ret = 0;
         char offset_date[14 + 1] = {0};

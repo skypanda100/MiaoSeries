@@ -1,4 +1,4 @@
-The system is: Linux - 3.10.0-514.10.2.el7.x86_64 - x86_64
+The system is: Linux - 3.10.0-514.16.1.el7.x86_64 - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /usr/bin/cc 
 Build flags: 
@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/3.7.1/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/3.7.1/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -23,33 +23,33 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/3.7.1/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/3.7.1/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_6b7fa/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_6b7fa.dir/build.make CMakeFiles/cmTC_6b7fa.dir/build
-gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_6b7fa.dir/testCCompiler.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_6b7fa.dir/testCCompiler.c.o   -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_6b7fa
-/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6b7fa.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_6b7fa.dir/testCCompiler.c.o  -o cmTC_6b7fa 
-gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/gmake" "cmTC_a2f33/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_a2f33.dir/build.make CMakeFiles/cmTC_a2f33.dir/build
+gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_a2f33.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_a2f33.dir/testCCompiler.c.o   -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_a2f33
+/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a2f33.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_a2f33.dir/testCCompiler.c.o  -o cmTC_a2f33 
+gmake[1]: 离开目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_4c4a7/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_4c4a7.dir/build.make CMakeFiles/cmTC_4c4a7.dir/build
-gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_4c4a7.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_4c4a7.dir/CMakeCCompilerABI.c.o   -c /home/zhengdongtian/clion-2017.1/bin/cmake/share/cmake-3.7/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_4c4a7
-/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4c4a7.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTC_4c4a7.dir/CMakeCCompilerABI.c.o  -o cmTC_4c4a7  
+Run Build Command:"/usr/bin/gmake" "cmTC_3ced3/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_3ced3.dir/build.make CMakeFiles/cmTC_3ced3.dir/build
+gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_3ced3.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_3ced3.dir/CMakeCCompilerABI.c.o   -c /home/software/clion-2017.1/bin/cmake/share/cmake-3.7/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_3ced3
+/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3ced3.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_3ced3.dir/CMakeCCompilerABI.c.o  -o cmTC_3ced3  
 使用内建 specs。
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper
@@ -59,23 +59,23 @@ COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper
 gcc 版本 4.8.5 20150623 (Red Hat 4.8.5-11) (GCC) 
 COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4c4a7' '-mtune=generic' '-march=x86-64'
- /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_4c4a7 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTC_4c4a7.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o
-gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3ced3' '-mtune=generic' '-march=x86-64'
+ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3ced3 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTC_3ced3.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o
+gmake[1]: 离开目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_4c4a7/fast"]
-  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_4c4a7.dir/build.make CMakeFiles/cmTC_4c4a7.dir/build]
-  ignore line: [gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”]
-  ignore line: [Building C object CMakeFiles/cmTC_4c4a7.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_4c4a7.dir/CMakeCCompilerABI.c.o   -c /home/zhengdongtian/clion-2017.1/bin/cmake/share/cmake-3.7/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_4c4a7]
-  ignore line: [/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4c4a7.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_4c4a7.dir/CMakeCCompilerABI.c.o  -o cmTC_4c4a7  ]
+  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_3ced3/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_3ced3.dir/build.make CMakeFiles/cmTC_3ced3.dir/build]
+  ignore line: [gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”]
+  ignore line: [Building C object CMakeFiles/cmTC_3ced3.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_3ced3.dir/CMakeCCompilerABI.c.o   -c /home/software/clion-2017.1/bin/cmake/share/cmake-3.7/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_3ced3]
+  ignore line: [/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3ced3.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_3ced3.dir/CMakeCCompilerABI.c.o  -o cmTC_3ced3  ]
   ignore line: [使用内建 specs。]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper]
@@ -85,8 +85,8 @@ Parsed C implicit link information from above output:
   ignore line: [gcc 版本 4.8.5 20150623 (Red Hat 4.8.5-11) (GCC) ]
   ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_4c4a7' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_4c4a7 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTC_4c4a7.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3ced3' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3ced3 /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTC_3ced3.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o]
     arg [/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2] ==> ignore
     arg [--build-id] ==> ignore
     arg [--no-add-needed] ==> ignore
@@ -97,7 +97,7 @@ Parsed C implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_4c4a7] ==> ignore
+    arg [cmTC_3ced3] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o] ==> ignore
@@ -106,7 +106,7 @@ Parsed C implicit link information from above output:
     arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
     arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
     arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../..] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../..]
-    arg [CMakeFiles/cmTC_4c4a7.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_3ced3.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -135,17 +135,17 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_659eb/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_659eb.dir/build.make CMakeFiles/cmTC_659eb.dir/build
-gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_659eb.dir/feature_tests.c.o
-/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_659eb.dir/feature_tests.c.o   -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_659eb
-/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_659eb.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_659eb.dir/feature_tests.c.o  -o cmTC_659eb 
-gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/gmake" "cmTC_8fd32/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_8fd32.dir/build.make CMakeFiles/cmTC_8fd32.dir/build
+gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_8fd32.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_8fd32.dir/feature_tests.c.o   -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_8fd32
+/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8fd32.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_8fd32.dir/feature_tests.c.o  -o cmTC_8fd32 
+gmake[1]: 离开目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -155,17 +155,17 @@ gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_3e826/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_3e826.dir/build.make CMakeFiles/cmTC_3e826.dir/build
-gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_3e826.dir/feature_tests.c.o
-/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_3e826.dir/feature_tests.c.o   -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_3e826
-/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3e826.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_3e826.dir/feature_tests.c.o  -o cmTC_3e826 
-gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/gmake" "cmTC_099bf/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_099bf.dir/build.make CMakeFiles/cmTC_099bf.dir/build
+gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_099bf.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_099bf.dir/feature_tests.c.o   -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_099bf
+/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_099bf.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_099bf.dir/feature_tests.c.o  -o cmTC_099bf 
+gmake[1]: 离开目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -175,17 +175,17 @@ gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_92354/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_92354.dir/build.make CMakeFiles/cmTC_92354.dir/build
-gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_92354.dir/feature_tests.c.o
-/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_92354.dir/feature_tests.c.o   -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_92354
-/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92354.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_92354.dir/feature_tests.c.o  -o cmTC_92354 
-gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/gmake" "cmTC_c40a4/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_c40a4.dir/build.make CMakeFiles/cmTC_c40a4.dir/build
+gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_c40a4.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_c40a4.dir/feature_tests.c.o   -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_c40a4
+/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c40a4.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_c40a4.dir/feature_tests.c.o  -o cmTC_c40a4 
+gmake[1]: 离开目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -193,30 +193,30 @@ gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_56eee/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_56eee.dir/build.make CMakeFiles/cmTC_56eee.dir/build
-gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_56eee.dir/testCXXCompiler.cxx.o
-/usr/bin/c++      -o CMakeFiles/cmTC_56eee.dir/testCXXCompiler.cxx.o -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_56eee
-/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_56eee.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_56eee.dir/testCXXCompiler.cxx.o  -o cmTC_56eee 
-gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/gmake" "cmTC_f3d35/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_f3d35.dir/build.make CMakeFiles/cmTC_f3d35.dir/build
+gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_f3d35.dir/testCXXCompiler.cxx.o
+/usr/bin/c++      -o CMakeFiles/cmTC_f3d35.dir/testCXXCompiler.cxx.o -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_f3d35
+/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f3d35.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_f3d35.dir/testCXXCompiler.cxx.o  -o cmTC_f3d35 
+gmake[1]: 离开目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_92eaa/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_92eaa.dir/build.make CMakeFiles/cmTC_92eaa.dir/build
-gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_92eaa.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++      -o CMakeFiles/cmTC_92eaa.dir/CMakeCXXCompilerABI.cpp.o -c /home/zhengdongtian/clion-2017.1/bin/cmake/share/cmake-3.7/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_92eaa
-/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92eaa.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTC_92eaa.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_92eaa  
+Run Build Command:"/usr/bin/gmake" "cmTC_7f07d/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_7f07d.dir/build.make CMakeFiles/cmTC_7f07d.dir/build
+gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_7f07d.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++      -o CMakeFiles/cmTC_7f07d.dir/CMakeCXXCompilerABI.cpp.o -c /home/software/clion-2017.1/bin/cmake/share/cmake-3.7/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_7f07d
+/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7f07d.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTC_7f07d.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_7f07d  
 使用内建 specs。
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper
@@ -226,23 +226,23 @@ COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper
 gcc 版本 4.8.5 20150623 (Red Hat 4.8.5-11) (GCC) 
 COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_92eaa' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_92eaa /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTC_92eaa.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o
-gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7f07d' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_7f07d /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTC_7f07d.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o
+gmake[1]: 离开目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_92eaa/fast"]
-  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_92eaa.dir/build.make CMakeFiles/cmTC_92eaa.dir/build]
-  ignore line: [gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”]
-  ignore line: [Building CXX object CMakeFiles/cmTC_92eaa.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_92eaa.dir/CMakeCXXCompilerABI.cpp.o -c /home/zhengdongtian/clion-2017.1/bin/cmake/share/cmake-3.7/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_92eaa]
-  ignore line: [/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92eaa.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_92eaa.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_92eaa  ]
+  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_7f07d/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_7f07d.dir/build.make CMakeFiles/cmTC_7f07d.dir/build]
+  ignore line: [gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”]
+  ignore line: [Building CXX object CMakeFiles/cmTC_7f07d.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_7f07d.dir/CMakeCXXCompilerABI.cpp.o -c /home/software/clion-2017.1/bin/cmake/share/cmake-3.7/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_7f07d]
+  ignore line: [/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7f07d.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_7f07d.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_7f07d  ]
   ignore line: [使用内建 specs。]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/lto-wrapper]
@@ -252,8 +252,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc 版本 4.8.5 20150623 (Red Hat 4.8.5-11) (GCC) ]
   ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/4.8.5/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_92eaa' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_92eaa /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTC_92eaa.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7f07d' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2 --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_7f07d /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../.. CMakeFiles/cmTC_7f07d.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtend.o /usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crtn.o]
     arg [/usr/libexec/gcc/x86_64-redhat-linux/4.8.5/collect2] ==> ignore
     arg [--build-id] ==> ignore
     arg [--no-add-needed] ==> ignore
@@ -264,7 +264,7 @@ Parsed CXX implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_92eaa] ==> ignore
+    arg [cmTC_7f07d] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/crtbegin.o] ==> ignore
@@ -273,7 +273,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
     arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
     arg [-L/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../..] ==> dir [/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../..]
-    arg [CMakeFiles/cmTC_92eaa.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_7f07d.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -300,17 +300,17 @@ Parsed CXX implicit link information from above output:
 
 
 Detecting CXX [-std=c++1y] compiler features compiled with the following output:
-Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_a1d3f/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_a1d3f.dir/build.make CMakeFiles/cmTC_a1d3f.dir/build
-gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_a1d3f.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++1y -o CMakeFiles/cmTC_a1d3f.dir/feature_tests.cxx.o -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_a1d3f
-/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1d3f.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_a1d3f.dir/feature_tests.cxx.o  -o cmTC_a1d3f 
-gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/gmake" "cmTC_2b247/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_2b247.dir/build.make CMakeFiles/cmTC_2b247.dir/build
+gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_2b247.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++1y -o CMakeFiles/cmTC_2b247.dir/feature_tests.cxx.o -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_2b247
+/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2b247.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_2b247.dir/feature_tests.cxx.o  -o cmTC_2b247 
+gmake[1]: 离开目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -373,17 +373,17 @@ gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_e2eea/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_e2eea.dir/build.make CMakeFiles/cmTC_e2eea.dir/build
-gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_e2eea.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_e2eea.dir/feature_tests.cxx.o -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_e2eea
-/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e2eea.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_e2eea.dir/feature_tests.cxx.o  -o cmTC_e2eea 
-gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/gmake" "cmTC_5b3e0/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_5b3e0.dir/build.make CMakeFiles/cmTC_5b3e0.dir/build
+gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_5b3e0.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_5b3e0.dir/feature_tests.cxx.o -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_5b3e0
+/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5b3e0.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_5b3e0.dir/feature_tests.cxx.o  -o cmTC_5b3e0 
+gmake[1]: 离开目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -446,17 +446,17 @@ gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_cfa97/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_cfa97.dir/build.make CMakeFiles/cmTC_cfa97.dir/build
-gmake[1]: 进入目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_cfa97.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_cfa97.dir/feature_tests.cxx.o -c /home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_cfa97
-/home/zhengdongtian/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cfa97.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_cfa97.dir/feature_tests.cxx.o  -o cmTC_cfa97 
-gmake[1]: 离开目录“/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Run Build Command:"/usr/bin/gmake" "cmTC_9d2f6/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_9d2f6.dir/build.make CMakeFiles/cmTC_9d2f6.dir/build
+gmake[1]: 进入目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_9d2f6.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_9d2f6.dir/feature_tests.cxx.o -c /home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_9d2f6
+/home/software/clion-2017.1/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9d2f6.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_9d2f6.dir/feature_tests.cxx.o  -o cmTC_9d2f6 
+gmake[1]: 离开目录“/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/CMakeTmp”
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers

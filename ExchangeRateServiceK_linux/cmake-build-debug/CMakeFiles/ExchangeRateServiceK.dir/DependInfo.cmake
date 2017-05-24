@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/analyst.c" "/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/ExchangeRateServiceK.dir/analyst.c.o"
-  "/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/main.c" "/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/ExchangeRateServiceK.dir/main.c.o"
-  "/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/spider.c" "/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/ExchangeRateServiceK.dir/spider.c.o"
-  "/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/util.c" "/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/ExchangeRateServiceK.dir/util.c.o"
+  "/home/program/MiaoSeries/ExchangeRateServiceK_linux/analyst.c" "/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/ExchangeRateServiceK.dir/analyst.c.o"
+  "/home/program/MiaoSeries/ExchangeRateServiceK_linux/main.c" "/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/ExchangeRateServiceK.dir/main.c.o"
+  "/home/program/MiaoSeries/ExchangeRateServiceK_linux/spider.c" "/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/ExchangeRateServiceK.dir/spider.c.o"
+  "/home/program/MiaoSeries/ExchangeRateServiceK_linux/util.c" "/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/CMakeFiles/ExchangeRateServiceK.dir/util.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug"/>
+				<Option working_dir="/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug"/>
+				<Option working_dir="/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug"/>
+				<Option working_dir="/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ExchangeRateServiceK">
-				<Option output="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/ExchangeRateServiceK" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug"/>
+				<Option output="/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/ExchangeRateServiceK" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -52,15 +52,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 ExchangeRateServiceK"/>
-					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 ExchangeRateServiceK"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ExchangeRateServiceK/fast">
-				<Option output="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/ExchangeRateServiceK" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug"/>
+				<Option output="/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/ExchangeRateServiceK" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -73,38 +73,38 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 ExchangeRateServiceK/fast"/>
-					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 ExchangeRateServiceK/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/program/MiaoSeries/ExchangeRateServiceK_linux/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/analyst.c">
+		<Unit filename="/home/program/MiaoSeries/ExchangeRateServiceK_linux/analyst.c">
 			<Option target="ExchangeRateServiceK"/>
 		</Unit>
-		<Unit filename="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/analyst.h">
+		<Unit filename="/home/program/MiaoSeries/ExchangeRateServiceK_linux/analyst.h">
 			<Option target="ExchangeRateServiceK"/>
 		</Unit>
-		<Unit filename="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/global.h">
+		<Unit filename="/home/program/MiaoSeries/ExchangeRateServiceK_linux/global.h">
 			<Option target="ExchangeRateServiceK"/>
 		</Unit>
-		<Unit filename="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/main.c">
+		<Unit filename="/home/program/MiaoSeries/ExchangeRateServiceK_linux/main.c">
 			<Option target="ExchangeRateServiceK"/>
 		</Unit>
-		<Unit filename="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/spider.c">
+		<Unit filename="/home/program/MiaoSeries/ExchangeRateServiceK_linux/spider.c">
 			<Option target="ExchangeRateServiceK"/>
 		</Unit>
-		<Unit filename="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/spider.h">
+		<Unit filename="/home/program/MiaoSeries/ExchangeRateServiceK_linux/spider.h">
 			<Option target="ExchangeRateServiceK"/>
 		</Unit>
-		<Unit filename="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/util.c">
+		<Unit filename="/home/program/MiaoSeries/ExchangeRateServiceK_linux/util.c">
 			<Option target="ExchangeRateServiceK"/>
 		</Unit>
-		<Unit filename="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/util.h">
+		<Unit filename="/home/program/MiaoSeries/ExchangeRateServiceK_linux/util.h">
 			<Option target="ExchangeRateServiceK"/>
 		</Unit>
-		<Unit filename="/home/zhengdongtian/CLionProjects/ExchangeRateServiceK_linux/CMakeLists.txt">
+		<Unit filename="/home/program/MiaoSeries/ExchangeRateServiceK_linux/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
