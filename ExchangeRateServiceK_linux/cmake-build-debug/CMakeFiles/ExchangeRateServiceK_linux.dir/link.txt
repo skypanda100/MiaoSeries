@@ -1,0 +1,1 @@
+/usr/bin/cc  -g   CMakeFiles/ExchangeRateServiceK_linux.dir/main.c.o  -o ExchangeRateServiceK_linux 
