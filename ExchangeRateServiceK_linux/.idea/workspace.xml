@@ -33,11 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="180">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -57,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="analyst.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="analyst.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyst.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="339">
+              <caret line="144" column="5" lean-forward="true" selection-start-line="144" selection-start-column="5" selection-end-line="144" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -126,12 +126,12 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>EXCHANGERATESERVICE</find>
-      <find>format_time</find>
       <find>spider_execute</find>
       <find>*?</find>
       <find>util_make_time</find>
       <find>[\\n\\r\\t ]</find>
       <find>pchunk</find>
+      <find>format_time</find>
     </findStrings>
     <replaceStrings>
       <replace>*</replace>
@@ -149,8 +149,8 @@
         <option value="$PROJECT_DIR$/global.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/analyst.h" />
-        <option value="$PROJECT_DIR$/main.c" />
         <option value="$PROJECT_DIR$/analyst.c" />
+        <option value="$PROJECT_DIR$/main.c" />
       </list>
     </option>
   </component>
@@ -410,12 +410,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1495605160304</updated>
-      <workItem from="1495605164004" duration="8025000" />
+      <workItem from="1495605164004" duration="10293000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8025000" />
+    <option name="totallyTimeSpent" value="10293000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1678" height="866" extended-state="0" />
@@ -469,14 +469,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/global.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spider.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-34">
@@ -511,26 +503,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analyst.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#128#146#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="14" column="5" lean-forward="false" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/util.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
@@ -541,11 +513,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analyst.c">
+    <entry file="file://$PROJECT_DIR$/analyst.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#128#146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analyst.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="144" column="5" lean-forward="true" selection-start-line="144" selection-start-column="5" selection-end-line="144" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

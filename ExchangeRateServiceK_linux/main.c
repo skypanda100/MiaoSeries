@@ -6,7 +6,7 @@
 
 int main(void)
 {
-//    daemon(0, 0);
+    daemon(0, 0);
 
     int ret = 0;
     struct Chunk chunk;
@@ -24,6 +24,6 @@ int main(void)
 
         free(chunk.memory);
 
-        sleep(5);
+        sleep(3600);
     }
 }

@@ -4,10 +4,10 @@
 #include "analyst.h"
 
 static const char *K_PATTERN_FMT = ".*<td.*\"first left bold noWrap\">%d年%d月%d日</td>[\t\r\n ]*"
-                                "<td.*>([0-9\\.]+)</td>[\t\r\n ]*"
-                                "<td.*>([0-9\\.]+)</td>[\t\r\n ]*"
-                                "<td.*>([0-9\\.]+)</td>[\t\r\n ]*"
-                                "<td.*>([0-9\\.]+)</td>.*";
+                                "<td[^\r\n]*>([0-9\\.]+)</td>[\t\r\n ]*"
+                                "<td[^\r\n]*>([0-9\\.]+)</td>[\t\r\n ]*"
+                                "<td[^\r\n]*>([0-9\\.]+)</td>[\t\r\n ]*"
+                                "<td[^\r\n]*>([0-9\\.]+)</td>.*";
 
 static int find_k(const char *pattern, const char *content, char *close, char *open, char *high, char *low)
 {
@@ -27,30 +27,63 @@ static void format_time(const char *src_time, char *dst_time)
 {
     strncpy(dst_time, src_time, 4);
     strcat(dst_time, "-");
-    strncat(dst_time, src_time + 5, 2);
+    strncat(dst_time, src_time + 4, 2);
     strcat(dst_time, "-");
-    strncat(dst_time, src_time + 8, 2);
+    strncat(dst_time, src_time + 6, 2);
     strcat(dst_time, " 00:00:00");
 }
 
-static void save_data(PGconn *conn
-        , const char *f_time, const char *t_time
-        , const char *new_account, const char *natural_account
-        , const char *none_natural_account, const char *final_account)
+static int is_data_exist(PGconn *conn, char *time)
 {
-    char db_insert[128] = {0};
-    const char *db_insert_params[6] = {NULL};
+    char db_query[512] = {0};
+    PGresult *res = NULL;
+    const char *db_query_params[1] = {NULL};
+    int rs_count = 0;
 
-    strcpy(db_insert, "insert into stock_account values ($1, $2, $3, $4, $5, $6)");
-    db_insert_params[0] = f_time;
-    db_insert_params[1] = t_time;
-    db_insert_params[2] = new_account;
-    db_insert_params[3] = natural_account;
-    db_insert_params[4] = none_natural_account;
-    db_insert_params[5] = final_account;
-    printf("%s\n", db_insert);
+    strcpy(db_query, "select count(*) from gbpusd_k "
+            "where date = $1::timestamp");
+    db_query_params[0] = time;
 
-    util_db_insert(conn, db_insert, db_insert_params, sizeof(db_insert_params) / sizeof(char *));
+    if (util_db_query(conn
+            , &res
+            , db_query
+            , db_query_params
+            , sizeof(db_query_params) / sizeof(char *)) > 0)
+    {
+        char *count = PQgetvalue(res, 0, 0);
+        rs_count = atoi(count);
+    }
+
+    util_db_free(res);
+
+    return rs_count;
+}
+
+static void save_data(PGconn *conn, int save_or_update
+        , const char *time, const char *close
+        , const char *open, const char *high
+        , const char *low)
+{
+    char db_save[128] = {0};
+    const char *db_save_params[5] = {NULL};
+
+    if(save_or_update == 0)
+    {
+        strcpy(db_save, "insert into gbpusd_k values ($1, $2, $3, $4, $5)");
+    }
+    else
+    {
+        strcpy(db_save, "update gbpusd_k set close=$2, open=$3, high=$4, low=$5 where date=$1");
+    }
+
+    db_save_params[0] = time;
+    db_save_params[1] = close;
+    db_save_params[2] = open;
+    db_save_params[3] = high;
+    db_save_params[4] = low;
+    printf("%s\n", db_save);
+
+    util_db_insert(conn, db_save, db_save_params, sizeof(db_save_params) / sizeof(char *));
 }
 
 void analyst_execute(const struct Chunk *pchunk)
@@ -76,7 +109,6 @@ void analyst_execute(const struct Chunk *pchunk)
     char now_date[14 + 1] = {0};
     sprintf(now_date, "%d%02d%02d000000", now_year, now_month, now_day);
 
-    printf("------------------------\n");
     for(int i = 0;i < 10;i++)
     {
         int ret = 0;
@@ -89,6 +121,7 @@ void analyst_execute(const struct Chunk *pchunk)
         char open[12] = {0};
         char high[12] = {0};
         char low[12] = {0};
+        char time_format[19 + 1] = {0};
 
         util_make_time_by_offset(now_date, offset_date, i * -86400);
         strncpy(offset_year, offset_date, 4);
@@ -99,11 +132,15 @@ void analyst_execute(const struct Chunk *pchunk)
         ret = find_k(k_pattern, pchunk->memory, close, open, high, low);
         if(ret == 0)
         {
-            printf("%s\t%s\t%s\t%s\t%s\n",offset_date, close, open, high, low);
-        }
-        else
-        {
-            printf("%s\n",offset_date);
+            format_time(offset_date, time_format);
+            if(is_data_exist(conn, time_format) > 0)
+            {
+                save_data(conn, 1, time_format, close, open, high, low);
+            }
+            else
+            {
+                save_data(conn, 0, time_format, close, open, high, low);
+            }
         }
     }
 
