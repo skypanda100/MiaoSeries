@@ -1,1 +1,0 @@
-/usr/bin/cc  -O3 -DNDEBUG   CMakeFiles/StockAccount.dir/main.c.o CMakeFiles/StockAccount.dir/spider.c.o CMakeFiles/StockAccount.dir/util.c.o CMakeFiles/StockAccount.dir/analyst.c.o  -o StockAccount -lcurl -lpq 

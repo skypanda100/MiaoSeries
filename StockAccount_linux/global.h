@@ -19,8 +19,8 @@ struct Chunk
 /**
  * db info
  */
-static const char *DB_HOST = "127.0.0.1";
-//static const char *DB_HOST = "192.168.1.3";
+//static const char *DB_HOST = "127.0.0.1";
+static const char *DB_HOST = "192.168.1.3";
 static const char *DB_PORT = "15432";
 static const char *DB_NAME = "postgres";
 static const char *DB_UID = "postgres";

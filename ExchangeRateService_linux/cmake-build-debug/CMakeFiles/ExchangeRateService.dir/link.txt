@@ -1,1 +1,0 @@
-/usr/bin/cc  -O3 -DNDEBUG   CMakeFiles/ExchangeRateService.dir/main.c.o CMakeFiles/ExchangeRateService.dir/spider.c.o CMakeFiles/ExchangeRateService.dir/analyst.c.o CMakeFiles/ExchangeRateService.dir/util.c.o  -o ExchangeRateService -lcurl -lpq 
