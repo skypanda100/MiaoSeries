@@ -12,7 +12,7 @@ Db::~Db(){
 
 void Db::openDb(){
     db = QSqlDatabase::addDatabase("QODBC");
-    QString dsn = QString::fromLocal8Bit("Driver={PostgreSQL ODBC Driver(ANSI)};server=192.168.1.3;port=15432;uid=posgres;pwd=123456;database=postgres");
+    QString dsn = QString::fromLocal8Bit("Driver={PostgreSQL ODBC Driver(ANSI)};server=47.94.165.17;port=5432;uid=posgres;pwd=123456;database=postgres");
     db.setDatabaseName(dsn);
     db.setUserName("postgres");
     db.setPassword("123456");
